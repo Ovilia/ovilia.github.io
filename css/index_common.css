@@ -1,0 +1,26 @@
+/* For common parts of all size */
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #ddd;
+}
+
+.centering {
+    margin: 0 auto;
+}
+
+#hgtc {
+    width: 100%;
+}
+
+#nav {
+    background-color: #666;
+    width: 100%;
+    height: 100px;
+}
+

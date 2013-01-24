@@ -1,0 +1,43 @@
+/* For screen width >= 1024px */
+
+#mynameDiv {
+    width: 500px;
+}
+                        
+#hgtcDiv {
+    width: 800px;
+}
+
+#navContent {
+    width: 800px;
+    height: 100px;
+}
+
+#taoismNav {
+    width: 800px;
+}
+
+#content {
+    width: 1024px;
+    background-color: #aa6;
+    min-height: 1000px;
+}
+
+.page {
+    width: 100%;
+}
+
+.leftPage {
+    width: 38.2%;
+    float: left;
+    background-color: #aa0;
+    min-height: 300px;
+}
+
+.rightPage {
+    width: 61.8%;
+    float: left;
+    background-color: #0aa;
+    min-height: 300px;
+}
+
