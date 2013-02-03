@@ -1,41 +1,160 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
+        <link href='http://fonts.googleapis.com/css?family=Tulpen+One|Coda:800' rel='stylesheet' type='text/css'>
+    
         <link rel="stylesheet" type="text/css" href="css/index_common.css" />
         <link rel="stylesheet" type="text/css" href="css/index_screen1024.css" media="(min-width: 1024px)" />
-        <link rel="stylesheet" type="text/css" href="css/index_screen800.css" media="(min-width: 800px) and (max-width: 1023px)" />
-        <link rel="stylesheet" type="text/css" href="css/index_screen500.css"  media="(min-width: 500px) and (max-width: 799px)" />
-        <link rel="stylesheet" type="text/css" href="css/index_screen0.css" media="(max-width: 500px)" />
+        <link rel="stylesheet" type="text/css" href="css/index_screen600.css"  media="(min-width: 600px) and (max-width: 1023px)" />
+        <link rel="stylesheet" type="text/css" href="css/index_screen0.css" media="(max-width: 599px)" />
         
-        <!--script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/index.js"></script-->
+        <script type="text/javascript" src="js/jquery-1.9.0.js"></script>
+        <script type="text/javascript" src="js/jquery.fittext.js"></script>
+        <script type="text/javascript" src="js/jquery.shuffleLetters.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
     </head>
     <body>
-        <div id="mynameDiv" class="centering">
-            <img id="myname" src="image/myname.png" />
-        </div><!-- End of mynameDiv -->
+        <div id="homePage">
+            <div id="titleDiv">
+                <div id="inTao">
+                    IN TAO
+                </div>
+                <div id="areMy">
+                    ARE MY CODES AND SKETCHES
+                </div>
+            </div><!-- End of titleDiv -->
 
-        <div id="hgtcDiv" class="centering">
-            <img id="hgtc" src="image/hgtc.png" />
-        </div><!-- End of hgtcDiv -->
+            <div id="hgtcDiv" class="centering">
+                <img id="hgtc" src="image/hgtc.png" />
+            </div><!-- End of hgtcDiv -->
+            
+            <div id="iconDiv">
+                <a href="https://github.com/Ovilia" title="Github: Codes of mine." target="_blank">
+                    <img src="image/github40.png" alt="Github" />
+                </a>
+                <a href="http://ovilia1024.deviantart.com/" title="deviantArt: Art works of mine." target="_blank">
+                    <img src="image/deviant40.png" alt="deviantArt" />
+                </a>
+                <a href="http://www.douban.com/people/16920492/" title="Douban: Books I read and movies I watch. (in Chinese)" target="_blank">
+                    <img src="image/douban40.png" alt="Douban (in Chinese)" />
+                </a>
+                <a href="mailto:oviliazhang@gmail.com" title="Email me: OviliaZhang@gmail.com">
+                    <img src="image/email40.png" alt="Email me"/>
+                </a>
+            </div><!-- End of iconDiv -->
 
+        </div><!-- End of homePage -->
+        
         <div id="nav">
             <div id="navContent" class="centering">
-                <div id="taoismNav">
-                    <img id="taoismImg" src="image/nav.png" alt="A Taoism" />
-                </div><!-- End of taoismNav -->
+                <div id="taoNav" class="navCnt">
+                    TAO
+                </div>
+                <div id="codeNav" class="navCnt">
+                    CODES
+                </div>
+                <div id="sketchNav" class="navCnt">
+                    SKETCHES
+                </div>
             </div><!-- End of navContent -->
         </div><!-- End of nav -->
 
-        <div id="content" class="centering">
-            <div id="taoismPage" class="page">
-                <div class="leftPage">
-
-                </div><!-- End of leftPage -->
-                <div class="rightPage">
-
-                </div><!-- End of rightPage -->
-            </div><!-- End of taoismPage -->
-        </div><!-- End of content -->
+        <div id="contentDiv">
+            <div id="content" class="centering">
+                <div class="rotLeft rotTop pageBack"></div>
+                <div class="rotRight rotTop pageBack"></div>
+                <div id="generalPage" class="page">
+                    <div class="pageCnt">
+                        <div class="pageTitle">Wenli Zhang</div>
+                        <p class="title">Hello, world!</p>
+                        <p>I'm desired to be a <span class="emphysis">general designer</span>, from UI, web pages to sketchings, icons and etc.</p>
+                        <p>I'm a <span class="emphysis">responsible</span>, <span class="emphysis">inventive</span> and <span class="emphysis">enthusiastic</span> person. So, please feel free to email me if you have any question! :D</p>
+                        
+                        <p class="title">Skills</p>
+                        <p>I'm experienced in web developing, especially the front end, with the knowledge of <span class="emphysis">HTML</span>, <span class="emphysis">CSS</span>, <span class="emphysis">JavaScript</span>, <span class="emphysis">jQuery</span> and so on. Not a professional designer yet, but I'm on my way...<p>
+                        <p>Also have some knowledge of <span class="emphysis">PHP</span>, <span class="emphysis">JSP</span>, <span class="emphysis">ASP</span> and <span class="emphysis">MySQL</span>, in which little extra enthusiasm is found. And, of course, I did much <span class="emphysis">C++</span> and <span class="emphysis">Java</span> projects, which only convinced me more of my love for web front end developing.</p>
+                        <p>I used <span class="emphysis">PhotoShop</span> for years but recently found more interest in making vector images with <span class="emphysis">InkScape</span>.</p>
+                        <p>These skills listed here are just a hint for you to know about me. They are priceless by themselves, without the guidance of <span class="emphysis">Tao</span>.
+                        
+                        <p class="title">Education</p>
+                        <p>Currently being a Senior undergraduate of <span class="term">School of Software, Shanghai Jiao Tong University</span>.</p>
+                        <p>Candidate graduate of <span class="term">Digital Art Lab, School of Software, Shanghai Jiao Tong University</span>.</p>
+                    </div><!-- End of pageCnt -->
+                </div><!-- End of generalPage -->
+                <div class="rotLeft rotBottom pageBack"></div>
+                <div class="rotRight rotBottom pageBack"></div>
+            
+                <div class="rotLeft rotTop pageBack"></div>
+                <div class="rotRight rotTop pageBack"></div>
+                <div id="taoPage" class="page">
+                    <div class="pageCnt">
+                        <div class="pageTitle">TAO</div>
+                        <div class="leftPage">
+                            <img src="image/tao.png" class="fullWidth" alt="Tao image" />
+                        </div><!-- End of leftPage -->
+                        <div class="rightPage">
+                            <p>Being one of the most famous Chinese philosophers, <span class="term">Laozi</span> inspired and enlightened people for thousands of years with <span class="emphysis term">Tao</span>, the universal way the world runs in. His masterpiece, <a href="http://en.wikipedia.org/wiki/Tao_Te_Ching" class="term" target="_blank">Tao Te Ching</a>, was written unwillingly in around 6th century BC. Because he didn't want to talk too much about <span class="term">Tao</span> himself. <span class="term">He who knows won't talk, he who talks don't know</span>, as he put it.</p>
+                            <p>In Taoism philosophy, everything is about <span class="emphysis">relativity</span>. It is ugliness that defines beauty as it is black that defines white. This does not only inspire me a lot when I learn sketching, but also direct me in everyday life.</p>
+                            <p>I learned to take things easily as they come along and not to contrive too much, which doesn't necessarily mean being optimistic. On the contrary, I would do my best to see what can be achieved and accept it when it's time to let go.</p>
+                            <p>Of course, <span class="term">Tao</span> is a lot more than that. You have to make it out by yourself, as <span class="term">Laozi</span> said, <span class="term">Tao that can be explained is not the unchanging Tao<span>.<p>
+                        </div><!-- End of rightPage -->
+                    </div><!-- End of pageCnt -->
+                </div><!-- End of taoismPage -->
+                <div class="rotLeft rotBottom pageBack"></div>
+                <div class="rotRight rotBottom pageBack"></div>
+                
+                <div class="rotLeft rotTop pageBack"></div>
+                <div class="rotRight rotTop pageBack"></div>
+                <div id="codePage" class="page">
+                    <div class="pageCnt">
+                        <div class="pageTitle">CODES</div>
+                        <p>I'm glad that as a creative programmer, my enthusiasm lies in creating useful applications to make life easier.<p>
+                        
+                        <div id="randocyDiv">
+                            <a href="http://ovilia.sinaapp.com/movie" target="_blank" title="Randocy (In Chinese)">
+                                <img id="randocyImg" class="imageShadow" alt="Randocy screenshot" src="image/randocy_gray.png" />
+                            </a>
+                        </div>
+                        <p><a href="http://ovilia.sinaapp.com/movie" target="_blank" title="Randocy (In Chinese)">Randocy</a> is a project to find online movies with high score on <a href="http://movie.douban.com/" target="_blank" title="Douban (In Chinese)">Douban</a>. I made this because one day in my summer vocation in 2012, I was boring finding movies on web sites like <a href="http://youku.com" target="_blank" title="Youku (In Chinese)">Youku</a> and <a href="http://tudou.com" target="_blank" title="Tudou (In Chinese)">Tudou</a>. The problem is that scores are not so accurate on those sites (a guess is that there are some business related reasons). So I made <span class="term">Randocy</span> to sort using <span class="term">Douban</span> scores.</p>
+                        
+                        <p>As I said before, without the guidance of <span class="term">Tao</span>, the programming skills are meaningless by themselves. It's much more important to dig out potential needs and present with user-friendly interfaces.</p>
+                    </div><!-- End of pageCnt -->
+                </div><!-- End of taoismPage -->
+                <div class="rotLeft rotBottom pageBack"></div>
+                <div class="rotRight rotBottom pageBack"></div>
+                
+                <div class="rotLeft rotTop pageBack"></div>
+                <div class="rotRight rotTop pageBack"></div>
+                <div id="sketchPage" class="page">
+                    <div class="pageCnt">
+                        <div class="pageTitle">SKETCHES</div>
+                        <div class="leftPage">
+                            <a href="http://ovilia1024.deviantart.com/art/Pencil-Sketch-350563762" target="_blank" title="See larger image">
+                                <img src="image/sketch1.png" class="fullWidth imageShadow" alt="Sketch image" />
+                            </a>
+                            <a href="http://ovilia1024.deviantart.com/art/Still-life-of-oranges-and-a-kettle-351619861" target="_blank" title="See larger image">
+                                <img src="image/sketch2.png" class="fullWidth imageShadow" alt="Sketch image" />
+                            </a>
+                        </div><!-- End of leftPage -->
+                        <div class="rightPage">
+                            <p>Started as a hobby, I have been teaching myself sketching since the beginning of 2013. I would not regard myself as gifted, but with the knowledge of <span class="term">Tao</span>, I learned quickly and felt more confident about it.</p>
+                            <p>I observed sketches of artists and found out that sketches are all about contrast. And once grasped the essence of it, composition, light and everything become easier.</p>
+                            <p>I'm also making some vector avatars and will put them here when more matured. But you can always get the latest works of mine <a href="http://ovilia1024.deviantart.com/" target="_blank" title="deviantArt">here</a>.</p>
+                            <p>Just like programming, sketching skill is also only a tool, called <span class="term">Qi</span> in Chinese.</p>
+                        </div><!-- End of rightPage -->
+                    </div><!-- End of pageCnt -->
+                </div><!-- End of sketchPage -->
+                <div class="rotLeft rotBottom pageBack"></div>
+                <div class="rotRight rotBottom pageBack"></div>
+            </div><!-- End of content -->
+            
+            <div id="footerDiv">
+                <div id="footerImg"></div>
+                <div id="footerCnt">
+                    <div id="footer">
+                    </div>
+                </div>
+            </div><!-- End of footerDiv -->
+        </div><!-- End of contentDiv -->
     </body>
 </html>

@@ -1,5 +1,3 @@
-/* For common parts of all size */
-
 * {
     padding: 0px;
     margin: 0px;
@@ -7,11 +5,120 @@
 
 body {
     overflow-x: hidden;
-    background-color: #ddd;
+    background-color: #b0cb2c;
 }
 
 .centering {
     margin: 0 auto;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+::selection {
+    background-color: #70840e;
+    color: #fff;
+    text-shadow: 1px 1px 0px #333;
+    filter: dropshadow(color=#333, offx=1, offy=1);
+}
+
+::-moz-selection {
+    background-color: #70840e;
+    color: #fff;
+    text-shadow: 1px 1px 0px #333;
+    filter: dropshadow(color=#333, offx=1, offy=1);
+}
+
+::-webkit-selection {
+    background-color: #70840e;
+    color: #fff;
+    text-shadow: 1px 1px 0px #333;
+    filter: dropshadow(color=#333, offx=1, offy=1);
+}
+
+p {
+    font-family: Arial, sans-serif;
+    line-height: 150%;
+    margin: 1em 0;
+    text-shadow: 1px 1px 0px #fff;
+    filter: dropshadow(color=#fff, offx=1, offy=1);
+}
+
+p.title {
+    font-family: 'Coda', cursive;
+    margin-bottom: 0;
+    margin-top: 1em;
+    text-shadow: 2px 2px 0px #fff;
+    filter: dropshadow(color=#fff, offx=2, offy=2);
+}
+
+p>a {
+    border-bottom-style: dotted;
+    border-bottom-width: 0.15em;
+    border-color: #70840e;
+    color: #70840e;
+    text-decoration: none;
+}
+
+p>a:hover {
+    background-color: #70840e;
+    color: #d4e583;
+    border-color: #d4e583;
+    text-shadow: 2px 2px 0px #333;
+    filter: dropshadow(color=#333, offx=2, offy=2);
+}
+
+.emphysis {
+    background-color: #d4e583;
+}
+
+.term {
+    font-style: italic;
+}
+
+#titleDiv{
+    width: 75%;
+    margin: 0px auto;
+    text-align: center;
+}
+
+#inTao {
+    font-family: 'Coda', cursive;
+    margin-bottom: -8%;
+    text-shadow: 0px 0px 20px #333;
+    filter: dropshadow(color=#333, offx=0, offy=0);
+}
+
+#areMy {
+    font-family: 'Tulpen One', cursive;
+    text-shadow: 0px 0px 10px #666;
+    filter: dropshadow(color=#666, offx=0, offy=0);
+    color: #fff;
+}
+
+#iconDiv {
+    opacity: 0.4;
+}
+
+#iconDiv>a {
+    text-decoration: none;
+}
+
+#iconDiv:hover {
+    opacity: 1.0;
+}
+
+#iconDiv > a  > img {
+    opacity: 0.6;
+}
+
+#iconDiv > a  > img:hover {
+    opacity: 1.0;
+}
+
+#hgtcDiv {
+    width: 60%;
 }
 
 #hgtc {
@@ -19,8 +126,108 @@ body {
 }
 
 #nav {
-    background-color: #666;
+    font-family: 'Tulpen One', cursive;
+    top: 0px;
+    background-color: #000;
+    color: #fff;
     width: 100%;
-    height: 100px;
+    min-height: 2%;
+    z-index: 100;
 }
 
+#navContent {
+    width: 60%;
+    margin: 0 auto;
+    display: none;
+    text-align: center;
+}
+
+.navCnt {
+    float: left;
+    width: 33.3%;
+    font-size: 3em;
+}
+
+.navCnt:hover {
+    -webkit-box-shadow: inset 10px 0px 5px -2 #b0cb2c;
+    box-shadow: inset 0px 10px 5px -5px #b0cb2c;
+    cursor: pointer;
+}
+
+.navFocus {
+    background-color: #70840e;
+}
+
+.page {
+    background: url(../image/sketch.jpg);
+    
+    margin-top: 5em;
+    
+    -webkit-box-shadow: 0px 0px 10px 5px #333;
+    box-shadow: 0px 0px 10px 5px #333;
+}
+
+.pageBack {
+    width: 100%;
+    height: 200px;
+    background: url(../image/sketch.jpg);
+    z-index: -10;
+    position: relative;
+    -webkit-box-shadow: 0px 0px 10px 5px #333;
+    box-shadow: 0px 0px 10px 5px #333;
+}
+
+.rotLeft {
+    transform: rotate(5deg);
+    -ms-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
+}
+
+.rotRight {
+    transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    -webkit-transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg);
+    -o-transform: rotate(-5deg);
+}
+
+.rotTop.rotLeft {
+    margin-bottom: -200px;
+    margin-top: 100px;
+    left: 10px;
+}
+
+.rotTop.rotRight {
+    margin-bottom: -250px;
+    left: -10px;
+}
+
+.pageTitle {
+    font-family: 'Tulpen One', cursive;
+    text-align: center;
+    
+    border-style: none none solid none;
+    border-width: 0.05em;
+    text-shadow: 2px 2px 0px #fff;
+    filter: dropshadow(color=#fff, offx=2, offy=2);
+}
+
+#randocyDiv {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#randocyImg {
+    display: inline-block;
+    width: 100%;
+}
+
+.imageShadow {
+    -webkit-box-shadow: 0px 0px 10px 5px #666;
+    box-shadow: 0px 0px 10px 5px #666;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+}

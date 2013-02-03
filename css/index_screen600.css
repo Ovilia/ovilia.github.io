@@ -14,15 +14,15 @@
 }
 
 #content {
-    width: 1000px;
+    width: 90%;
 }
 
 p {
-    font-size: 1.25em;
+    font-size: 1.2em;
 }
 
 p.title {
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 .page {
@@ -30,15 +30,9 @@ p.title {
 }
 
 .pageCnt {
-    padding: 5em;
+    padding: 1.5em;
     
     display: inline-block;
-}
-
-.pageTitle {
-    font-size: 5em;
-    padding-bottom: 0.1em;
-    margin-bottom: 0.2em;
 }
 
 .rotBottom.rotLeft {
@@ -48,8 +42,14 @@ p.title {
 
 .rotBottom.rotRight {
     margin-top: -200px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
     left: 10px;
+}
+
+.pageTitle {
+    font-size: 5em;
+    padding-bottom: 0.1em;
+    margin-bottom: 0.2em;
 }
 
 .leftPage, .rightPage {
