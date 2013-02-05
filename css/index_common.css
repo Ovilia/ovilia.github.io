@@ -77,6 +77,11 @@ p>a:hover {
     font-style: italic;
 }
 
+#award {
+    position: absolute;
+    top: 400px;
+}
+
 #titleDiv{
     width: 75%;
     margin: 0px auto;
