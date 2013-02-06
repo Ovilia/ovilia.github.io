@@ -1,3 +1,16 @@
+#cssreel {
+    position: absolute;
+    top: 2%;
+    right: 0px;
+    width: 120px;
+}
+
+#cssaward {
+    position: absolute;
+    right: 0px;
+    top: 200px;
+}
+
 #iconDiv {
     position: absolute;
     top: 0px;
