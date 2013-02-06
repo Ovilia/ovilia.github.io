@@ -45,14 +45,6 @@ p {
     filter: dropshadow(color=#fff, offx=1, offy=1);
 }
 
-p.title {
-    font-family: 'Coda', cursive;
-    margin-bottom: 0;
-    margin-top: 1em;
-    text-shadow: 2px 2px 0px #fff;
-    filter: dropshadow(color=#fff, offx=2, offy=2);
-}
-
 p>a {
     border-bottom-style: dotted;
     border-bottom-width: 0.15em;
@@ -77,81 +69,26 @@ p>a:hover {
     font-style: italic;
 }
 
-#titleDiv{
-    width: 75%;
-    margin: 0px auto;
-    text-align: center;
-}
-
-#inTao {
-    font-family: 'Coda', cursive;
-    margin-bottom: -8%;
-    text-shadow: 0px 0px 20px #333;
-    filter: dropshadow(color=#333, offx=0, offy=0);
-}
-
-#areMy {
-    font-family: 'Tulpen One', cursive;
-    text-shadow: 0px 0px 10px #666;
-    filter: dropshadow(color=#666, offx=0, offy=0);
-    color: #fff;
-}
-
-#iconDiv {
-    opacity: 0.4;
-}
-
-#iconDiv>a {
-    text-decoration: none;
-}
-
-#iconDiv:hover {
-    opacity: 1.0;
-}
-
-#iconDiv > a  > img {
-    opacity: 0.6;
-}
-
-#iconDiv > a  > img:hover {
-    opacity: 1.0;
-}
-
-#hgtcDiv {
-    width: 60%;
-}
-
-#hgtc {
-    width: 100%;
-}
-
 #nav {
     font-family: 'Tulpen One', cursive;
-    top: 0px;
     background-color: #000;
     color: #fff;
     width: 100%;
-    min-height: 2%;
-    z-index: 100;
-}
-
-#navContent {
-    width: 60%;
-    margin: 0 auto;
-    display: none;
-    text-align: center;
 }
 
 .navCnt {
-    float: left;
-    width: 33.3%;
-    font-size: 3em;
+    display: inline-block;
 }
 
 .navCnt:hover {
     -webkit-box-shadow: inset 10px 0px 5px -5px #b0cb2c;
     box-shadow: inset 0px 10px 5px -5px #b0cb2c;
     cursor: pointer;
+}
+
+.navCnt > a {
+    text-decoration: none;
+    color: #fff;
 }
 
 .navFocus {
@@ -204,24 +141,39 @@ p>a:hover {
     left: -10px;
 }
 
-.pageTitle {
-    font-family: 'Tulpen One', cursive;
-    text-align: center;
-    
+.pageTitle{
+    font-family: 'Coda', cursive;
     border-style: none none solid none;
     border-width: 0.05em;
     text-shadow: 2px 2px 0px #fff;
     filter: dropshadow(color=#fff, offx=2, offy=2);
+    margin-bottom: 0.25em;
 }
 
-#randocyDiv {
-    width: 100%;
-    margin: 0 auto;
+.title {
+    font-family: 'Tulpen One', cursive;
+    margin-top: 0.5em;
+    margin-bottom: -0.25em;
+    color: #70840e;
+
+    text-shadow: 2px 2px 0px #fff;
+    filter: dropshadow(color=#fff, offx=2, offy=2);
 }
 
-#randocyImg {
-    display: inline-block;
-    width: 100%;
+.blogTime {
+    font-family: 'Tulpen One', cursive;
+    color: #666;
+}
+
+.allBlogTime {
+    font-family: 'Tulpen One', cursive;
+    color: #666;
+    margin-top: 0.4em;
+}
+
+.blogLink {
+    color: inherit;
+    text-decoration: none;
 }
 
 .imageShadow {

@@ -40,12 +40,12 @@ p.title {
 
 .page {
     width: 100%;
+    
+    display: inline-block;
 }
 
 .pageCnt {
     padding: 1.5em;
-    
-    display: inline-block;
 }
 
 .rotBottom.rotLeft {

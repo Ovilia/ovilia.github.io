@@ -1,21 +1,3 @@
-#cssreel {
-    display: none;
-}
-
-#cssaward {
-    display: none;
-}
-
-#iconDiv {
-    padding: 20px;
-    width: 200px;
-    margin: 0 auto;
-}
-
-#nav {
-    position: none;
-}
-
 #contentDiv {
     width: 100%;
 }
@@ -25,13 +7,13 @@
 }
 
 p {
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 
-p.title {
-    font-size: 1.5em;
+.navCnt {
+    padding: 10px 50px;
+    font-size: 3em;
 }
-
 
 .page {
     width: 100%;
@@ -44,7 +26,7 @@ p.title {
 }
 
 .rotBottom.rotLeft {
-    margin-top: -200px;
+    margin-top: -150px;
     left: -10px;
 }
 
@@ -55,22 +37,15 @@ p.title {
 }
 
 .pageTitle {
-    font-size: 4em;
-    padding-bottom: 0.1em;
-    margin-bottom: 0.2em;
+    font-size: 2.5em;
 }
 
-.leftPage {
-    width: 75%;
-    margin: 0 auto;
+.title {
+    font-size: 2.8em;
 }
 
-.right {
-    width: 100%;
-}
-
-.leftPage>img, .leftPage>a>img {
-    margin-top: 2em;
+.allBlogTime, .blogTime {
+    font-size: 2em;
 }
 
 #footerDiv {

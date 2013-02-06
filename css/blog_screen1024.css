@@ -1,27 +1,3 @@
-#cssreel {
-    position: absolute;
-    top: 2%;
-    right: 0px;
-    width: 120px;
-}
-
-#cssaward {
-    position: absolute;
-    right: 0px;
-    top: 200px;
-}
-
-#iconDiv {
-    position: absolute;
-    top: 0px;
-    padding: 20px;
-    width: 40px;
-}
-
-#nav {
-    position: fixed;
-}
-
 #contentDiv {
     width: 100%;
 }
@@ -34,8 +10,9 @@ p {
     font-size: 1.25em;
 }
 
-p.title {
-    font-size: 2em;
+.navCnt {
+    padding: 10px 50px;
+    font-size: 3em;
 }
 
 .page {
@@ -49,9 +26,15 @@ p.title {
 }
 
 .pageTitle {
-    font-size: 5em;
-    padding-bottom: 0.1em;
-    margin-bottom: 0.2em;
+    font-size: 3em;
+}
+
+.title {
+    font-size: 3.6em;
+}
+
+.allBlogTime, .blogTime {
+    font-size: 2.2em;
 }
 
 .rotBottom.rotLeft {
@@ -63,23 +46,6 @@ p.title {
     margin-top: -200px;
     margin-bottom: 200px;
     left: 10px;
-}
-
-.leftPage, .rightPage {
-    float: left;
-}
-
-.leftPage {
-    width: 30%;
-}
-
-.leftPage>img, .leftPage>a>img {
-    margin-top: 2em;
-}
-
-.rightPage {
-    width: 65%;
-    padding-left: 5%;
 }
 
 #footerDiv {
