@@ -13,6 +13,14 @@ if (isMSIE) {
     location.href = 'no_ie.html';
 }
 
+// get parameter in url, code from 
+// http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery#answer-1404100
+function getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}
+
 // entries[index] is one element in the manifest.json, 
 // which contains url, title, series and etc.
 function loadEntry(entries, index) {
@@ -76,28 +84,18 @@ $(document).ready(function() {
         $(this).next('div').slideToggle();
     });
     
-    // load first few entries
-    var firstCnt = 5; // default count of entries to be loaded if not set in json file
-    var moreCnt = 3; // count of entries to be loaded more if not set in json file
-    var loadedCnt = 0;
     $.ajax({
         url: '../blog/entries/manifest.json',
         dataType: 'json',
         success: function(data) {
-            if (typeof data.firstCnt === 'number') {
-                firstCnt = data.firstCnt;
-            }
-            if (typeof data.moreCnt === 'number') {
-                moreCnt = data.moreCnt;
-            }
-            // load entries
-            for (var i = 0; i < firstCnt; ++i) {
-                if (i < data.entries.length) {
-                    loadEntry(data.entries, i);
-                    ++loadedCnt;
-                } else {
-                    break;
-                }
+            // load entry with id defined in url
+            var id = getURLParameter('id');
+            console.log(id);
+            if (data.entries[id]) {
+                loadEntry(data.entries, id);
+            } else {
+                alert('Illegal id!');
+                location.href = 'index.html';
             }
         },
         error: function(a, b, error) {

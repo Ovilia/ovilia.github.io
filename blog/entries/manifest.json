@@ -10,5 +10,9 @@
         "title": "Fake title",
         "url": "entries/test.html",
         "series": "Not yet"
+    }, {
+        "title": "dadad",
+        "url": "entries/test.html",
+        "series": "Not yet"
     }]
 }
