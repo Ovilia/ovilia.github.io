@@ -232,13 +232,17 @@ p>a:hover {
     box-shadow: 1px 1px 4px 1px #70840e;
 }
 
+.cite>p {
+    padding: 25px;
+}
+
 .citeLeft {
     position: relative;
-    left: -20px;
-    top: -30px;
+    left: -30px;
+    top: -15px;
     background: url('../image/leftStick.png');
     background-repeat: no-repeat;
     width: 100px;
     height: 120px;
-    float: left;
+    margin-bottom: -120px;
 }

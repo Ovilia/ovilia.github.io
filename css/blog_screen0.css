@@ -72,11 +72,3 @@ p {
     padding: 2em 0;
     color: #fff;
 }
-
-.cite>p {
-    padding: 25px;
-}
-
-.citeLeft {
-    display: none;
-}
