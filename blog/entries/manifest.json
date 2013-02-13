@@ -2,9 +2,9 @@
     "firstCnt": 3,
     "moreCnt": 2,
     "entries": [{
-        "title": "1",
-        "url": "entries/test.html",
-        "series": "Not yet",
-        "time": "2013.2.13 21:42"
+        "title": "Hello, JavaScript",
+        "url": "entries/000.hello.javascript.html",
+        "series": "JavaScript: The Good Parts",
+        "time": "2013.2.14 0:52"
     }]
 }

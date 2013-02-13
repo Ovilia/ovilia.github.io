@@ -26,7 +26,7 @@ body {
 p {
     font-family: Arial, sans-serif;
     line-height: 150%;
-    margin: 1em 0;
+    margin: 0.5em 0;
     text-shadow: 1px 1px 0px #fff;
     filter: dropshadow(color=#fff, offx=1, offy=1);
 }
@@ -230,10 +230,17 @@ p>a:hover {
     color: #70840e;
     -webkit-box-shadow: 1px 1px 4px 1px #70840e;
     box-shadow: 1px 1px 4px 1px #70840e;
+    font-style: italic;
+    font-size: 90%;
+    margin-bottom: 20px;
 }
 
 .cite>p {
     padding: 25px;
+}
+
+.cite>p+p {
+    margin-top: -50px;
 }
 
 .citeLeft {
@@ -245,6 +252,10 @@ p>a:hover {
     width: 100px;
     height: 120px;
     margin-bottom: -120px;
+}
+
+.citeFrom {
+    text-align: right;
 }
 
 #loadMore {
