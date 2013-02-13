@@ -30,6 +30,10 @@ p {
     left: -10px;
 }
 
+.cite>p {
+    padding: 25px 100px 25px 100px;
+}
+
 .rotBottom.rotRight {
     margin-top: -200px;
     margin-bottom: 100px;
