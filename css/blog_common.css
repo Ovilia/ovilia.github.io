@@ -16,7 +16,7 @@ body {
     width: 100%;
 }
 
-::selection ,::-moz-selection ,::-webkit-selection {
+::selection, ::-moz-selection, ::-webkit-selection {
     background-color: #70840e;
     color: #fff;
     text-shadow: 1px 1px 0px #333;
@@ -70,7 +70,7 @@ p>a:hover {
 }
 
 .transparent:hover {
-    opacity: 0.6;
+    opacity: 0.75;
 }
 
 .navCnt {
@@ -154,7 +154,6 @@ p>a:hover {
 .title {
     font-family: 'Tulpen One', cursive;
     margin-top: 0.5em;
-    margin-bottom: -0.1em;
     color: #70840e;
 
     text-shadow: 1px 1px 0px #666;
@@ -176,7 +175,7 @@ p>a:hover {
 .allBlogTime {
     font-family: 'Tulpen One', cursive;
     color: #666;
-    margin-top: 0.4em;
+    margin-top: -1em;
 }
 
 .blogLink {
@@ -205,20 +204,45 @@ p>a:hover {
     padding: 0.5em;
 }
 
+.more:hover {
+    background-color: #D4E583;
+}
+
 .more+div {
     display: none;
     margin: 0.5em 0;
 }
 
 .moreHref {
-    font-family: 'Tulpen One', cursive;
-    color: #000;
-    font-size: 2em;
+    font-family: Arial, sans-serif;
+    color: #70840e;
     padding: 0.2em 0.5em;
     display: block;
 }
 
 .moreHref:hover {
-    background-color: #70840e;
-    color: #fff;
+    background-color: #D4E583;
+    font-size: 120%;
+}
+
+.cite {
+    background-color: #D4E583;
+    color: #70840e;
+    -webkit-box-shadow: 1px 1px 4px 1px #70840e;
+    box-shadow: 1px 1px 4px 1px #70840e;
+}
+
+.cite>p {
+    padding: 25px 50px 25px 100px;
+}
+
+.citeLeft {
+    position: relative;
+    left: -20px;
+    top: -30px;
+    background: url('../image/leftStick.png');
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 120px;
+    float: left;
 }

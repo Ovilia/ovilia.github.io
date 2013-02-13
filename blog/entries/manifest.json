@@ -2,6 +2,13 @@
     "firstCnt": 5,
     "moreCnt": 3,
     "entries": [{
-        "url": "entries/test.html"
+        "title": "This is a test file",
+        "url": "entries/test.html",
+        "series": "Not yet",
+        "time": "2013.2.13 21:42"
+    }, {
+        "title": "Fake title",
+        "url": "entries/test.html",
+        "series": "Not yet"
     }]
 }
