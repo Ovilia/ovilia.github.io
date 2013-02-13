@@ -80,28 +80,43 @@ $(document).ready(function() {
     var firstCnt = 5; // default count of entries to be loaded if not set in json file
     var moreCnt = 3; // count of entries to be loaded more if not set in json file
     var loadedCnt = 0;
+    var entries = null;
     $.ajax({
         url: '../blog/entries/manifest.json',
         dataType: 'json',
         success: function(data) {
             if (typeof data.firstCnt === 'number') {
-                firstCnt = data.firstCnt;
+                firstCnt = Math.min(data.firstCnt, data.entries.length);
             }
             if (typeof data.moreCnt === 'number') {
                 moreCnt = data.moreCnt;
             }
+            if (data.entries) {
+                entries = data.entries;
+            }
             // load entries
             for (var i = 0; i < firstCnt; ++i) {
-                if (i < data.entries.length) {
-                    loadEntry(data.entries, i);
-                    ++loadedCnt;
-                } else {
-                    break;
-                }
+                loadEntry(data.entries, data.entries.length - 1 - i);
+                ++loadedCnt;
+            }
+            if (loadedCnt < data.entries.length) {
+                $('#loadMore').show();
             }
         },
         error: function(a, b, error) {
             console.log(error);
+        }
+    });
+    
+    // load more entries
+    $('#loadMore').click(function() {
+        for (var i = 0; i < moreCnt; ++i) {
+            if (loadedCnt < entries.length) {
+                loadEntry(entries, entries.length - 1 - loadedCnt);
+                ++loadedCnt;
+            } else {
+                $('#loadMore').hide();
+            }
         }
     });
 });

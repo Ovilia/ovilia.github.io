@@ -1,18 +1,10 @@
 {
-    "firstCnt": 5,
-    "moreCnt": 3,
+    "firstCnt": 3,
+    "moreCnt": 2,
     "entries": [{
-        "title": "This is a test file",
+        "title": "1",
         "url": "entries/test.html",
         "series": "Not yet",
         "time": "2013.2.13 21:42"
-    }, {
-        "title": "Fake title",
-        "url": "entries/test.html",
-        "series": "Not yet"
-    }, {
-        "title": "dadad",
-        "url": "entries/test.html",
-        "series": "Not yet"
     }]
 }

@@ -246,3 +246,22 @@ p>a:hover {
     height: 120px;
     margin-bottom: -120px;
 }
+
+#loadMore {
+    width: 200px;
+    font-family: 'Tulpen One', cursive;
+    font-size: 2.5em;
+    text-align: center;
+    
+    margin: 0 auto;
+    margin-bottom: 50px;
+    padding: 5px;
+    
+    background-color: #70840e;
+    color: #D4E583;
+    -webkit-box-shadow: 1px 1px 4px 1px #333;
+    box-shadow: 1px 1px 4px 1px #333;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
