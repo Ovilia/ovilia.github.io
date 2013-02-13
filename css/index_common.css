@@ -16,21 +16,7 @@ body {
     width: 100%;
 }
 
-::selection {
-    background-color: #70840e;
-    color: #fff;
-    text-shadow: 1px 1px 0px #333;
-    filter: dropshadow(color=#333, offx=1, offy=1);
-}
-
-::-moz-selection {
-    background-color: #70840e;
-    color: #fff;
-    text-shadow: 1px 1px 0px #333;
-    filter: dropshadow(color=#333, offx=1, offy=1);
-}
-
-::-webkit-selection {
+::selection, ::-moz-selection, ::-webkit-selection {
     background-color: #70840e;
     color: #fff;
     text-shadow: 1px 1px 0px #333;

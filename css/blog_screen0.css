@@ -42,6 +42,8 @@ p {
 
 .title {
     font-size: 2.5em;
+    margin-left: -0.8em;
+    padding-left: 0.8em;
 }
 
 .allBlogTime, .blogTime {

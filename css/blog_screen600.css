@@ -11,7 +11,7 @@ p {
 }
 
 .navCnt {
-    padding: 10px 50px;
+    padding: 5px 20px;
     font-size: 3em;
 }
 
@@ -42,6 +42,8 @@ p {
 
 .title {
     font-size: 2.8em;
+    margin-left: -1em;
+    padding-left: 1em;
 }
 
 .allBlogTime, .blogTime {

@@ -16,21 +16,7 @@ body {
     width: 100%;
 }
 
-::selection {
-    background-color: #70840e;
-    color: #fff;
-    text-shadow: 1px 1px 0px #333;
-    filter: dropshadow(color=#333, offx=1, offy=1);
-}
-
-::-moz-selection {
-    background-color: #70840e;
-    color: #fff;
-    text-shadow: 1px 1px 0px #333;
-    filter: dropshadow(color=#333, offx=1, offy=1);
-}
-
-::-webkit-selection {
+::selection ,::-moz-selection ,::-webkit-selection {
     background-color: #70840e;
     color: #fff;
     text-shadow: 1px 1px 0px #333;
@@ -74,6 +60,17 @@ p>a:hover {
     background-color: #000;
     color: #fff;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.transparent {
+    opacity: 0.2;
+}
+
+.transparent:hover {
+    opacity: 0.6;
 }
 
 .navCnt {
@@ -93,6 +90,10 @@ p>a:hover {
 
 .navFocus {
     background-color: #70840e;
+}
+
+#contentDiv {
+    margin-top: 150px;
 }
 
 .page {
@@ -153,11 +154,18 @@ p>a:hover {
 .title {
     font-family: 'Tulpen One', cursive;
     margin-top: 0.5em;
-    margin-bottom: -0.25em;
+    margin-bottom: -0.1em;
     color: #70840e;
 
-    text-shadow: 2px 2px 0px #fff;
-    filter: dropshadow(color=#fff, offx=2, offy=2);
+    text-shadow: 1px 1px 0px #666;
+    filter: dropshadow(color=#666, offx=1, offy=1);
+    
+    background-color: #70840e;
+    color: #fff;
+    text-shadow: 1px 1px 0px #333;
+    filter: dropshadow(color=#333, offx=1, offy=1);
+    -webkit-box-shadow: -2px 1px 5px 2px #333;
+    box-shadow: -2px 1px 5px 2px #333;
 }
 
 .blogTime {
@@ -182,4 +190,35 @@ p>a:hover {
     border-style: solid;
     border-width: 1px;
     border-color: #000;
+}
+
+.more {
+    -webkit-box-shadow: inset 0px 0px 4px 1px #70840e;
+    box-shadow: inset 0px 0px 4px 1px #70840e;
+    color: #70840e;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ddd;
+    cursor: pointer;
+    
+    font-family: Arial, sans-serif;
+    padding: 0.5em;
+}
+
+.more+div {
+    display: none;
+    margin: 0.5em 0;
+}
+
+.moreHref {
+    font-family: 'Tulpen One', cursive;
+    color: #000;
+    font-size: 2em;
+    padding: 0.2em 0.5em;
+    display: block;
+}
+
+.moreHref:hover {
+    background-color: #70840e;
+    color: #fff;
 }

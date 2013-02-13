@@ -67,6 +67,7 @@ p.title {
 
 .leftPage, .rightPage {
     float: left;
+    padding-bottom: 5em;
 }
 
 .leftPage {
