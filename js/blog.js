@@ -13,6 +13,16 @@ if (isMSIE) {
     location.href = 'no_ie.html';
 }
 
+function loadEntry(fileName) {
+    $.ajax({
+        url: fileName,  
+        success: function(data) { 
+            var htmlCode = $(data).html();
+            $('#content').append(data);
+        }
+    });
+}
+
 $(document).ready(function() {
     // nav transparent
     $(window).scroll(function() {
@@ -24,7 +34,38 @@ $(document).ready(function() {
     });
     
     // more click
-    $('.more').click(function() {
+    $('#content').delegate('.more', 'click', function() {
         $(this).next('div').slideToggle();
+    });
+    
+    // load first few entries
+    var firstCnt = 5; // default count of entries to be loaded if not set in json file
+    var moreCnt = 3; // count of entries to be loaded more if not set in json file
+    var loadedCnt = 0;
+    $.ajax({
+        url: '../blog/entries/manifest.json',
+        dataType: 'json',
+        success: function(data) {
+            if (typeof data.firstCnt === 'number') {
+                firstCnt = data.firstCnt;
+            }
+            if (typeof data.moreCnt === 'number') {
+                moreCnt = data.moreCnt;
+            }
+            // load entries
+            for (var i = 0; i < firstCnt; ++i) {
+                if (i < data.entries.length) {
+                    var entry = data.entries[i];
+                    var fileName = entry.url;
+                    loadEntry(fileName);
+                    ++loadedCnt;
+                } else {
+                    break;
+                }
+            }
+        },
+        error: function(a, b, error) {
+            console.log(error);
+        }
     });
 });
