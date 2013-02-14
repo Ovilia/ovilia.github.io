@@ -23,7 +23,16 @@ body {
     filter: dropshadow(color=#333, offx=1, offy=1);
 }
 
-p {
+ul {
+    font-family: Arial, sans-serif;
+    padding: 0 2.5em;
+    margin: -1em 0;
+    font-size: 1.25em;
+    text-shadow: 1px 1px 0px #fff;
+    filter: dropshadow(color=#fff, offx=1, offy=1);
+}
+
+p{
     font-family: Arial, sans-serif;
     line-height: 150%;
     margin: 0.5em 0;
@@ -167,6 +176,10 @@ p>a:hover {
     box-shadow: -2px 1px 5px 2px #333;
 }
 
+.titleSmall {
+    font-size: 60%;
+}
+
 .blogTime {
     font-family: 'Tulpen One', cursive;
     color: #666;
@@ -175,7 +188,7 @@ p>a:hover {
 .allBlogTime {
     font-family: 'Tulpen One', cursive;
     color: #666;
-    margin-top: -1em;
+    margin-top: -0.5em;
 }
 
 .blogLink {
@@ -206,6 +219,7 @@ p>a:hover {
 
 .more:hover {
     background-color: #D4E583;
+    color: #000;
 }
 
 .more+div {
@@ -222,7 +236,7 @@ p>a:hover {
 
 .moreHref:hover {
     background-color: #D4E583;
-    font-size: 120%;
+    color: #000;
 }
 
 .cite {
@@ -230,9 +244,9 @@ p>a:hover {
     color: #70840e;
     -webkit-box-shadow: 1px 1px 4px 1px #70840e;
     box-shadow: 1px 1px 4px 1px #70840e;
-    font-style: italic;
     font-size: 90%;
     margin-bottom: 20px;
+    font-style: italic;
 }
 
 .cite>p {
@@ -256,6 +270,22 @@ p>a:hover {
 
 .citeFrom {
     text-align: right;
+    font-size: 80%;
+}
+
+.code {
+    background-color: #ddffaa;
+    -webkit-box-shadow: 0px 0px 2px 1px #999;
+    box-shadow: 0px 0px 2px 1px #999;
+    color: #333;
+    font-family: Courier, Monaco;
+    font-size: 1.0em;
+    text-shadow: none;
+    font-style: normal;
+}
+
+p.code {
+    padding: 1em;
 }
 
 #loadMore {

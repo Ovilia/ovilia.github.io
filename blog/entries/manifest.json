@@ -6,5 +6,10 @@
         "url": "entries/000.hello.javascript.html",
         "series": "JavaScript: The Good Parts",
         "time": "2013.2.14 0:52"
+    }, {
+        "title": "Grammar, the good parts",
+        "url": "entries/001.grammer.the.good.parts.html",
+        "series": "JavaScript: The Good Parts",
+        "time": "2013.2.14 14:55"
     }]
 }

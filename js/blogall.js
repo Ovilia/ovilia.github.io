@@ -42,9 +42,14 @@ $(document).ready(function() {
             for (var i = 0; i < firstCnt; ++i) {
                 if (i < data.entries.length) {
                     var entry = data.entries[i];
+                    var title = entry.title;
+                    if (entry.series) {
+                        title += ' <span class="titleSmall">[ ' 
+                                + entry.series + ' ]</span>';
+                    }
                     $('#pageCnt').append('<a href="entry.html?id=' + i
                             + '" class="blogLink"><p class="title">'
-                            + entry.title + '</p>');
+                            + title + '</p>');
                     if (entry.time) {
                         $('#pageCnt').append('<p class="allBlogTime">'
                                 + entry.time + '</p>');

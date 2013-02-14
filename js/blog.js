@@ -99,6 +99,7 @@ $(document).ready(function() {
                 loadEntry(data.entries, data.entries.length - 1 - i);
                 ++loadedCnt;
             }
+            SyntaxHighlighter.all();
             if (loadedCnt < data.entries.length) {
                 $('#loadMore').show();
             }
@@ -118,5 +119,6 @@ $(document).ready(function() {
                 $('#loadMore').hide();
             }
         }
+        SyntaxHighlighter.all();
     });
 });

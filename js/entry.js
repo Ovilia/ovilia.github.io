@@ -37,6 +37,7 @@ function loadEntry(entries, index) {
             // title
             if (entry.title) {
                 content.append('<div class="pageTitle">' + entry.title + '</div>');
+                document.title = entry.title + ' - Blog of Wenli Zhang';
             }
             // time
             if (entry.time) {
@@ -65,6 +66,8 @@ function loadEntry(entries, index) {
             
             var bodyCode = $('<div class="page"></div>').append(content);
             $('#content').append(headCode).append(bodyCode).append(footCode);
+            
+            SyntaxHighlighter.all();
         }
     });
 }
@@ -90,7 +93,6 @@ $(document).ready(function() {
         success: function(data) {
             // load entry with id defined in url
             var id = getURLParameter('id');
-            console.log(id);
             if (data.entries[id]) {
                 loadEntry(data.entries, id);
             } else {
