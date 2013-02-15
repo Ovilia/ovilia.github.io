@@ -11,5 +11,10 @@
         "url": "entries/001.grammer.the.good.parts.html",
         "series": "JavaScript: The Good Parts",
         "time": "2013.2.14 14:55"
+    }, {
+        "title": "Objects, the good parts",
+        "url": "entries/002.objects.the.good.parts.html",
+        "series": "JavaScript: The Good Parts",
+        "time": "2013.2.15 21:16"
     }]
 }
