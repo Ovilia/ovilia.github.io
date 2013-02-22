@@ -100,9 +100,6 @@ $(document).ready(function() {
                 ++loadedCnt;
             }
             SyntaxHighlighter.all();
-            if (loadedCnt < data.entries.length) {
-                $('#loadMore').show();
-            }
         },
         error: function(a, b, error) {
             console.log(error);
@@ -111,14 +108,6 @@ $(document).ready(function() {
     
     // load more entries
     $('#loadMore').click(function() {
-        for (var i = 0; i < moreCnt; ++i) {
-            if (loadedCnt < entries.length) {
-                loadEntry(entries, entries.length - 1 - loadedCnt);
-                ++loadedCnt;
-            } else {
-                $('#loadMore').hide();
-            }
-        }
-        SyntaxHighlighter.all();
+        location.href = 'all.html';
     });
 });

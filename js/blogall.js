@@ -32,30 +32,20 @@ $(document).ready(function() {
         url: '../blog/entries/manifest.json',
         dataType: 'json',
         success: function(data) {
-            if (typeof data.firstCnt === 'number') {
-                firstCnt = data.firstCnt;
-            }
-            if (typeof data.moreCnt === 'number') {
-                moreCnt = data.moreCnt;
-            }
             // load entries
-            for (var i = 0; i < firstCnt; ++i) {
-                if (i < data.entries.length) {
-                    var entry = data.entries[i];
-                    var title = entry.title;
-                    if (entry.series) {
-                        title += ' <span class="titleSmall">[ ' 
-                                + entry.series + ' ]</span>';
-                    }
-                    $('#pageCnt').append('<a href="entry.html?id=' + i
-                            + '" class="blogLink"><p class="title">'
-                            + title + '</p>');
-                    if (entry.time) {
-                        $('#pageCnt').append('<p class="allBlogTime">'
-                                + entry.time + '</p>');
-                    }
-                } else {
-                    break;
+            for (var i = 0; i < data.entries.length; ++i) {
+                var entry = data.entries[i];
+                var title = entry.title;
+                if (entry.series) {
+                    title += ' <span class="titleSmall">[ ' 
+                            + entry.series + ' ]</span>';
+                }
+                $('#pageCnt').append('<a href="entry.html?id=' + i
+                        + '" class="blogLink"><p class="title">'
+                        + title + '</p>');
+                if (entry.time) {
+                    $('#pageCnt').append('<p class="allBlogTime">'
+                            + entry.time + '</p>');
                 }
             }
         },
