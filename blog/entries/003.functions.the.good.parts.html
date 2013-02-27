@@ -129,3 +129,24 @@
     </pre>
     <p class="citeFrom">--JavaScript: The Good Parts</p>
 </div>
+
+<p class="title">Curry</p>
+<div class="citeLeft"></div>
+<div class="cite">
+    <p>Functions are values, and we can manipulate function values in interesting ways. Currying allows us to produce a new function by combining a function and an argument:</p>
+    <pre class="brush: js; toolbar: false;">
+        var add1 = add.curry(1); 
+        document.writeln(add1(6)); // 7
+
+        Function.method('curry', function () { 
+            var slice = Array.prototype.slice, 
+                args = slice.apply(arguments),
+                that = this; 
+            return function () {
+                return that.apply(null, args.concat(slice.apply(arguments)));
+            };
+        });    
+    </pre>
+    <p class="citeFrom">--JavaScript: The Good Parts</p>
+</div>
+
