@@ -48,9 +48,6 @@ p {
 }
 
 p>a {
-    border-bottom-style: dotted;
-    border-bottom-width: 0.15em;
-    border-color: #70840e;
     color: #70840e;
     text-decoration: none;
 }
