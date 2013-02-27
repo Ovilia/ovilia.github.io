@@ -31,12 +31,20 @@ p {
     filter: dropshadow(color=#fff, offx=1, offy=1);
 }
 
-p.title {
-    font-family: 'Coda', cursive;
-    margin-bottom: 0;
-    margin-top: 1em;
-    text-shadow: 2px 2px 0px #fff;
-    filter: dropshadow(color=#fff, offx=2, offy=2);
+.title {
+    font-family: 'Tulpen One', cursive;
+    margin-top: 0.5em;
+    color: #70840e;
+
+    text-shadow: 1px 1px 0px #666;
+    filter: dropshadow(color=#666, offx=1, offy=1);
+    
+    background-color: #70840e;
+    color: #fff;
+    text-shadow: 1px 1px 0px #333;
+    filter: dropshadow(color=#333, offx=1, offy=1);
+    -webkit-box-shadow: -2px 1px 5px 2px #333;
+    box-shadow: -2px 1px 5px 2px #333;
 }
 
 p>a {

@@ -34,9 +34,12 @@ p {
     font-size: 1.25em;
 }
 
-p.title {
-    font-size: 2em;
+.title {
+    font-size: 3.5em;
+    margin-left: -2em;
+    padding-left: 2em;
 }
+
 
 .page {
     width: 100%;

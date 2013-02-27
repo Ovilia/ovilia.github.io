@@ -34,8 +34,10 @@ p {
     font-size: 1.2em;
 }
 
-p.title {
-    font-size: 1.8em;
+.title {
+    font-size: 2.8em;
+    margin-left: -1em;
+    padding-left: 1em;
 }
 
 .page {
