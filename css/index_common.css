@@ -211,7 +211,7 @@ p>a:hover {
     margin: 0 auto;
 }
 
-#randocyImg {
+#randocyImg, #jWebAudioImg {
     display: inline-block;
     width: 100%;
 }

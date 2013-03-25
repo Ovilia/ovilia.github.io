@@ -61,4 +61,10 @@ $(document).ready(function() {
     }, function() {
         $('#randocyImg').hide().attr('src', 'image/randocy_gray.png').show();
     });
+    // jWebAudio image
+    $('#jWebAudioImg').hover(function() {
+        $('#jWebAudioImg').hide().attr('src', 'image/jWebAudio_color.png').show();
+    }, function() {
+        $('#jWebAudioImg').hide().attr('src', 'image/jWebAudio_gray.png').show();
+    });
 });
