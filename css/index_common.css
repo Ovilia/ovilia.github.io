@@ -1,4 +1,4 @@
-* {
+﻿* {
     padding: 0px;
     margin: 0px;
 }
@@ -23,28 +23,28 @@ body {
     filter: dropshadow(color=#333, offx=1, offy=1);
 }
 
+.title {
+   font-family: 'Tulpen One', cursive;
+   margin-top: 0.5em;
+   color: #70840e;
+   
+   text-shadow: 1px 1px 0px #666;
+   filter: dropshadow(color=#666, offx=1, offy=1);
+   
+   background-color: #70840e;
+   color: #fff;
+   text-shadow: 1px 1px 0px #333;
+   filter: dropshadow(color=#333, offx=1, offy=1);
+   -webkit-box-shadow: -2px 1px 5px 2px #333;
+   box-shadow: -2px 1px 5px 2px #333;
+}
+
 p {
     font-family: Arial, sans-serif;
     line-height: 150%;
     margin: 1em 0;
     text-shadow: 1px 1px 0px #fff;
     filter: dropshadow(color=#fff, offx=1, offy=1);
-}
-
-.title {
-    font-family: 'Tulpen One', cursive;
-    margin-top: 0.5em;
-    color: #70840e;
-
-    text-shadow: 1px 1px 0px #666;
-    filter: dropshadow(color=#666, offx=1, offy=1);
-    
-    background-color: #70840e;
-    color: #fff;
-    text-shadow: 1px 1px 0px #333;
-    filter: dropshadow(color=#333, offx=1, offy=1);
-    -webkit-box-shadow: -2px 1px 5px 2px #333;
-    box-shadow: -2px 1px 5px 2px #333;
 }
 
 p>a {
@@ -69,24 +69,62 @@ p>a:hover {
     font-style: italic;
 }
 
-#titleDiv{
-    width: 75%;
-    margin: 0px auto;
+#titleDiv {
+    width: 100%;
+    height: 600px;
+    opacity: 0;
+}
+
+#titlePanel {
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+#titleTao {
+    width: 600px;
+    height: 600px;
+}
+
+#titleCircle {
+    width: 500px;
+    height: 500px;
+    border-radius: 250px;
+    margin: 45px 0 0 50px;
+    position: relative;
+    top: -600px;
+}
+
+#titleWords {
+    position: relative;
+    top: -600px;
+}
+
+#titleLeft {
+    width: 250px;
+    position: relative;
+    top: -280px;
+    margin-left: 50px;
     text-align: center;
+    font-size: 50px;
+    font-family: '微软雅黑', '黑体', '宋体', Arial;
+    opacity: 0;
 }
 
-#inTao {
-    font-family: 'Coda', cursive;
-    margin-bottom: -8%;
-    text-shadow: 0px 0px 20px #333;
-    filter: dropshadow(color=#333, offx=0, offy=0);
-}
-
-#areMy {
-    font-family: 'Tulpen One', cursive;
-    text-shadow: 0px 0px 10px #666;
-    filter: dropshadow(color=#666, offx=0, offy=0);
+#titleRight {
+    width: 250px;
+    position: relative;
+    top: -340px;
+    margin-left: 300px;
+    text-align: center;
+    font-size: 50px;
+    font-family: Arial;
     color: #fff;
+    opacity: 0;
+}
+
+#contentDiv {
+    display: none;
 }
 
 #iconDiv {
@@ -115,39 +153,6 @@ p>a:hover {
 
 #hgtc {
     width: 100%;
-}
-
-#nav {
-    font-family: 'Tulpen One', cursive;
-    top: 0px;
-    background-color: #000;
-    color: #fff;
-    width: 100%;
-    min-height: 2%;
-    z-index: 100;
-}
-
-#navContent {
-    width: 60%;
-    margin: 0 auto;
-    display: none;
-    text-align: center;
-}
-
-.navCnt {
-    float: left;
-    width: 33.3%;
-    font-size: 3em;
-}
-
-.navCnt:hover {
-    -webkit-box-shadow: inset 10px 0px 5px -5px #b0cb2c;
-    box-shadow: inset 0px 10px 5px -5px #b0cb2c;
-    cursor: pointer;
-}
-
-.navFocus {
-    background-color: #70840e;
 }
 
 .page {
