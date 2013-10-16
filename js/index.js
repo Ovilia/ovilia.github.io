@@ -13,13 +13,23 @@ if (isMSIE) {
     location.href = 'no_ie.html';
 }
 
-var STATE = {
-    HOME: 0,
-    LANGUAGE: 1,
-    TOPIC: 2,
-    CONTENT: 3
+
+
+var gb = {
+    STATE: {
+        HOME: 0,
+        LANGUAGE: 1,
+        CONTENT: 2
+    },
+    state: 0,
+    
+    LANGUAGE: {
+        ENGLISH: 0,
+        CHINESE: 1
+    },
+    language: 0
 };
-state = STATE.HOME;
+
 
 $(document).ready(function() {
     // window scroll
@@ -48,7 +58,7 @@ $(document).ready(function() {
             }
         }
     }).mousemove(function(e) {
-        if (state != STATE.CONTENT) {
+        if (gb.state != gb.STATE.CONTENT) {
             // shadow moves with mouse
             var x = (0.5 - e.clientX / $(window).width()) * 2;
             var y = (0.5 - e.clientY / $(window).height()) * 2;
@@ -79,6 +89,19 @@ $(document).ready(function() {
     });
     
     taoRotate();
+    
+    $('#titleLeft,#titleRight').click(function() {
+        ++gb.state;
+        $('#titleWords').fadeOut(500, function() {
+            if ($(this) == $('#titleLeft')) {
+                // Chinese
+                gb.language = gb.LANGUAGE;
+            }
+            $('#titleDiv').fadeOut(500, function() {
+                $('#contentDiv').fadeIn(1000);
+            });
+        });
+    });
 });
 
 function taoRotate() {
@@ -91,7 +114,11 @@ function taoRotate() {
             $('#titleTao').rotate(360 * Math.cos(Math.PI / 60 * time) + 'deg');
             time += 1;
         } else {
+            gb.state = gb.STATE.LANGUAGE;
             $('#titleTao').rotate(0);
+            $('#titleLeft, #titleRight').css({
+                'opacity': 1
+            });
             clearInterval(id);
         }
     }, 50);    
