@@ -105,29 +105,10 @@ p.subTitle {
 
 #titleWords {
     position: relative;
-    top: -600px;
-}
-
-#titleLeft {
-    top: -280px;
-    margin-left: 50px;
-    font-family: '微软雅黑', '黑体', '宋体', Arial;
-}
-
-#titleRight {
-    top: -340px;
-    margin-left: 300px;
-    font-family: Arial;
-    color: #fff;
-}
-
-#titleLeft, #titleRight {
-    width: 250px;
-    position: relative;
-    text-align: center;
-    font-size: 50px;
-    opacity: 0;
+    top: -1150px;
+    z-index: 1;
     cursor: pointer;
+    opacity: 0;
 }
 
 #contentDiv {

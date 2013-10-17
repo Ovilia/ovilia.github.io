@@ -35,7 +35,7 @@ $(document).ready(function() {
                     + 300 * r + 'px #333',
                 'opacity': op
             });
-            $('#titleLeft, #titleRight').css({
+            $('#titleWords').css({
                 'opacity': op
             });
         } else {
@@ -48,7 +48,7 @@ $(document).ready(function() {
     
     taoRotate();
     
-    $('#titleLeft,#titleRight').click(function() {
+    $('#titleWords').click(function() {
         gb.showContent = true;
         $('#titleWords').fadeOut(500, function() {
             $('#titleDiv').fadeOut(500, function() {
