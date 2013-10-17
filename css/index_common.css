@@ -4,7 +4,7 @@
 }
 
 body {
-    overflow-x: hidden;
+    overflow: hidden;
     background-color: #b0cb2c;
 }
 
@@ -42,7 +42,7 @@ body {
 p {
     font-family: Arial, sans-serif;
     line-height: 150%;
-    margin: 1em 0;
+    margin: 0.5em 0;
     text-shadow: 1px 1px 0px #fff;
     filter: dropshadow(color=#fff, offx=1, offy=1);
 }
@@ -203,29 +203,29 @@ p>a:hover {
 }
 
 .pageTitle {
-    font-family: 'Tulpen One', cursive;
+    font-family: 'Great Vibes', cursive;
     text-align: center;
     
-    border-style: none none solid none;
-    border-width: 0.05em;
-    text-shadow: 2px 2px 0px #fff;
+    text-shadow: 0px 0px 10px #666;
     filter: dropshadow(color=#fff, offx=2, offy=2);
 }
 
-#randocyDiv {
-    width: 100%;
-    margin: 0 auto;
+#projectDiv {
+    height: 150px;
 }
 
-#randocyImg, #jWebAudioImg {
-    display: inline-block;
-    width: 100%;
+.project {
+    width: 30%;
+    background-color: #333;
+    float: left;
+    text-align: center;
+    height: 150px;
 }
 
-.imageShadow {
-    -webkit-box-shadow: 0px 0px 10px 5px #666;
-    box-shadow: 0px 0px 10px 5px #666;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #000;
+.projectCenter {
+    margin: 0 5%;
+}
+
+#footerDiv {
+    display: none;
 }

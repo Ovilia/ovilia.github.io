@@ -33,31 +33,7 @@ var gb = {
 
 $(document).ready(function() {
     // window scroll
-    $(window).scroll(function() {
-        if (window.innerWidth > 600) {
-            var winTop = $(this).scrollTop();
-            if (winTop >= $('#generalPage').offset().top) {
-                $('#navContent').slideDown();
-                
-                if (winTop >= $('#taoPage').offset().top - 200 &&
-                    winTop < $('#taoPage').offset().top + $('#taoPage').height()) {
-                    $('.navCnt').removeClass('navFocus');
-                    $('#taoNav').addClass('navFocus');
-                } else if (winTop >= $('#codePage').offset().top - 200 &&
-                    winTop < $('#codePage').offset().top + $('#codePage').height()) {
-                    $('.navCnt').removeClass('navFocus');
-                    $('#codeNav').addClass('navFocus');
-                } else if (winTop >= $('#sketchPage').offset().top - 200) {
-                    $('.navCnt').removeClass('navFocus');
-                    $('#sketchNav').addClass('navFocus');
-                } else if (winTop < $('#taoPage').offset().top - 200) {
-                    $('.navCnt').removeClass('navFocus');
-                }
-            } else {
-                $('#navContent').slideUp();
-            }
-        }
-    }).mousemove(function(e) {
+    $(window).mousemove(function(e) {
         if (gb.state != gb.STATE.CONTENT) {
             // shadow moves with mouse
             var x = (0.5 - e.clientX / $(window).width()) * 2;
@@ -98,7 +74,8 @@ $(document).ready(function() {
                 gb.language = gb.LANGUAGE;
             }
             $('#titleDiv').fadeOut(500, function() {
-                $('#contentDiv').fadeIn(1000);
+                $('#contentDiv,#footerDiv').fadeIn(1000);
+                $('body').css('overflow', 'auto');
             });
         });
     });
