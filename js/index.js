@@ -1,4 +1,4 @@
-/*var _gaq = _gaq || [];
+var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-38205696-1']);
 _gaq.push(['_trackPageview']);
 
@@ -6,19 +6,13 @@ _gaq.push(['_trackPageview']);
 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();*/
-
-var isMSIE = /*@cc_on!@*/0;
-if (isMSIE) {
-    location.href = 'no_ie.html';
-}
+})();
 
 
 
 var gb = {
     showContent: false
 };
-
 
 $(document).ready(function() {
     // window scroll
@@ -42,7 +36,6 @@ $(document).ready(function() {
             $('.pageBack,.page').css({
                 'box-shadow': x * 10 + 'px ' + y * 10 + 'px 10px 5px #666'
             })
-            console.log(x * 10 + 'px ' + y * 10 + 'px 10px 5px #333')
         }
     });
     
@@ -63,7 +56,7 @@ function taoRotate() {
     var time = 0;
     var id = setInterval(function() {
         if (time <= 60) {
-            $('#titleDiv').css('margin-top', $(window).height() / 2 - 300
+            $('#titleDiv').css('margin-top', $(window).height() / 2 - 200
                                + (time - 60))
                 .css('opacity', time / 60);
             $('#titleTao').rotate(360 * Math.cos(Math.PI / 60 * time) + 'deg');
