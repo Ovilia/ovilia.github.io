@@ -16,28 +16,18 @@ if (isMSIE) {
 
 
 var gb = {
-    STATE: {
-        HOME: 0,
-        LANGUAGE: 1,
-        CONTENT: 2
-    },
-    state: 0,
-    
-    LANGUAGE: {
-        ENGLISH: 0,
-        CHINESE: 1
-    },
-    language: 0
+    showContent: false
 };
 
 
 $(document).ready(function() {
     // window scroll
     $(window).mousemove(function(e) {
-        if (gb.state != gb.STATE.CONTENT) {
-            // shadow moves with mouse
-            var x = (0.5 - e.clientX / $(window).width()) * 2;
-            var y = (0.5 - e.clientY / $(window).height()) * 2;
+        // shadow moves with mouse
+        var x = (0.5 - e.clientX / $(window).width()) * 2;
+        var y = (0.5 - e.clientY / $(window).height()) * 2;
+        
+        if (!gb.showContent) {
             var r = Math.sqrt((x * x + y * y) / 2);
             var op = 1 - Math.sqrt(r);
             $('#titleCircle').css({
@@ -48,31 +38,19 @@ $(document).ready(function() {
             $('#titleLeft, #titleRight').css({
                 'opacity': op
             });
+        } else {
+            $('.pageBack,.page').css({
+                'box-shadow': x * 10 + 'px ' + y * 10 + 'px 10px 5px #666'
+            })
+            console.log(x * 10 + 'px ' + y * 10 + 'px 10px 5px #333')
         }
-    });
-    
-    // randocy image
-    $('#randocyImg').hover(function() {
-        $('#randocyImg').hide().attr('src', 'image/randocy_color.png').show();
-    }, function() {
-        $('#randocyImg').hide().attr('src', 'image/randocy_gray.png').show();
-    });
-    // jWebAudio image
-    $('#jWebAudioImg').hover(function() {
-        $('#jWebAudioImg').hide().attr('src', 'image/jWebAudio_color.png').show();
-    }, function() {
-        $('#jWebAudioImg').hide().attr('src', 'image/jWebAudio_gray.png').show();
     });
     
     taoRotate();
     
     $('#titleLeft,#titleRight').click(function() {
-        ++gb.state;
+        gb.showContent = true;
         $('#titleWords').fadeOut(500, function() {
-            if ($(this) == $('#titleLeft')) {
-                // Chinese
-                gb.language = gb.LANGUAGE;
-            }
             $('#titleDiv').fadeOut(500, function() {
                 $('#contentDiv,#footerDiv').fadeIn(1000);
                 $('body').css('overflow', 'auto');
@@ -91,12 +69,11 @@ function taoRotate() {
             $('#titleTao').rotate(360 * Math.cos(Math.PI / 60 * time) + 'deg');
             time += 1;
         } else {
-            gb.state = gb.STATE.LANGUAGE;
             $('#titleTao').rotate(0);
             $('#titleLeft, #titleRight').css({
                 'opacity': 1
             });
-            clearInterval(id);
+            if (id) clearInterval(id);
         }
     }, 50);    
 }

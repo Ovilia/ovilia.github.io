@@ -40,11 +40,12 @@ body {
 }
 
 p {
-    font-family: Arial, sans-serif;
-    line-height: 150%;
-    margin: 0.5em 0;
+    font-family: 'Times New Roman', serif;
+    line-height: 120%;
+    text-indent: 2em;
     text-shadow: 1px 1px 0px #fff;
     filter: dropshadow(color=#fff, offx=1, offy=1);
+    margin: 0.8em 0;
 }
 
 p>a {
@@ -56,13 +57,19 @@ p>a:hover {
     background-color: #70840e;
     color: #d4e583;
     border-color: #d4e583;
-    text-shadow: 2px 2px 0px #333;
+    text-shadow: 1px 1px 0px #333;
     filter: dropshadow(color=#333, offx=2, offy=2);
+}
+
+p.subTitle {
+    text-indent: 0;
+    font-family: 'Great Vibes', Courier, Arial;
 }
 
 .emphysis {
     background-color: #d4e583;
     font-weight: bold;
+    font-family: Courier, Arial;
 }
 
 .term {
@@ -160,7 +167,7 @@ p>a:hover {
     
     margin-top: 5em;
     
-    -webkit-box-shadow: 0px 0px 10px 5px #333;
+    -webkit-box-shadow: 0px 0px 10px 5px #666;
     box-shadow: 0px 0px 10px 5px #333;
 }
 
@@ -171,7 +178,7 @@ p>a:hover {
     z-index: -10;
     position: relative;
     -webkit-box-shadow: 0px 0px 10px 5px #333;
-    box-shadow: 0px 0px 10px 5px #333;
+    box-shadow: 0px 0px 10px 5px #666;
     -webkit-backface-visibility: hidden;
 }
 
@@ -204,26 +211,10 @@ p>a:hover {
 
 .pageTitle {
     font-family: 'Great Vibes', cursive;
-    text-align: center;
+    text-align: right;
     
     text-shadow: 0px 0px 10px #666;
     filter: dropshadow(color=#fff, offx=2, offy=2);
-}
-
-#projectDiv {
-    height: 150px;
-}
-
-.project {
-    width: 30%;
-    background-color: #333;
-    float: left;
-    text-align: center;
-    height: 150px;
-}
-
-.projectCenter {
-    margin: 0 5%;
 }
 
 #footerDiv {
