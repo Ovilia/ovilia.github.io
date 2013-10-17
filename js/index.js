@@ -8,63 +8,65 @@ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www')
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
-var isMSIE = /*@cc_on!@*/0;
-if (isMSIE) {
-    location.href = 'no_ie.html';
-}
+
+
+var gb = {
+    showContent: false
+};
 
 $(document).ready(function() {
-    // font related
-    $('#areMy').fitText(0.92).shuffleLetters({
-        fps: 20,
-        steps: 16
-    });
-    $('#inTao').fitText(0.5).hide().fadeIn(2000);
-    
     // window scroll
-    $(window).scroll(function() {
-        if (window.innerWidth > 600) {
-            var winTop = $(this).scrollTop();
-            if (winTop >= $('#generalPage').offset().top) {
-                $('#navContent').slideDown();
-                
-                if (winTop >= $('#taoPage').offset().top - 200 &&
-                    winTop < $('#taoPage').offset().top + $('#taoPage').height()) {
-                    $('.navCnt').removeClass('navFocus');
-                    $('#taoNav').addClass('navFocus');
-                } else if (winTop >= $('#codePage').offset().top - 200 &&
-                    winTop < $('#codePage').offset().top + $('#codePage').height()) {
-                    $('.navCnt').removeClass('navFocus');
-                    $('#codeNav').addClass('navFocus');
-                } else if (winTop >= $('#sketchPage').offset().top - 200) {
-                    $('.navCnt').removeClass('navFocus');
-                    $('#sketchNav').addClass('navFocus');
-                } else if (winTop < $('#taoPage').offset().top - 200) {
-                    $('.navCnt').removeClass('navFocus');
-                }
-            } else {
-                $('#navContent').slideUp();
-            }
+    $(window).mousemove(function(e) {
+        // shadow moves with mouse
+        var x = (0.5 - e.clientX / $(window).width()) * 2;
+        var y = (0.5 - e.clientY / $(window).height()) * 2;
+        
+        if (!gb.showContent) {
+            var r = Math.sqrt((x * x + y * y) / 2);
+            var op = 1 - Math.sqrt(r);
+            $('#titleCircle').css({
+                'box-shadow': 300 * x + 'px ' + 300 * y + 'px '
+                    + 300 * r + 'px #333',
+                'opacity': op
+            });
+            $('#titleWords').css({
+                'opacity': op
+            });
+        } else {
+            $('.pageBack,.page').css({
+                'box-shadow': x * 10 + 'px ' + y * 10 + 'px 10px 5px #666'
+            })
         }
     });
     
-    $('.navCnt').click(function() {
-        var id = '#' + $(this).attr('id').slice(0, -3) + 'Page';
-        $('body').animate({
-            scrollTop: $(id).offset().top - 150
+    taoRotate();
+    
+    $('#titleWords').click(function() {
+        gb.showContent = true;
+        $('#titleWords').fadeOut(500, function() {
+            $('#titleDiv').fadeOut(500, function() {
+                $('#contentDiv,#footerDiv').fadeIn(1000);
+                $('body').css('overflow', 'auto');
+            });
         });
     });
-    
-    // randocy image
-    $('#randocyImg').hover(function() {
-        $('#randocyImg').hide().attr('src', 'image/randocy_color.png').show();
-    }, function() {
-        $('#randocyImg').hide().attr('src', 'image/randocy_gray.png').show();
-    });
-    // jWebAudio image
-    $('#jWebAudioImg').hover(function() {
-        $('#jWebAudioImg').hide().attr('src', 'image/jWebAudio_color.png').show();
-    }, function() {
-        $('#jWebAudioImg').hide().attr('src', 'image/jWebAudio_gray.png').show();
-    });
 });
+
+function taoRotate() {
+    var time = 0;
+    var id = setInterval(function() {
+        if (time <= 60) {
+            $('#titleDiv').css('margin-top', $(window).height() / 2 - 200
+                               + (time - 60))
+                .css('opacity', time / 60);
+            $('#titleTao').rotate(360 * Math.cos(Math.PI / 60 * time) + 'deg');
+            time += 1;
+        } else {
+            $('#titleTao').rotate(0);
+            $('#titleLeft, #titleRight').css({
+                'opacity': 1
+            });
+            if (id) clearInterval(id);
+        }
+    }, 50);    
+}
