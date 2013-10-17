@@ -63,7 +63,7 @@ p>a:hover {
 
 p.subTitle {
     text-indent: 0;
-    font-family: 'Great Vibes', Courier, Arial;
+    font-family: 'Great Vibes', cursive, Arial;
 }
 
 .emphysis {
@@ -98,7 +98,7 @@ p.subTitle {
     width: 333px;
     height: 333px;
     border-radius: 176px;
-    margin: 30px 0 0 33px;
+    margin: 28px 0 0 33px;
     position: relative;
     top: -400px;
 }
