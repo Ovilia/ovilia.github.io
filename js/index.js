@@ -63,7 +63,7 @@ function taoRotate() {
             time += 1;
         } else {
             $('#titleTao').rotate(0);
-            $('#titleLeft, #titleRight').css({
+            $('#titleWords').css({
                 'opacity': 1
             });
             if (id) clearInterval(id);
