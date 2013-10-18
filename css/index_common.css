@@ -59,6 +59,14 @@ p>a:hover {
     border-color: #d4e583;
     text-shadow: 1px 1px 0px #333;
     filter: dropshadow(color=#333, offx=2, offy=2);
+    -webkit-transition: color 0.8s;
+    -moz-transition: color 0.8s;
+    -o-transition: color 0.8s;
+    transition: color 0.8s;
+    -webkit-transition: background-color 0.8s;
+    -moz-transition: background-color 0.8s;
+    -o-transition: background-color 0.8s;
+    transition: background-color 0.8s;
 }
 
 p.subTitle {
