@@ -41,7 +41,7 @@ $(document).ready(function() {
     
     taoRotate();
     
-    $('#titleWords').click(function() {
+    $('#titleCircle').click(function() {
         gb.showContent = true;
         $('#titleWords').fadeOut(500, function() {
             $('#titleDiv').fadeOut(500, function() {

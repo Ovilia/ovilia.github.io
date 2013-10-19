@@ -95,30 +95,32 @@ p.subTitle {
     width: 400px;
     height: 400px;
     margin: 0 auto;
+    border: 0;
 }
 
 #titleTao {
     width: 400px;
     height: 400px;
-}
-
-#titleCircle {
-    width: 333px;
-    height: 333px;
-    border-radius: 176px;
-    margin: 28px 0 0 33px;
-    position: relative;
-    top: -400px;
+    display: block;
 }
 
 #titleWords {
     width: 400px;
     height: 400px;
     position: relative;
-    top: -767px;
-    z-index: 1;
-    cursor: pointer;
+    top: -400px;
     opacity: 0;
+    display: block;
+}
+
+#titleCircle {
+    width: 333px;
+    height: 333px;
+    border-radius: 176px;
+    margin: 33px 0 0 33px;
+    position: relative;
+    top: -800px;
+    cursor: pointer;
 }
 
 #contentDiv {
@@ -151,8 +153,7 @@ p.subTitle {
     background-color: #eee;
     margin-top: 5em;
     
-    -webkit-box-shadow: 0px 0px 10px 5px #666;
-    box-shadow: 0px 0px 10px 5px #333;
+    box-shadow: 0px 0px 10px 5px #666;
 }
 
 .pageBack {
@@ -162,7 +163,6 @@ p.subTitle {
     background-color: #eee;
     z-index: -10;
     position: relative;
-    -webkit-box-shadow: 0px 0px 10px 5px #333;
     box-shadow: 0px 0px 10px 5px #666;
     -webkit-backface-visibility: hidden;
 }
