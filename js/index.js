@@ -43,11 +43,9 @@ $(document).ready(function() {
     
     $('#titleCircle').click(function() {
         gb.showContent = true;
-        $('#titleWords').fadeOut(500, function() {
-            $('#titleDiv').fadeOut(500, function() {
-                $('#contentDiv,#footerDiv').fadeIn(1000);
-                $('body').css('overflow', 'auto');
-            });
+        $('#titleWords, #titleDiv').fadeOut(500, function() {
+            $('#contentDiv,#footerDiv').fadeIn(1000);
+            $('body').css('overflow', 'auto');
         });
     });
 });
