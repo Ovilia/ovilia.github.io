@@ -219,7 +219,7 @@ p {
     font-size: 1.25em;
 }
 
-@media screen and (max-device-width: 400px) {
+@media screen and (max-device-width: 800px) {
     p {
         font-size: 1.5em;
         text-indent: 0;
