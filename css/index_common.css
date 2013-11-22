@@ -219,6 +219,22 @@ p {
     font-size: 1.25em;
 }
 
+@media screen and (max-width: 400px) {
+    p {
+        font-size: 1.5em;
+        text-indent: 0;
+    }
+    .subTitle {
+        font-size: 5.3em;
+    }
+    .title {
+        font-size: 4em;
+    }
+    .pageTitle {
+        font-size: 5em;
+    }
+}
+
 .subTitle {
     font-size: 2.8em;
     margin-top: 0;
