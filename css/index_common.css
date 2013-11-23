@@ -140,7 +140,7 @@ p.subTitle {
     opacity: 1.0;
 }
 
-#iconDiv > a  > img {
+#iconDiv > a > img {
     opacity: 0.6;
 }
 
@@ -209,6 +209,7 @@ p.subTitle {
 
 #contentDiv {
     width: 100%;
+    overflow-x: hidden;
 }
 
 #content {
@@ -221,11 +222,12 @@ p {
 
 @media screen and (max-device-width: 600px) {
     p {
-        font-size: 2em;
+        font-size: 2.5em;
         text-indent: 0;
+        line-height: 200%;
     }
     .subTitle {
-        font-size: 7.5em;
+        font-size: 9em;
     }
     .title {
         font-size: 4em;
@@ -235,6 +237,9 @@ p {
     }
     #content {
         width: 90%;
+    }
+    #iconDiv {
+        opacity: 1.0;
     }
 }
 
