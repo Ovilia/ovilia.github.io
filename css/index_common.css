@@ -219,19 +219,22 @@ p {
     font-size: 1.25em;
 }
 
-@media screen and (max-device-width: 800px) {
+@media screen and (max-device-width: 600px) {
     p {
-        font-size: 1.5em;
+        font-size: 2em;
         text-indent: 0;
     }
     .subTitle {
-        font-size: 5.3em;
+        font-size: 7.5em;
     }
     .title {
         font-size: 4em;
     }
     .pageTitle {
-        font-size: 5em;
+        font-size: 6em;
+    }
+    #content {
+        width: 90%;
     }
 }
 
