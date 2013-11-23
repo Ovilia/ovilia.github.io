@@ -224,10 +224,10 @@ p {
     p {
         font-size: 2.5em;
         text-indent: 0;
-        line-height: 200%;
+        line-height: 150%;
     }
     .subTitle {
-        font-size: 9em;
+        font-size: 12em;
     }
     .title {
         font-size: 4em;
@@ -240,6 +240,9 @@ p {
     }
     #iconDiv {
         opacity: 1.0;
+    }
+    .pageBack {
+        display: none;
     }
 }
 
