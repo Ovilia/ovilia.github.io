@@ -227,7 +227,7 @@ p {
         line-height: 150%;
     }
     .subTitle {
-        font-size: 12em;
+        font-size: 6em;
     }
     .title {
         font-size: 4em;
@@ -243,6 +243,9 @@ p {
     }
     .pageBack {
         display: none;
+    }
+    .page {
+        margin-bottom: 5em;
     }
 }
 
