@@ -222,12 +222,12 @@ p {
 
 @media screen and (max-device-width: 600px) {
     p {
-        font-size: 2.5em;
+        font-size: 3em;
         text-indent: 0;
         line-height: 150%;
     }
-    .subTitle {
-        font-size: 6em;
+    p.subTitle {
+        font-size: 5em;
     }
     .title {
         font-size: 4em;
@@ -237,6 +237,9 @@ p {
     }
     #content {
         width: 90%;
+    }
+    .pageCnt {
+        padding: 5%;
     }
     #iconDiv {
         opacity: 1.0;
