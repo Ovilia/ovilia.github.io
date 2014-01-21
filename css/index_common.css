@@ -130,6 +130,7 @@ p.subTitle {
 #iconDiv {
     opacity: 0.4;
     float: right;
+    transition-duration: 1s;
 }
 
 #iconDiv>a {
@@ -225,6 +226,10 @@ p {
     margin-top: 0;
 }
 
+#detailPage .subTitle {
+    margin: 50px 0 -10px 0;
+}
+
 .title {
     font-size: 3.5em;
     margin-left: -2em;
@@ -243,7 +248,7 @@ p {
 
 .pageTitle {
     font-size: 5em;
-    margin-top: 1em;
+    margin-top: 0.2em;
 }
 
 .rotBottom.rotLeft {
@@ -253,7 +258,7 @@ p {
 
 .rotBottom.rotRight {
     margin-top: -200px;
-    margin-bottom: 100px;
+    margin-bottom: 200px;
     left: 10px;
 }
 
@@ -296,6 +301,19 @@ p {
     margin: 0 auto;
     padding: 2em 0;
     color: #fff;
+}
+
+.align-right {
+    text-align: right;
+}
+
+p>img, p>a>img {
+    border: dashed;
+    border-width: 3px;
+    border-color: #70840e;
+    max-width: 100%;
+    text-decoration: none;
+    transition: 0.5s;
 }
 
 @media screen and (max-device-width: 600px) {
