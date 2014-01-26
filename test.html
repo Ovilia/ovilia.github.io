@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            function send() {
+                $.ajax({
+                    url: 'mailto:me@zhangwenli.com?subject=hello'
+                });
+            }
+        </script>
+    </head>
+    
+    <body>
+        <!--form action="mailto:me@zhangwenli.com?subject=this+is+a+test">
+            <input type="submit" value="Submit" type="hidden" />
+        </form-->
+        <a href="#" onclick="send()">Send Email</a>
+    </body>
+</html>
