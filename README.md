@@ -14,6 +14,10 @@ Please visit: http://zhangwenli.com.
 
 [Learning List for 2014][6]
 
+[How I made jCorner][7]
+
+[Syntax Highlighting for Jekyll][8]
+
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">
     <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" />
 </a>
@@ -25,3 +29,5 @@ Please visit: http://zhangwenli.com.
   [4]: http://zhangwenli.com/blog/2013/10/24/rss-is-now-available/
   [5]: http://zhangwenli.com/blog/2013/11/02/sorting-in-javascript/
   [6]: http://zhangwenli.com/blog/2013/12/03/learning-list-for-2014/
+  [7]: http://zhangwenli.com/blog/2014/02/09/how-i-made-jcorner/
+  [8]: http://zhangwenli.com/blog/2014/02/10/syntax-highlighting-for-jekyll/
