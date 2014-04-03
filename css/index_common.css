@@ -16,6 +16,11 @@ body {
     width: 100%;
 }
 
+.inline {
+    float: left;
+    margin-left: 2em;
+}
+
 ::selection, ::-moz-selection, ::-webkit-selection {
     background-color: #70840e;
     color: #fff;
@@ -72,6 +77,15 @@ p>a:hover {
 p.subTitle {
     text-indent: 0;
     font-family: 'Great Vibes', cursive, Arial;
+    margin-top: 20px;
+    margin-bottom: -10px;
+    font-size: 2.2em;
+}
+
+p.subTitle.first {
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-size: 2.8em;
 }
 
 .emphysis {
