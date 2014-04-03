@@ -4,7 +4,8 @@
 }
 
 body {
-    overflow: hidden;
+    width: 100%;
+    overflow-x: hidden;
     background-color: #b0cb2c;
 }
 
