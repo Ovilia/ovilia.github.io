@@ -325,7 +325,7 @@ p>img, p>a>img {
     border: dashed;
     border-width: 3px;
     border-color: #70840e;
-    max-width: 100%;
+    max-width: 80%;
     text-decoration: none;
     transition: 0.5s;
 }
@@ -343,7 +343,10 @@ p>img, p>a>img {
         font-size: 4em;
     }
     .pageTitle {
-        font-size: 6em;
+        font-size: 5em;
+    }
+    p.subTitle.first {
+        font-size: 7em;
     }
     #content {
         width: 90%;
@@ -361,5 +364,9 @@ p>img, p>a>img {
     }
     .page {
         margin-bottom: 5em;
+    }
+    p>img, p>a>img {
+        margin-left: 0;
+        margin-top: 20px;
     }
 }
