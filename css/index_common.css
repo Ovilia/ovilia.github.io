@@ -225,7 +225,7 @@ p.subTitle.first {
 
 #contentDiv {
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 #content {
