@@ -332,11 +332,10 @@ p>img, p>a>img {
 }
 
 @media screen and (max-device-width: 600px) {
-    body {
+    * {
         overflow-x: hidden;
-    }
-    #content {
-        width: 100%;
+        padding: 0;
+        margin: 0;
     }
     .page {
         margin-top: 0;
@@ -360,7 +359,7 @@ p>img, p>a>img {
         font-size: 4em;
     }
     #content {
-        width: 90%;
+        width: 100%;
     }
     .pageCnt {
         padding: 5%;
