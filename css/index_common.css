@@ -332,22 +332,32 @@ p>img, p>a>img {
 }
 
 @media screen and (max-device-width: 600px) {
+    body {
+        overflow-x: hidden;
+    }
+    #content {
+        width: 100%;
+    }
+    .page {
+        margin-top: 0;
+    }
+    
     p {
         font-size: 3em;
         text-indent: 0;
         line-height: 150%;
     }
     p.subTitle {
-        font-size: 6em;
+        font-size: 3.5em;
     }
     .title {
         font-size: 4em;
     }
     .pageTitle {
-        font-size: 5em;
+        font-size: 3.5em;
     }
     p.subTitle.first {
-        font-size: 7em;
+        font-size: 4em;
     }
     #content {
         width: 90%;
