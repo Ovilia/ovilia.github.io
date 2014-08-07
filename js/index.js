@@ -11,7 +11,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
 
 var gb = {
-    showContent: false
+    showContent: false,
+    loadedTime: new Date()
 };
 
 $(document).ready(function() {
