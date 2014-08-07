@@ -44,7 +44,7 @@ $(document).ready(function() {
     $('#titleCircle').click(function() {
         gb.showContent = true;
         $('#titleWords, #titleDiv').fadeOut(500, function() {
-            $('#contentDiv,#footerDiv').fadeIn(1000);
+            $('#ovilia-home,#ovilia-footer').fadeIn(1000);
             $('body').css('overflow', 'auto');
         });
     });
@@ -68,3 +68,16 @@ function taoRotate() {
         }
     }, 50);    
 }
+
+WebFontConfig = {
+    google: { families: [ 'Lato:400,900:latin' ] }
+};
+(function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+})();
