@@ -16,6 +16,13 @@ var gb = {
 };
 
 $(document).ready(function() {
+    if (location.hash.slice(1) !== '') {
+        gb.showContent = true;
+        $('#titleWords, #titleDiv').hide();
+        $('#ovilia-home,#ovilia-footer').show();
+        $('body').css('overflow', 'auto');
+    }
+    
     // window scroll
     $(window).mousemove(function(e) {
         // shadow moves with mouse
