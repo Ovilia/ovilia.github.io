@@ -2,6 +2,12 @@
 
 Please visit: http://zhangwenli.com.
 
+## Blog Source Code
+
+<a href="https://github.com/Ovilia/blog/tree/gh-pages">https://github.com/Ovilia/blog/tree/gh-pages</a>
+
+## License
+
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">
     <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" />
 </a>
