@@ -16,7 +16,9 @@ var gb = {
 };
 
 $(document).ready(function() {
-    if (location.hash.slice(1) !== '') {
+    if (location.hash.slice(1) !== '' ||
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent) === false) {
         gb.showContent = true;
         $('#titleWords, #titleDiv').hide();
         $('#ovilia-home,#ovilia-footer').show();
