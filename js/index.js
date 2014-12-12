@@ -51,14 +51,23 @@ $(document).ready(function() {
     
     taoRotate();
     
-    $('#titleCircle').click(function() {
+    $('#titleCircle').click(enterTao);
+    
+    setTimeout(function() {
+        enterTao();
+        _gaq.push(['_trackEvent', 'EnterHome', 'Timeout', '3000']);
+    }, 30000);
+});
+
+function enterTao() {
+    if (!gb.showContent) {
         gb.showContent = true;
         $('#titleWords, #titleDiv').fadeOut(500, function() {
             $('#ovilia-home,#ovilia-footer').fadeIn(1000);
             $('body').css('overflow', 'auto');
         });
-    });
-});
+    }
+}
 
 function taoRotate() {
     var time = 0;
