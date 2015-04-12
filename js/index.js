@@ -70,6 +70,9 @@ function enterTao() {
 }
 
 function taoRotate() {
+    if ($('#titleTao').length == 0) {
+        return;
+    }
     var time = 0;
     var id = setInterval(function() {
         if (time <= 60) {
