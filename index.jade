@@ -1,0 +1,57 @@
+﻿doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+
+        script(type='text/javascript').
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-38205696-1']);
+            _gaq.push(['_trackPageview']);
+            
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        title Ovilia
+        link(href='css/index.css', rel='stylesheet', type='text/css')
+
+    body
+        div(id='content')
+            div(class='container')
+                div(class='panel panel-left')
+                    div(class='discription')
+                        h2 噢，雯莉啊
+                        p 羡辙，字子免，号灵石笠翁
+                        h3 前端空城师
+                    div(class='link-panel')
+                        div(class='link')
+                            a(href='blog') 博客
+                        div(class='link')
+                            a(href='cv/cn.html') 简历
+                        //- div(class='link')
+                        //-     a(href='cn/projects.html') 项目
+                        div(class='link')
+                            a(href='http://github.com/Ovilia', target='_blank') 代码
+                        div(class='link')
+                            a(href='mailto:me@zhangwenli.com', target='_blank') 邮件
+
+                div(class='panel panel-right')
+                    div(class='discription')
+                        h2 Ovilia
+                        p A Passionate, Creative, and Devoted
+                        h3 Web Front-End Engineer
+                    div(class='link-panel')
+                        div(class='link')
+                            a(href='blog') Blog
+                        div(class='link')
+                            a(href='cv') CV
+                        //- div(class='link')
+                        //-     a(href='#') Projects
+                        div(class='link')
+                            a(href='http://github.com/Ovilia', target='_blank') GitHub
+                        div(class='link')
+                            a(href='mailto:me@zhangwenli.com', target='_blank') Email
+
+                img(id='avatar', src='img/avatar.png')

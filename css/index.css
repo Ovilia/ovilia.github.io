@@ -1,0 +1,146 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    vertical-align: bottom;
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Lato Black'), local('Lato-Black'), url('../../blog/font/lato900.woff') format('woff');
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Lato', 'Microsoft YaHei', sans-serif;
+    font-size: 1rem;
+    overflow-x: hidden;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+img#avatar {
+    position: absolute;
+    bottom: 20px;
+    left: 70%;
+    margin-left: -100px;
+    z-index: 10;
+    border-radius: 100px;
+    transition: 1s;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    min-height: 60px;
+}
+
+p {
+    min-height: 25px;
+}
+
+
+
+.container {
+    height: 100%;
+    position: relative;
+}
+
+.panel {
+    display: inline-block;
+    padding: 10px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transition: 1s;
+}
+
+.panel-left {
+    width: 70%;
+    left: 0;
+    text-align: right;
+}
+
+.panel-right {
+    width: 30%;
+    left: 70%;
+    text-align: left;
+}
+
+.panel, .panel-left:hover + .panel-right {
+    background-color: black;
+    color: white;
+}
+
+.panel-right, .panel:hover {
+    background-color: white;
+    color: black;
+}
+
+.panel-right:hover + img#avatar {
+    transform: rotateY(180deg);
+}
+
+
+
+
+.discription {
+    height: 150px;
+}
+
+
+
+.link-panel {
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+.link-panel a {
+    display: inline-block;
+    margin: 3px 0;
+    color: inherit;
+    text-decoration: none;
+    transition: inherit;
+    height: 20px;
+}
+
+.link-panel a:hover {
+    text-decoration: underline;
+}
+
+.link-panel .link {
+    margin-bottom: 5px;
+}
+
+.panel:hover .link-panel a {
+    color: black;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    h2 {
+        font-size: 2rem;
+    }
+
+    img#avatar {
+        left: 50%;
+    }
+
+    .panel-left {
+        width: 50%;
+    }
+
+    .panel-right {
+        width: 50%;
+        left: 50%;
+        text-align: left;
+    }
+}
