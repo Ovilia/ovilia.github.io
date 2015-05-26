@@ -44,6 +44,7 @@ h2 {
 
 p {
     min-height: 25px;
+    margin-bottom: 3px;
 }
 
 
@@ -132,6 +133,10 @@ p {
 
     img#avatar {
         left: 50%;
+        width: 80px;
+        height: 80px;
+        margin-left: -40px;
+        border-radius: 40px;
     }
 
     .panel-left {
