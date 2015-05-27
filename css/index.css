@@ -9,7 +9,7 @@
   font-family: 'Lato';
   font-style: normal;
   font-weight: 900;
-  src: local('Lato Black'), local('Lato-Black'), url('../../blog/font/lato900.woff') format('woff');
+  src: local('Lato #22c3aa'), local('Lato-#22c3aa'), url('../../blog/font/lato900.woff') format('woff');
 }
 
 html, body {
@@ -76,13 +76,13 @@ p {
 }
 
 .panel, .panel-left:hover + .panel-right {
-    background-color: black;
+    background-color: #22c3aa;
     color: white;
 }
 
 .panel-right, .panel:hover {
     background-color: white;
-    color: black;
+    color: #22c3aa;
 }
 
 .panel-right:hover + img#avatar {
@@ -112,16 +112,16 @@ p {
     height: 20px;
 }
 
-.link-panel a:hover {
-    text-decoration: underline;
-}
-
 .link-panel .link {
     margin-bottom: 5px;
 }
 
 .panel:hover .link-panel a {
-    color: black;
+    color: #22c3aa;
+}
+
+.panel:hover .link-panel a:hover {
+    color: #d0648a;
 }
 
 
