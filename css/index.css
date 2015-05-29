@@ -126,6 +126,18 @@ p {
 
 
 
+#xianzhe-img {
+    max-width: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    opacity: 0.5;
+    -webkit-animation: breathing 5s ease-out infinite normal;
+    animation: breathing 5s ease-out infinite normal;
+}
+
+
+
 @media screen and (max-width: 600px) {
     h2 {
         font-size: 2rem;
@@ -148,4 +160,42 @@ p {
         left: 50%;
         text-align: left;
     }
+}
+
+
+
+@-webkit-keyframes breathing {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.5;
+  }
+
+  60% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes breathing {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.5;
+  }
+
+  60% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
