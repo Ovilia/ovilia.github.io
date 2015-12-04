@@ -1,0 +1,25 @@
+{
+  "name": "OviliaBlog",
+  "version": "0.1.0",
+  "description": "Ovilia's Blog",
+  "main": "gulpfile.js",
+  "author": "Ovilia",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-sass": "~2.0.4",
+    "gulp-autoprefixer": "~3.0.0",
+    "gulp-uglify": "~1.4.1",
+    "gulp-rename": "~1.2.2",
+    "gulp-jade": "~1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ovilia/blog"
+  },
+  "keywords": [
+    "gulp",
+    "sass",
+    "browsersync"
+  ]
+}

@@ -1,0 +1,52 @@
+$clr-primary:          #22C3AA;  // green
+$clr-light:            #AEE2D9;  // light green
+$clr-lighter:          #EEF3F0;  // lighter green
+$clr-dark:             #157A6B;  // dark green
+$clr-contrast:         #D0648A;  // red
+$clr-contrast-dark:    #AB466A;  // dark red
+$clr-def:              #666;
+$clr-def-light:        #CCC;
+$clr-def-lighter:      #EFEFEF;
+$clr-def-lightest:     #FFF;
+$clr-def-dark:         #444;
+$clr-def-darker:       #333;
+$clr-def-darkest:      #000;
+
+$tmp-height: 165px;
+
+
+
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: $clr-primary;
+    color: $clr-def-lightest;
+    position: relative;
+}
+
+
+
+a {
+    color: $clr-def-dark;
+    text-decoration: none;
+}
+
+
+
+#tmp-container {
+    text-align: center;
+    height: $tmp-height;
+    position: relative;
+    top: 50%;
+    margin: 0 auto;
+    margin-top: -$tmp-height / 2;
+
+    h1 {
+        margin-top: 0;
+    }
+}
