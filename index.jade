@@ -27,8 +27,12 @@ html(lang='en')
         link(href='css/main.min.css', rel='stylesheet', type='text/css')
 
     body
-        #tmp-container
-            h1 羡辙杂俎
-            p 主页君在改版，敬请期待
-            p 你可以先看看我的<a href="blog">博客</a>或者 <a href="https://github.com/Ovilia" />GitHub</a>
-            p 微信公众号：xianzheblog
+        svg#owl-svg(version='1.1', baseProfile='full', viewBox='0 0 1024 1024', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+
+            defs
+                clipPath#body-inner
+                    rect(width='640', height='640', x='128', y='256')
+
+            rect#body(width='896', height='896', x='0', y='128', clip-path='url(#body-inner)')
+
+        script(type='text/javascript', src='js/clipper.js')
