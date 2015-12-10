@@ -4,6 +4,7 @@ var prefix      = require('gulp-autoprefixer');
 var uglify      = require('gulp-uglify');
 var rename      = require('gulp-rename');
 var jade        = require('gulp-jade');
+var browserSync = require('browser-sync').create();
 
 /**
  * Compile files from _style into css
@@ -19,7 +20,8 @@ gulp.task('sass', function () {
         }))
         .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
         .pipe(rename('main.min.css'))
-        .pipe(gulp.dest('css'));
+        .pipe(gulp.dest('css'))
+        .pipe(browserSync.stream());
 });
 
 /**
@@ -28,7 +30,8 @@ gulp.task('sass', function () {
 gulp.task('jade', function () {
     return gulp.src('*.jade')
         .pipe(jade())
-        .pipe(gulp.dest('.'));
+        .pipe(gulp.dest('.'))
+        .pipe(browserSync.stream());
 });
 
 /**
@@ -46,14 +49,25 @@ gulp.task('jade', function () {
  * Watch html/md files, run jekyll & reload BrowserSync
  */
 gulp.task('watch', function () {
-    gulp.watch('css/*.scss', ['sass']);
-    gulp.watch('*.jade', ['jade']);
+    gulp.watch('css/*.scss', ['sass'])
+        .on('change', browserSync.reload);
+    gulp.watch('*.jade', ['jade'])
+        .on('change', browserSync.reload);
     //gulp.watch('js/common.js', ['compress']);
     //gulp.watch(['js/*.js', 'css/*.css'], ['jekyll']);
+});
+
+/**
+ * sync with browser
+ */
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: '.'
+    });
 });
 
 /**
  * Default task, running just `gulp` will compile the sass,
  * compile the jekyll site, launch BrowserSync & watch files.
  */
-gulp.task('default', ['sass', 'jade', 'watch']);
+gulp.task('default', ['sass', 'jade', 'watch', 'browser-sync']);

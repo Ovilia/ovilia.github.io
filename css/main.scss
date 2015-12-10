@@ -12,7 +12,16 @@ $clr-def-dark:         #444;
 $clr-def-darker:       #333;
 $clr-def-darkest:      #000;
 
-$tmp-height: 165px;
+$svg-size: 150px;
+
+
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 900;
+    src: local('Lato Black'), local('Lato-Black'), url('http://7xl1oi.com1.z0.glb.clouddn.com/lato900.woff') format('woff');
+}
 
 
 
@@ -27,26 +36,113 @@ body {
     background-color: $clr-primary;
     color: $clr-def-lightest;
     position: relative;
+    font-family: Lato;
 }
 
 
 
-a {
-    color: $clr-def-dark;
-    text-decoration: none;
-}
-
-
-
-#tmp-container {
-    text-align: center;
-    height: $tmp-height;
-    position: relative;
+#owl-svg {
+    width: $svg-size;
+    height: $svg-size;
+    position: absolute;
     top: 50%;
-    margin: 0 auto;
-    margin-top: -$tmp-height / 2;
+    left: 50%;
+    margin-top: -$svg-size / 2;
+    margin-left: -$svg-size / 2;
+    //border: 1px solid blue;             // tmp
 
-    h1 {
-        margin-top: 0;
+    * {
+        fill: $clr-primary;
+        stroke: $clr-def-lightest;
+        stroke-width: 32;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+}
+
+    #owl-body {
+        stroke-dasharray: 6515, 6517;
+        animation: owl-body-stroke 3s ease-in-out;
+    }
+
+    #owl-left-eye {
+        stroke-dasharray: 2212, 2214;
+        animation: owl-left-eye-stroke 1s ease-in-out 3s;
+        animation-fill-mode: both;
+    }
+
+    #owl-right-eye {
+        stroke-dasharray: 1609, 1611;
+        animation: owl-right-eye-stroke 1s ease-in-out 4s;
+        animation-fill-mode: both;
+    }
+
+    @keyframes owl-body-stroke {
+        0% {
+            stroke-dashoffset: 6515;
+        }
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    @keyframes owl-left-eye-stroke {
+        0% {
+            stroke-dashoffset: 2212;
+            visibility: hidden;
+        }
+        100% {
+            stroke-dashoffset: 0;
+            visibility: visible;
+        }
+    }
+
+    @keyframes owl-right-eye-stroke {
+        0% {
+            stroke-dashoffset: 1609;
+            visibility: hidden;
+        }
+        100% {
+            stroke-dashoffset: 0;
+            visibility: visible;
+        }
+    }
+
+
+
+#link-panel {
+    position: absolute;
+    font-size: 1.2rem;
+    padding: 0 10px;
+
+    li {
+        display: inline-block;
+        padding: 5px 10px;
+        height: 45px;
+        transition: 1s;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            position: relative;
+            top: -5px;
+        }
+
+        &:hover {
+            &:before {
+                background-color: $clr-def-lightest;
+            }
+        }
+
+        a {
+            color: $clr-def-lighter;
+            text-decoration: none;
+
+            &:hover {
+                color: $clr-def-lightest;
+            }
+        }
     }
 }

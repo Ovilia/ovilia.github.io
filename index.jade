@@ -27,8 +27,24 @@ html(lang='en')
         link(href='css/main.min.css', rel='stylesheet', type='text/css')
 
     body
-        #tmp-container
-            h1 羡辙杂俎
-            p 主页君在改版，敬请期待
-            p 你可以先看看我的<a href="blog">博客</a>或者 <a href="https://github.com/Ovilia" />GitHub</a>
-            p 微信公众号：xianzheblog
+        svg#owl-svg(version='1.1', baseProfile='full', viewBox='0 0 1088 1088', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+            g(transform='translate(80 32)')
+                path#owl-body(d='M 0 0 L 0 896 A 128 128 0 0 0 128 1024 L 640 1024 A 64 64 0 0 0 704 960 A 64 64 0 0 0 640 896 L 192 896 A 64 64 0 0 1 128 832 L 128 256 L 768 256 L 768 896 A 128 128 0 0 0 896 1024 A 64 64 0 0 0 960 960 A 64 64 0 0 0 896 896 L 896 768 L 896 0 L 768 128 L 640 128 L 128 128 L 0 0 z ')
+                path#owl-left-eye.eye(d='M 256 288 A 64 64 0 0 0 192 352 A 64 64 0 0 0 256 416 A 128 128 0 0 1 384 544 A 128 128 0 0 1 256 672 A 128 128 0 0 1 128 544 A 64 64 0 0 0 64 480 A 64 64 0 0 0 0 544 A 64 64 0 0 0 0 544 A 256 256 0 0 0 256 800 A 256 256 0 0 0 512 544 A 256 256 0 0 0 256 288 z ')
+                path#owl-right-eye.eye(d='M 576 352 A 192 192 0 0 0 384 544 A 192 192 0 0 0 576 736 A 64 64 0 0 0 640 672 A 64 64 0 0 0 576 608 A 64 64 0 0 1 512 544 A 64 64 0 0 1 576 480 A 64 64 0 0 1 640 544 A 64 64 0 0 0 704 608 A 64 64 0 0 0 768 544 A 64 64 0 0 0 767.72656 538.54492 A 192 192 0 0 0 576 352 z ')
+
+        #link-panel
+            li
+                a(href='blog', target='_blank') Blog
+            li
+                a(href='https://github.com/Ovilia', target='_blank') GitHub
+            li
+                a(href='http://weibo.com/plainjane', target='_blank') Weibo
+            li
+                a(href='http://zhangwenli.com/blog/img/gongzhonghao.jpg', target='_blank') Weixin
+            li
+                a(href='https://dribbble.com/wenli', target='_blank') Dribbble
+            li
+                a(href='http://www.douban.com/people/ovilia1024/', target='_blank') Douban
+            li
+                a(href='mailto:me@zhangwenli.com', target='_blank') Email
