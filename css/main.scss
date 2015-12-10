@@ -12,7 +12,7 @@ $clr-def-dark:         #444;
 $clr-def-darker:       #333;
 $clr-def-darkest:      #000;
 
-$svg-size: 200px;
+$svg-size: 150px;
 
 
 
@@ -39,10 +39,61 @@ body {
     left: 50%;
     margin-top: -$svg-size / 2;
     margin-left: -$svg-size / 2;
-    border: 1px solid blue;             // tmp
+    //border: 1px solid blue;             // tmp
 
     * {
-        fill: $clr-def-lightest;
+        fill: $clr-primary;
+        stroke: $clr-def-lightest;
+        stroke-width: 32;
+        stroke-linecap: round;
+        stroke-linejoin: round;
     }
 }
 
+    #owl-body {
+        stroke-dasharray: 6515, 6517;
+        animation: owl-body-stroke 3s ease-in;
+    }
+
+    #owl-left-eye {
+        stroke-dasharray: 2212, 2214;
+        animation: owl-left-eye-stroke 1s ease-in 3s;
+        animation-fill-mode: both;
+    }
+
+    #owl-right-eye {
+        stroke-dasharray: 1609, 1611;
+        animation: owl-right-eye-stroke 1s ease-in 4s;
+        animation-fill-mode: both;
+    }
+
+    @keyframes owl-body-stroke {
+        0% {
+            stroke-dashoffset: 6515;
+        }
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    @keyframes owl-left-eye-stroke {
+        0% {
+            stroke-dashoffset: 2212;
+            visibility: hidden;
+        }
+        100% {
+            stroke-dashoffset: 0;
+            visibility: visible;
+        }
+    }
+
+    @keyframes owl-right-eye-stroke {
+        0% {
+            stroke-dashoffset: 1609;
+            visibility: hidden;
+        }
+        100% {
+            stroke-dashoffset: 0;
+            visibility: visible;
+        }
+    }
