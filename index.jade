@@ -23,6 +23,12 @@ html(lang='en')
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
             })();
 
+            // test if supports svg
+            var isSvgSupported = document.implementation.hasFeature(
+                'http://www.w3.org/TR/SVG11/feature#Image', '1.1');
+            _gaq.push(['_trackEvent', 'Support', "Svg", isSvgSupported]);
+
+
         title Ovilia
         link(href='css/main.min.css', rel='stylesheet', type='text/css')
 
@@ -35,16 +41,18 @@ html(lang='en')
 
         #link-panel
             li
-                a(href='blog', target='_blank') Blog
+                a(href='blog', target='_blank', onclick='_gaq.push(["_trackEvent", "ToBlog", "InHome", "/"]);') Blog
             li
-                a(href='https://github.com/Ovilia', target='_blank') GitHub
+                a(href='https://github.com/Ovilia', target='_blank', onclick='_gaq.push(["_trackEvent", "Follow", "GitHub", "/"]);') GitHub
             li
-                a(href='http://weibo.com/plainjane', target='_blank') Weibo
+                a(href='http://weibo.com/plainjane', target='_blank', onclick='_gaq.push(["_trackEvent", "Weibo", "Blog", "/"]);') Weibo
             li
-                a(href='http://zhangwenli.com/blog/img/gongzhonghao.jpg', target='_blank') Weixin
+                a(href='http://zhangwenli.com/blog/img/gongzhonghao.jpg', target='_blank', onclick='_gaq.push(["_trackEvent", "Follow", "Weixin", "/"]);') Weixin
             li
-                a(href='https://dribbble.com/wenli', target='_blank') Dribbble
+                a(href='https://dribbble.com/wenli', target='_blank', onclick='_gaq.push(["_trackEvent", "Follow", "Dribbble", "/"]);') Dribbble
             li
-                a(href='http://www.douban.com/people/ovilia1024/', target='_blank') Douban
+                a(href='http://www.douban.com/people/ovilia1024/', target='_blank', onclick='_gaq.push(["_trackEvent", "Follow", "Douban", "/"]);') Douban
+            li
+                a(href='https://twitter.com/OviliaZhang', target='_blank', onclick='_gaq.push(["_trackEvent", "Follow", "Twitter", "/"]);') Twitter
             li
                 a(href='mailto:me@zhangwenli.com', target='_blank') Email
