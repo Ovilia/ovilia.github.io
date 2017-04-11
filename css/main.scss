@@ -1,17 +1,29 @@
 $clr-primary:          #22c3aa;
-$clr-primary-light:    lighten($clr-primary, 20%);
+$clr-primary-light:    lighten($clr-primary, 10%);
 
 $clr-gray:             #666;
-$clr-light:            #aaa;
+$clr-light:            #bbb;
 $clr-lighter:          #ddd;
 $clr-lightest:         #f3f3f3;
 
 $clr-text:             $clr-gray;
+$clr-text-light:       #888;
+$clr-text-unimportant: $clr-light;
+
 $clr-border:           $clr-lighter;
 $clr-border-light:     $clr-lightest;
 
-$mobile-width: 400px;
+$mobile-width: 360px;
+$mobile-head-height: 55px;
+$mobile-foot-height: 55px;
 
+$msg-radius: 18px;
+
+
+@font-face {
+    font-family: 'Lato';
+    src: local('Lato'), url(http://zhangwenli.com/blog/font/lato400.woff) format('woff');
+}
 
 @font-face {
     font-family: 'Lato';
@@ -30,19 +42,162 @@ html, body {
 }
 
 body {
+    position: relative;
+
+    font-family: Lato;
+
     background-color: lighten($clr-primary, 50%);
     background-image: radial-gradient(ellipse farthest-corner at 50% 0,
-        rgba(34, 195, 170, 0.15) 0%, rgba(34, 195, 170, 0.5) 100%);
-    position: relative;
-    font-family: Lato;
+        #DBF5F1 0%, #9BE4D8 100%);
 }
+
+
 
 #mobile {
     position: absolute;
-    width: $mobile-width;
     left: 50%;
+    top: 30px;
+    bottom: 30px;
+    overflow: hidden;
+
+    width: $mobile-width;
     margin-left: -$mobile-width / 2;
-    top: 40px;
-    bottom: 40px;
+
     background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 30px 0 rgba(34, 195, 170, 0.5);
 }
+
+    #mobile-head {
+        width: 100%;
+        height: $mobile-head-height - 1;
+
+        background: white;
+        border-bottom: 1px solid $clr-border-light;
+    }
+
+        #mobile-head-title {
+            padding: 18px;
+
+            color: $clr-text-light;
+            text-align: center;
+        }
+
+    #mobile-body {
+        position: absolute;
+        top: $mobile-head-height;
+        bottom: $mobile-foot-height;
+
+        width: 100%;
+
+        background: #E8F9F6;
+    }
+
+        #mobile-body-bg {
+            width: 100%;
+            height: 100%;
+
+            &:before {
+                content: ' ';
+
+                display: block;
+
+                width: 100%;
+                height: 25px;
+
+                background: linear-gradient(rgba(34, 195, 170, 0.15) 0,
+                    transparent);
+            }
+
+            &:after {
+                content: ' ';
+
+                display: block;
+                position: absolute;
+                bottom: 0;
+
+                width: 100%;
+                height: 15px;
+
+                background: linear-gradient(transparent 0,
+                    rgba(34, 195, 170, 0.05) 100%);
+            }
+        }
+
+        #mobile-body-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            padding: 10px 22px;
+            overflow-x: hidden;
+            overflow-y: auto;
+
+            color: $clr-text;
+        }
+
+            .msg-time {
+                margin: 10px 5px;
+
+                font-weight: bold;
+                font-size: 13px;
+
+                text-align: center;
+                color: $clr-text-unimportant;
+            }
+
+            .msg-row {
+                clear: both;
+            }
+
+                .msg {
+                    display: inline-block;
+
+                    margin-bottom: 10px;
+                    padding: 8px 18px;
+                    max-width: 60%;
+
+                    font-size: 14px;
+
+                    background: white;
+                    border-radius: $msg-radius;
+                    box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.15);
+
+                    .msg-xianzhe & {
+                        border-radius: 0 $msg-radius $msg-radius $msg-radius;
+
+                        .msg-xianzhe + & {
+                            margin-top: -5px;
+                        }
+                    }
+
+                    .msg-me & {
+                        float: right;
+
+                        background: linear-gradient(135deg, #22A9C3 0%,
+                            $clr-primary 100%);
+                        color: white;
+                        border-radius: $msg-radius 0 $msg-radius $msg-radius;
+                    }
+                }
+
+
+
+    #mobile-foot {
+        position: absolute;
+        bottom: 0;
+
+        width: 100%;
+        height: $mobile-foot-height - 1;
+
+        background: white;
+        border-top: 1px solid $clr-border-light;
+    }
+
+        #say-something {
+            padding: 18px 25px;
+            color: $clr-text-unimportant;
+            font-size: 14px;
+        }
