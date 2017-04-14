@@ -67,7 +67,31 @@ html(lang='en')
                         .msg.msg-txt 连续的两条消息
 
             #mobile-foot
-                #say-something 说点什么……
+                #prompt
+                    #prompt-head
+                        .say-something 说点什么……
+                        a(href='javascript:;').close-btn
+                    #prompt-body
+                        ul.responses
+                            li
+                                a(href='javascript:;') 很高兴遇见你！
+                            li
+                                a(href='javascript:;') 真的吗？
+                            li
+                                a(href='javascript:;') 我很怀疑这点……
+                        .next-topic
+                            h3 聊点别的？
+                            ul.topics
+                                li
+                                    a(href='javascript:;') 爱好
+                                li
+                                    a(href='javascript:;') 性别
+                                li
+                                    a(href='javascript:;') 性格
+                                li
+                                    a(href='javascript:;') 经历
+
+                #input-hint.say-something 说点什么……
 
         //- #link-panel
         //-     li
