@@ -14,6 +14,8 @@ $clr-text-unimportant: $clr-light;
 $clr-border:           $clr-lighter;
 $clr-border-light:     $clr-lightest;
 
+$clr-mask:             rgba(0, 0, 0, 0.5);
+
 $mobile-width: 360px;
 $mobile-head-height: 55px;
 $mobile-foot-height: 55px;
@@ -95,6 +97,21 @@ li {
     background-color: white;
     border-radius: $radius-lg;
     box-shadow: 0 0 30px 0 rgba(34, 195, 170, 0.5);
+
+    &.has-prompt:after {
+        content: '';
+
+        position: absolute;
+        top: 0;
+        z-index: 50;
+
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        background-color: $clr-mask;
+        border-radius: $radius-lg;
+    }
 }
 
     #mobile-head {
@@ -259,6 +276,7 @@ li {
         #prompt {
             position: absolute;
             bottom: 0;
+            z-index: 100;
 
             width: 100%;
 
