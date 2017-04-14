@@ -42,8 +42,8 @@ $msg-radius: 18px;
         transform: scale(0);
     }
 
-    45% {
-        transform: scale(1.05);
+    40% {
+        transform: scale(1.04);
     }
 
     75% {
@@ -67,7 +67,7 @@ $msg-radius: 18px;
 
 .msg-bounce-in-right {
     @include msg-bounce-in;
-    transform-origin: 100% 0;
+    transform-origin: 100% 100%;
 }
 
 
@@ -216,7 +216,7 @@ body {
                         background: linear-gradient(135deg, #22A9C3 0%,
                             $clr-primary 100%);
                         color: white;
-                        border-radius: $msg-radius 0 $msg-radius $msg-radius;
+                        border-radius: $msg-radius $msg-radius 0 $msg-radius;
                     }
                 }
 
