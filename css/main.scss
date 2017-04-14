@@ -193,7 +193,6 @@ body {
                     display: inline-block;
 
                     margin-bottom: 10px;
-                    padding: 8px 18px;
                     max-width: 60%;
 
                     font-size: 14px;
@@ -218,6 +217,10 @@ body {
                         color: white;
                         border-radius: $msg-radius $msg-radius 0 $msg-radius;
                     }
+                }
+
+                .msg-txt {
+                    padding: 8px 18px;
                 }
 
 

@@ -5,7 +5,7 @@
     function Message(options) {
         this.author = options.author;
         this.isMine = options.isMine;
-        this.type = options.type || 'text';
+        this.type = options.type;
         this.content = options.content;
         this.delay = options.delay || 0;
         this.typingDuration = this.isMine ? 0 : options.typingDuration;
@@ -17,7 +17,14 @@
     Message.prototype.init = function () {
         this.$el = $(
             '<div class="msg-row msg-' + (this.isMine ? 'me': 'xianzhe') + '">'
-            + '<div class="msg msg-txt">' + this.content + '</div>'
+            + (function (type, content) {
+                switch (type) {
+                    case 'text':
+                        return '<div class="msg msg-txt">' + content + '</div>';
+                    case 'image':
+                        return '<img class="msg msg-img" src="' + content +'">'
+                }
+            })(this.type, this.content)
             + '</div>'
         )
             .hide()
@@ -39,7 +46,8 @@
                     // setTimeout(resolve, 500);
                     resolve();
                 },
-                me.delay
+                // me.delay
+                0
             );
         });
     };
@@ -62,7 +70,7 @@
                 type: 'text',
                 author: '钰猫',
                 isMine: true,
-                content: '很高兴遇见你！',
+                content: '真的吗？',
                 delay: 1000
             },
             {
@@ -78,6 +86,13 @@
                 author: '羡辙',
                 isMine: false,
                 content: '我也就客气一下，你别当真',
+                delay: 1000
+            },
+            {
+                type: 'image',
+                author: '钰猫',
+                isMine: true,
+                content: 'http://ogn7l0pet.bkt.clouddn.com/ntmy.jpeg',
                 delay: 1000
             }
         ],
