@@ -33,6 +33,43 @@ $msg-radius: 18px;
 }
 
 
+@keyframes bounceIn {
+    from, to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+    }
+
+    from {
+        transform: scale(0);
+    }
+
+    45% {
+        transform: scale(1.05);
+    }
+
+    75% {
+        transform: scale(0.98);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@mixin msg-bounce-in {
+    animation-name: bounceIn;
+    animation-duration: .4s;
+}
+
+.msg-bounce-in-left {
+    @include msg-bounce-in;
+    transform-origin: 0 0;
+}
+
+.msg-bounce-in-right {
+    @include msg-bounce-in;
+    transform-origin: 100% 0;
+}
+
 
 html, body {
     width: 100%;
