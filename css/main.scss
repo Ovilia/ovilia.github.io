@@ -36,14 +36,14 @@ $msg-animation-duration: .4s;
 
 @font-face {
     font-family: 'Lato';
-    src: local('Lato'), url(http://zhangwenli.com/blog/font/lato400.woff) format('woff');
+    src: local('Lato'), url(./font/lato400.woff) format('woff');
 }
 
 @font-face {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 900;
-    src: local('Lato Black'), local('Lato-Black'), url('http://zhangwenli.com/blog/font/lato900.woff') format('woff');
+    src: local('Lato Black'), local('Lato-Black'), url(./font/lato400.woff) format('woff');
 }
 
 
