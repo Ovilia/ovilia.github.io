@@ -18,6 +18,20 @@ $mobile-head-height: 55px;
 $mobile-foot-height: 55px;
 
 $msg-radius: 18px;
+$msg-animation-duration: .4s;
+
+
+@mixin clearfix {
+    &::before,
+    &::after {
+        content: " ";
+        display: table;
+    }
+
+    &::after {
+        clear: both;
+    }
+}
 
 
 @font-face {
@@ -33,7 +47,7 @@ $msg-radius: 18px;
 }
 
 
-@keyframes bounceIn {
+@keyframes msgBounceIn {
     from, to {
         animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
     }
@@ -55,19 +69,26 @@ $msg-radius: 18px;
     }
 }
 
-@mixin msg-bounce-in {
-    animation-name: bounceIn;
-    animation-duration: .4s;
-}
+@keyframes dotZoomIn {
+    from, 40%, 80%, 100% {
+        animation-timing-function: ease-in-out;
+    }
 
-.msg-bounce-in-left {
-    @include msg-bounce-in;
-    transform-origin: 0 0;
-}
+    from {
+        transform: scale(0);
+    }
 
-.msg-bounce-in-right {
-    @include msg-bounce-in;
-    transform-origin: 100% 100%;
+    40% {
+        transform: scale(1);
+    }
+
+    80% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(0);
+    }
 }
 
 
@@ -186,13 +207,47 @@ body {
             }
 
             .msg-row {
-                clear: both;
+                @include clearfix;
+                margin-bottom: 10px;
             }
+
+            .msg-xianzhe {
+                & + .msg-xianzhe {
+                    margin-top: -5px;
+                }
+            }
+
+                .msg-typing {
+                    height: 36px;
+                    line-height: 36px;
+
+                    .dot {
+                        position: relative;
+                        display: inline-block;
+                        width: 10px;
+                        height: 10px;
+                        background: #b0e9e0;
+                        border-radius: 50%;
+                        transform-origin: 50% 50%;
+                        animation: dotZoomIn 1.4s infinite;
+
+                        &:first-child {
+                            animation-delay: -0.32s;
+                        }
+
+                        &:nth-child(2) {
+                            animation-delay: -0.16s;
+                        }
+
+                        & + .dot {
+                            margin-left: 5px;
+                        }
+                    }
+                }
 
                 .msg {
                     display: inline-block;
 
-                    margin-bottom: 10px;
                     max-width: 60%;
 
                     font-size: 14px;
@@ -203,10 +258,6 @@ body {
 
                     .msg-xianzhe & {
                         border-radius: 0 $msg-radius $msg-radius $msg-radius;
-
-                        .msg-xianzhe + & {
-                            margin-top: -5px;
-                        }
                     }
 
                     .msg-me & {
@@ -219,10 +270,19 @@ body {
                     }
                 }
 
+                .msg-bounce-in-left {
+                    transform-origin: 0 0;
+                    animation: msgBounceIn $msg-animation-duration;
+                }
+
+                .msg-bounce-in-right {
+                    transform-origin: 100% 100%;
+                    animation: msgBounceIn $msg-animation-duration;
+                }
+
                 .msg-txt {
                     padding: 8px 18px;
                 }
-
 
 
     #mobile-foot {

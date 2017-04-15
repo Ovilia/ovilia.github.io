@@ -8,7 +8,7 @@
         this.type = options.type;
         this.content = options.content;
         this.delay = options.delay || 0;
-        this.typingDuration = this.isMine ? 0 : options.typingDuration;
+        this.typingDuration = (this.isMine || !options.typingDuration) ? 0 : options.typingDuration;
         this.$el = null;
 
         this.init();
@@ -32,6 +32,8 @@
     };
 
     Message.prototype.animate = function () {
+        this.typingDuration && this.showTypingEffect();
+
         var me = this;
 
         return new Promise(function (resolve) {    
@@ -41,18 +43,41 @@
                     me.$el
                         .show()
                         .find('.msg')
+                            .show()
                             .addClass(animClass);
-                    
-                    // setTimeout(resolve, 500);
+
                     resolve();
                 },
-                // me.delay
-                0
+                me.delay + me.typingDuration
             );
         });
     };
 
     Message.prototype.showTypingEffect = function () {
+        var $el = this.$el;
+
+        setTimeout(
+            function () {
+                $el.find('.msg').hide();
+                $el
+                    .prepend(
+                        '<div class="msg-typing">'
+                        + '    <div class="dot"></div>'
+                        + '    <div class="dot"></div>'
+                        + '    <div class="dot"></div>'
+                        + '</div>'
+                    )
+                    .show();
+            },
+            this.delay
+        );
+
+        setTimeout(
+            function () {
+                $el.find('.msg-typing').remove();
+            },
+            this.delay + this.typingDuration
+        );
     };
 
 
@@ -79,21 +104,52 @@
                 isMine: false,
                 content: '好吧……',
                 delay: 1000,
-                typingDuration: 1000
+                typingDuration: 1100
             },
             {
                 type: 'text',
                 author: '羡辙',
                 isMine: false,
                 content: '我也就客气一下，你别当真',
+                delay: 200,
+                typingDuration: 1100
+            },
+            {
+                type: 'text',
+                author: '钰猫',
+                isMine: true,
+                content: '我知道你是真心的！',
                 delay: 1000
+            },
+            {
+                type: 'text',
+                author: '羡辙',
+                isMine: false,
+                content: '那证明给我看看',
+                delay: 1000,
+                typingDuration: 2200
             },
             {
                 type: 'image',
                 author: '钰猫',
                 isMine: true,
                 content: 'http://ogn7l0pet.bkt.clouddn.com/ntmy.jpeg',
-                delay: 1000
+                delay: 1500
+            },
+            {
+                type: 'text',
+                author: '羡辙',
+                isMine: false,
+                content: '哈哈，厉害了！',
+                delay: 1000,
+                typingDuration: 1000
+            },
+            {
+                type: 'text',
+                author: '钰猫',
+                isMine: true,
+                content: '半年快乐！',
+                delay: 1200
             }
         ],
 
