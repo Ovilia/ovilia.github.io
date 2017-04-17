@@ -5,35 +5,12 @@ html(lang='en')
         meta(name='viewport', content='width=100%, initial-scale=1')
         link(rel='shortcut icon', href='blog/img/owl.ico')
 
-        script(type='text/javascript').
-            var _hmt = _hmt || [];
-            (function() {
-              var hm = document.createElement("script");
-              hm.src = "//hm.baidu.com/hm.js?dcee78e565eeaedc76defba5d096b344";
-              var s = document.getElementsByTagName("script")[0];
-              s.parentNode.insertBefore(hm, s);
-            })();
-
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-38205696-1']);
-            _gaq.push(['_trackPageview']);
-            (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-
-            // test if supports svg
-            var isSvgSupported = document.implementation.hasFeature(
-                'http://www.w3.org/TR/SVG11/feature#Image', '1.1');
-            _gaq.push(['_trackEvent', 'Support', "Svg", isSvgSupported]);
-
-
         title Ovilia
         link(href='css/main.min.css', rel='stylesheet', type='text/css')
 
     body
-        #mobile.has-prompt
+        //- #mobile.has-prompt
+        #mobile
             #mobile-head
                 #mobile-head-title 与羡辙聊天中
 
@@ -45,26 +22,6 @@ html(lang='en')
                         .msg.msg-txt 很高兴遇见你！
                     .msg-row.msg-me
                         .msg.msg-txt 真的吗？
-                    .msg-row.msg-xianzhe
-                        .msg.msg-txt 好吧……
-                    .msg-row.msg-xianzhe
-                        .msg.msg-txt 我也就客气一下，你别当真
-                    .msg-row.msg-me
-                        .msg.msg-txt 这是一条很长的回复，它应该在适当的位置换行。
-                    .msg-row.msg-me
-                        .msg.msg-txt 连续的两条消息
-                    .msg-row.msg-xianzhe
-                        .msg.msg-txt 很高兴遇见你！
-                    .msg-row.msg-me
-                        .msg.msg-txt 真的吗？
-                    .msg-row.msg-xianzhe
-                        .msg.msg-txt 好吧……
-                    .msg-row.msg-xianzhe
-                        .msg.msg-txt 我也就客气一下，你别当真
-                    .msg-row.msg-me
-                        .msg.msg-txt 这是一条很长的回复，它应该在适当的位置换行。
-                    .msg-row.msg-me
-                        .msg.msg-txt 连续的两条消息
 
             #mobile-foot
                 #prompt
@@ -111,5 +68,25 @@ html(lang='en')
         //-     li
         //-         a(href='mailto:me@zhangwenli.com', target='_blank') Email
 
-        //- script(src='js/zepto.min.js')
-        //- script(src='js/index.js')
+        script(src='lib/zepto.min.js')
+        script(src='lib/vue.js')
+
+        script(src='js/index.js')
+
+        script(type='text/javascript').
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "//hm.baidu.com/hm.js?dcee78e565eeaedc76defba5d096b344";
+              var s = document.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(hm, s);
+            })();
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-38205696-1']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();

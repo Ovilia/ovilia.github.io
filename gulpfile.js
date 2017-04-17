@@ -48,7 +48,7 @@ gulp.task('jade', function () {
  * Watch scss files for changes & recompile
  * Watch html/md files, run jekyll & reload BrowserSync
  */
-gulp.task('watch', function () {
+gulp.task('watch', ['sass', 'jade'],function () {
     gulp.watch('css/*.scss', ['sass'])
         .on('change', browserSync.reload);
     gulp.watch('*.jade', ['jade'])
@@ -70,4 +70,4 @@ gulp.task('browser-sync', function() {
  * Default task, running just `gulp` will compile the sass,
  * compile the jekyll site, launch BrowserSync & watch files.
  */
-gulp.task('default', ['sass', 'jade', 'watch', 'browser-sync']);
+gulp.task('default', ['watch', 'browser-sync']);
