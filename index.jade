@@ -33,7 +33,7 @@ html(lang='en')
         link(href='css/main.min.css', rel='stylesheet', type='text/css')
 
     body
-        #mobile
+        #mobile.has-prompt
             #mobile-head
                 #mobile-head-title 与羡辙聊天中
 
@@ -41,24 +41,57 @@ html(lang='en')
                 #mobile-body-bg
                 #mobile-body-content
                     .msg-time 21:40
-                    //- .msg-row.msg-xianzhe
-                    //-     .msg.msg-txt 很高兴遇见你！
-                    //- .msg-row.msg-me
-                    //-     .msg.msg-txt 真的吗？
-                    //- .msg-row.msg-xianzhe
-                    //-     .msg.msg-txt 好吧……
-                    //- .msg-row.msg-xianzhe
-                    //-     .msg.msg-txt 我也就客气一下，你别当真
-                    //- .msg-row.msg-me
-                    //-     .msg.msg-txt 这是一条很长的回复，它应该在适当的位置换行。
-                    //- .msg-row.msg-xianzhe
-                    //-     .msg-typing
-                    //-         .dot
-                    //-         .dot
-                    //-         .dot
+                    .msg-row.msg-xianzhe
+                        .msg.msg-txt 很高兴遇见你！
+                    .msg-row.msg-me
+                        .msg.msg-txt 真的吗？
+                    .msg-row.msg-xianzhe
+                        .msg.msg-txt 好吧……
+                    .msg-row.msg-xianzhe
+                        .msg.msg-txt 我也就客气一下，你别当真
+                    .msg-row.msg-me
+                        .msg.msg-txt 这是一条很长的回复，它应该在适当的位置换行。
+                    .msg-row.msg-me
+                        .msg.msg-txt 连续的两条消息
+                    .msg-row.msg-xianzhe
+                        .msg.msg-txt 很高兴遇见你！
+                    .msg-row.msg-me
+                        .msg.msg-txt 真的吗？
+                    .msg-row.msg-xianzhe
+                        .msg.msg-txt 好吧……
+                    .msg-row.msg-xianzhe
+                        .msg.msg-txt 我也就客气一下，你别当真
+                    .msg-row.msg-me
+                        .msg.msg-txt 这是一条很长的回复，它应该在适当的位置换行。
+                    .msg-row.msg-me
+                        .msg.msg-txt 连续的两条消息
 
             #mobile-foot
-                #say-something 说点什么……
+                #prompt
+                    #prompt-head
+                        .say-something 说点什么……
+                        a(href='javascript:;').close-btn
+                    #prompt-body
+                        ul.responses
+                            li
+                                a(href='javascript:;') 很高兴遇见你！
+                            li
+                                a(href='javascript:;') 真的吗？
+                            li
+                                a(href='javascript:;') 我很怀疑这点……
+                        .next-topic
+                            h3 聊点别的？
+                            ul.topics
+                                li
+                                    a(href='javascript:;') 爱好
+                                li
+                                    a(href='javascript:;') 性别
+                                li
+                                    a(href='javascript:;') 性格
+                                li
+                                    a(href='javascript:;') 经历
+
+                #input-hint.say-something 说点什么……
 
         //- #link-panel
         //-     li
@@ -78,5 +111,5 @@ html(lang='en')
         //-     li
         //-         a(href='mailto:me@zhangwenli.com', target='_blank') Email
 
-        script(src='js/zepto.min.js')
-        script(src='js/index.js')
+        //- script(src='js/zepto.min.js')
+        //- script(src='js/index.js')
