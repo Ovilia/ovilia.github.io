@@ -1,0 +1,67 @@
+{
+    "fromXianzhe": [{
+        "id": "0000",
+        "details": [
+            ["很高兴遇见你"]
+        ],
+        "responses": [{
+            "content": "我也是！"
+        }, {
+            "content": "我很怀疑这点……",
+            "nextXianzhe": ["0001"]
+        }, {
+            "content": "真的吗？",
+            "nextXianzhe": ["0002"]
+        }],
+        "nextUser": ["1000"]
+    }, {
+        "id": "0001",
+        "details": [
+            ["……", "好吧"]
+        ],
+        "nextXianzhe": ["0003"]
+    }, {
+        "id": "0002",
+        "details": [
+            "我随便说说的，别在意"
+        ],
+        "nextXianzhe": ["0003"]
+    }, {
+        "id": "0003",
+        "details": [
+            ["你想知道点什么？"]
+        ],
+        "responses": [{
+            "content": "你是谁？"
+        }, {
+            "content": "羡辙是什么意思？",
+            "nextXianzhe": []
+        }, {
+            "content": "问什么都可以吗？",
+            "nextXianzhe": []
+        }]
+    }, {
+        "id": "0004",
+        "details": [
+            ["唔……", "这是个哲学问题……", "在我想出这个问题的答案前，我想，你还是先叫我羡辙吧！"],
+            ["额", "你居然连我都不知道？", "好吧", "既然你诚心诚意地问了", "我就大发慈悲地告诉你吧", "我是羡辙"]
+        ],
+        "nextXianzhe": ["0005"]
+    }, {
+        "id": "0005",
+        "details": [
+            [
+                "羡辙是我在阿里实习时候起的花名，具体参见这篇文章",
+                "<a href='http://zhangwenli.com/blog/2015/04/29/new-name/'>http://zhangwenli.com/blog/2015/04/29/new-name</a>"
+            ]
+        ]
+    }],
+    "fromUser": [{
+        "id": "1000",
+        "brief": "爱好",
+        "details": [
+            "你有什么业余爱好呀？",
+            "羡辙的业余时间都做什么呀？"
+        ]
+    }]
+}

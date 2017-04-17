@@ -28,10 +28,10 @@ gulp.task('sass', function () {
  * Build jade files to html
  */
 gulp.task('jade', function () {
-    return gulp.src('*.jade')
-        .pipe(jade())
-        .pipe(gulp.dest('.'))
-        .pipe(browserSync.stream());
+    // return gulp.src('*.jade')
+    //     .pipe(jade())
+    //     .pipe(gulp.dest('.'))
+    //     .pipe(browserSync.stream());
 });
 
 /**
@@ -48,10 +48,8 @@ gulp.task('jade', function () {
  * Watch scss files for changes & recompile
  * Watch html/md files, run jekyll & reload BrowserSync
  */
-gulp.task('watch', ['sass', 'jade'],function () {
+gulp.task('watch', ['sass'],function () {
     gulp.watch('css/*.scss', ['sass'])
-        .on('change', browserSync.reload);
-    gulp.watch('*.jade', ['jade'])
         .on('change', browserSync.reload);
     //gulp.watch('js/common.js', ['compress']);
     //gulp.watch(['js/*.js', 'css/*.css'], ['jekyll']);
