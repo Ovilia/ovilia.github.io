@@ -4,6 +4,7 @@ var prefix      = require('gulp-autoprefixer');
 var uglify      = require('gulp-uglify');
 var rename      = require('gulp-rename');
 var jade        = require('gulp-jade');
+var babel       = require('gulp-babel');
 var browserSync = require('browser-sync').create();
 
 /**
@@ -35,14 +36,15 @@ gulp.task('jade', function () {
 });
 
 /**
- * Minify js
+ * compile es6
  */
-// gulp.task('compress', function() {
-//     return gulp.src('js/common.js')
-//         .pipe(uglify())
-//         .pipe(rename('common.min.js'))
-//         .pipe(gulp.dest('js'));
-// });
+gulp.task('babel', function () {
+    gulp.src('src/*.js')
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(gulp.dest('js'));
+});
 
 /**
  * Watch scss files for changes & recompile
@@ -51,8 +53,9 @@ gulp.task('jade', function () {
 gulp.task('watch', ['sass'],function () {
     gulp.watch('css/*.scss', ['sass'])
         .on('change', browserSync.reload);
-    //gulp.watch('js/common.js', ['compress']);
-    //gulp.watch(['js/*.js', 'css/*.css'], ['jekyll']);
+
+    gulp.watch('src/*.js', ['babel'])
+        .on('change', browserSync.reload);
 });
 
 /**

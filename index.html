@@ -8,7 +8,7 @@
         <link href="css/main.min.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div id="mobile">
+        <div id="mobile" :class="{ 'has-prompt': hasPrompt }">
             <div id="mobile-head">
                 <div id="mobile-head-title">与羡辙聊天中</div>
             </div>
@@ -26,13 +26,15 @@
             <div id="mobile-foot">
                 <div id="prompt">
                     <div id="prompt-head">
-                        <div class="say-something">说点什么……</div><a href="javascript:;" class="close-btn"></a>
+                        <div class="say-something">说点什么……</div>
+                        <a href="javascript:;" class="close-btn"
+                            v-on:click="togglePrompt(false)"></a>
                     </div>
                     <div id="prompt-body">
                         <ul class="responses">
-                            <li><a href="javascript:;">很高兴遇见你！</a></li>
-                            <li><a href="javascript:;">真的吗？</a></li>
-                            <li><a href="javascript:;">我很怀疑这点……</a></li>
+                            <li v-for="res in lastDialog.responses">
+                                <a href="javascript:;">{{ res.content }}</a>
+                            </li>
                         </ul>
                         <div class="next-topic">
                             <h3>聊点别的？</h3>
@@ -45,7 +47,10 @@
                         </div>
                     </div>
                 </div>
-                <div id="input-hint" class="say-something">说点什么……</div>
+                <div id="input-hint" class="say-something"
+                    v-on:click="togglePrompt(true)">
+                    说点什么……
+                </div>
             </div>
         </div>
 
