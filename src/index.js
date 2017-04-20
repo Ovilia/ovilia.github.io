@@ -5,14 +5,14 @@
         ME: 'me'
     };
 
-    let vm = new Vue({
+    const vm = new Vue({
         el: '#mobile',
 
         data: {
             messages: [],
             dialogs: null,
             lastDialog: null,
-            nextDialogs: ['0000'], // dialogs that has not yet send
+            nextDialogs: ['0000'], // dialogs not yet send
 
             hasPrompt: false
         },
@@ -33,28 +33,15 @@
             nextMsg: () => {
                 if (vm.nextDialogs.length > 0) {
                     // send next messages
-                    let dialogId = vm.nextDialogs.shift();
+                    const dialogId = vm.nextDialogs.shift();
                     vm.appendDialog(dialogId);
 
                     // add next dialog
-                    let dialog = getDialog(dialogId);
+                    const dialog = getDialog(dialogId);
                     vm.nextDialogs = vm.nextDialogs.concat(
                         dialog.nextXianzhe || []
                     );
                 }
-            },
-
-            respond: (response) => {
-                // close prompt
-                vm.hasPrompt = false;
-
-                // send my response
-                vm.appendMsg(response.content, AUTHOR.ME);
-
-                // add xianzhe's next dialogs
-                vm.nextDialogs = vm.nextDialogs.concat(
-                    response.nextXianzhe || []
-                );
             },
 
             appendDialog: id => {
@@ -81,8 +68,29 @@
                 onMessageSending();
             },
 
+            getDialog: id => {
+                // only one dialog should be matched by id
+                const dialogs = vm.dialogs.fromXianzhe
+                    .concat(vm.dialogs.fromUser)
+                    .filter(dialog => dialog.id === id);
+                return dialogs ? dialogs[0] : null;
+            },
+
             togglePrompt: toShow => {
                 vm.hasPrompt = toShow;
+            },
+
+            respond: (response) => {
+                // close prompt
+                vm.hasPrompt = false;
+
+                // send my response
+                vm.appendMsg(response.content, AUTHOR.ME);
+
+                // add xianzhe's next dialogs
+                vm.nextDialogs = vm.nextDialogs.concat(
+                    response.nextXianzhe || []
+                );
             }
         }
     });
@@ -97,20 +105,8 @@
             return messages;
         }
 
-        var id = Math.floor(Math.random() * messages.length);
+        let id = Math.floor(Math.random() * messages.length);
         return messages[id];
-    }
-
-
-    /**
-     * get dialog from dialog id
-     */
-    function getDialog(id) {
-        // only one dialog should be matched by id
-        let dialogs = vm.dialogs.fromXianzhe
-            .concat(vm.dialogs.fromUser)
-            .filter(dialog => dialog.id === id);
-        return dialogs ? dialogs[0] : null;
     }
 
 
