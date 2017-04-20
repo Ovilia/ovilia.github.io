@@ -39,7 +39,8 @@
                     // add next dialog
                     let dialog = getDialog(dialogId);
                     vm.nextDialogs = vm.nextDialogs.concat(
-                        dialog.nextXianzhe || []);
+                        dialog.nextXianzhe || []
+                    );
                 }
             },
 
@@ -52,7 +53,8 @@
 
                 // add xianzhe's next dialogs
                 vm.nextDialogs = vm.nextDialogs.concat(
-                    response.nextXianzhe || []);
+                    response.nextXianzhe || []
+                );
             },
 
             appendDialog: id => {
@@ -64,7 +66,9 @@
                 vm.lastDialog = dialog;
 
                 getRandomMsg(dialog.details)
-                    .forEach(content => vm.appendMsg(content, AUTHOR.XIANZHE));
+                    .forEach(
+                        content => vm.appendMsg(content, AUTHOR.XIANZHE)
+                    );
             },
 
             appendMsg: (message, author) => {
@@ -105,9 +109,7 @@
         // only one dialog should be matched by id
         let dialogs = vm.dialogs.fromXianzhe
             .concat(vm.dialogs.fromUser)
-            .filter(dialog => {
-                return dialog.id === id;
-            });
+            .filter(dialog => dialog.id === id);
         return dialogs ? dialogs[0] : null;
     }
 
