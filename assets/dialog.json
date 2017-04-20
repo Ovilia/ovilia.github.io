@@ -5,7 +5,8 @@
             ["很高兴遇见你"]
         ],
         "responses": [{
-            "content": "我也是！"
+            "content": "我也是！",
+            "nextXianzhe": ["0003"]
         }, {
             "content": "我很怀疑这点……",
             "nextXianzhe": ["0001"]
@@ -23,7 +24,7 @@
     }, {
         "id": "0002",
         "details": [
-            "我随便说说的，别在意"
+            ["我随便说说的，别在意"]
         ],
         "nextXianzhe": ["0003"]
     }, {
@@ -32,10 +33,11 @@
             ["你想知道点什么？"]
         ],
         "responses": [{
-            "content": "你是谁？"
+            "content": "你是谁？",
+            "nextXianzhe": ["0004"]
         }, {
             "content": "羡辙是什么意思？",
-            "nextXianzhe": []
+            "nextXianzhe": ["0005"]
         }, {
             "content": "问什么都可以吗？",
             "nextXianzhe": []

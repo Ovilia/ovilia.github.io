@@ -31,13 +31,13 @@
                             v-on:click="togglePrompt(false)"></a>
                     </div>
                     <div id="prompt-body">
-                        <ul class="responses">
+                        <ul class="responses" v-if="lastDialog">
                             <li v-for="res in lastDialog.responses">
-                                <a href="javascript:;">{{ res.content }}</a>
+                                <a href="javascript:;" v-on:click="respond(res)">{{ res.content }}</a>
                             </li>
                         </ul>
                         <div class="next-topic">
-                            <h3>聊点别的？</h3>
+                            <h3 v-if="lastDialog && lastDialog.responses">聊点别的？</h3>
                             <ul class="topics">
                                 <li><a href="javascript:;">爱好</a></li>
                                 <li><a href="javascript:;">性别</a></li>

@@ -1,5 +1,10 @@
 (function () {
 
+    const AUTHOR = {
+        XIANZHE: 'xianzhe',
+        ME: 'me'
+    };
+
     let vm = new Vue({
         el: '#mobile',
 
@@ -7,22 +12,47 @@
             messages: [],
             dialogs: null,
             lastDialog: null,
+            nextDialogs: ['0000'], // dialogs that has not yet send
 
             hasPrompt: false
         },
 
-        methods: {
-            init: () => {
-                $.getJSON('./assets/dialog.json', data => {
-                    vm.dialogs = data;
+        mounted: () => {
+            $.getJSON('./assets/dialog.json', data => {
+                vm.dialogs = data;
+                vm.nextMsg();
+
+                // TODO: add animation here
+                setInterval(() => {
                     vm.nextMsg();
-                });
+                }, 1000);
+            });
+        },
+
+        methods: {
+            nextMsg: () => {
+                if (vm.nextDialogs.length > 0) {
+                    // send next messages
+                    let dialogId = vm.nextDialogs.shift();
+                    vm.appendDialog(dialogId);
+
+                    // add next dialog
+                    let dialog = getDialog(dialogId);
+                    vm.nextDialogs = vm.nextDialogs.concat(
+                        dialog.nextXianzhe || []);
+                }
             },
 
-            nextMsg: () => {
-                if (vm.messages.length === 0) {
-                    vm.appendDialog('0000');
-                }
+            respond: (response) => {
+                // close prompt
+                vm.hasPrompt = false;
+
+                // send my response
+                vm.appendMsg(response.content, AUTHOR.ME);
+
+                // add xianzhe's next dialogs
+                vm.nextDialogs = vm.nextDialogs.concat(
+                    response.nextXianzhe || []);
             },
 
             appendDialog: id => {
@@ -30,24 +60,21 @@
                     return;
                 }
 
-                vm.dialogs.fromXianzhe
-                    .filter(dialog => {
-                        return dialog.id === id;
-                    })
-                    .forEach(dialog => {
-                        // only one dialog should be matched by id
-                        vm.lastDialog = dialog;
-                        getRandomMsg(dialog.details)
-                            .forEach((content) => vm.appendMsg(content));
-                    });
+                let dialog = getDialog(id);
+                vm.lastDialog = dialog;
+
+                getRandomMsg(dialog.details)
+                    .forEach(content => vm.appendMsg(content, AUTHOR.XIANZHE));
             },
 
-            appendMsg: message => {
+            appendMsg: (message, author) => {
                 vm.messages.push({
-                    author: 'xianzhe',
+                    author: author,
                     type: '',
                     content: getRandomMsg(message)
                 });
+
+                scrollBottom();
             },
 
             togglePrompt: toShow => {
@@ -56,9 +83,10 @@
         }
     });
 
-    vm.init();
 
-
+    /**
+     * get a random message from message array
+     */
     function getRandomMsg(messages) {
         // single item
         if (typeof messages === 'string' || !messages.length) {
@@ -67,6 +95,34 @@
 
         var id = Math.floor(Math.random() * messages.length);
         return messages[id];
+    }
+
+
+    /**
+     * get dialog from dialog id
+     */
+    function getDialog(id) {
+        // only one dialog should be matched by id
+        let dialogs = vm.dialogs.fromXianzhe
+            .concat(vm.dialogs.fromUser)
+            .filter(dialog => {
+                return dialog.id === id;
+            });
+        return dialogs ? dialogs[0] : null;
+    }
+
+
+    /**
+     * scroll to bottom when new message is added
+     */
+    function scrollBottom() {
+        // update scroll position when vue has updated ui
+        setTimeout(() => {
+            const $chatbox = $('#mobile-body-content');
+            $chatbox.scrollTop(
+                $chatbox[0].scrollHeight - $chatbox.height()
+            );
+        });
     }
 
 })();
