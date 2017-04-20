@@ -19,7 +19,7 @@
                     <div class="msg-row"
                         v-for="msg in messages"
                         :class="msg.author === 'xianzhe' ? 'msg-xianzhe' : 'msg-me'">
-                        <div class="msg msg-txt">{{ msg.content }}</div>
+                        <div class="msg msg-txt" v-html="msg.content"></div>
                     </div>
                 </div>
             </div>

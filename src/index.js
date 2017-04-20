@@ -78,7 +78,7 @@
                     content: getRandomMsg(message)
                 });
 
-                scrollBottom();
+                onMessageSending();
             },
 
             togglePrompt: toShow => {
@@ -115,15 +115,18 @@
 
 
     /**
-     * scroll to bottom when new message is added
+     * UI updating when new message is sending
      */
-    function scrollBottom() {
-        // update scroll position when vue has updated ui
+    function onMessageSending() {
         setTimeout(() => {
+            // update scroll position when vue has updated ui
             const $chatbox = $('#mobile-body-content');
             $chatbox.scrollTop(
                 $chatbox[0].scrollHeight - $chatbox.height()
             );
+
+            // add target="_blank" for links
+            $('.msg a').attr('target', '_blank');
         });
     }
 

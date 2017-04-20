@@ -6,6 +6,10 @@
     width: 100%;
 
     background: #E8F9F6;
+
+    a {
+        color: $clr-primary;
+    }
 }
 
     #mobile-body-bg {
@@ -98,7 +102,7 @@
             .msg {
                 display: inline-block;
 
-                padding: 8px 18px;
+                padding: 10px 18px;
                 max-width: 75%;
                 overflow: hidden;
                 word-wrap: break-word;
@@ -132,10 +136,6 @@
             .msg-bounce-in-right {
                 transform-origin: 100% 100%;
                 animation: msgBounceIn $msg-animation-duration;
-            }
-
-            .msg-txt {
-                padding: 8px 18px;
             }
 
             .msg-typing {
