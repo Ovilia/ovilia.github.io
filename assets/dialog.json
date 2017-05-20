@@ -40,7 +40,7 @@
             "nextXianzhe": ["0005"]
         }, {
             "content": "问什么都可以吗？",
-            "nextXianzhe": []
+            "nextXianzhe": ["0006"]
         }]
     }, {
         "id": "0004",
@@ -52,9 +52,165 @@
     }, {
         "id": "0005",
         "details": [
+            ["羡辙是我在阿里实习时候起的花名，具体参见这篇文章", "<a href='http://zhangwenli.com/blog/2015/04/29/new-name/'>http://zhangwenli.com/blog/2015/04/29/new-name</a>"]
+        ]
+    }, {
+        "id": "0006",
+        "details": [
+            ["话是没错啦……", "不过，反正你也不能输入文字哈哈~"]
+        ]
+    }, {
+        "id": "0007",
+        "details": [
+            ["我经常觉得自己挺无聊的……", "业余时间会看书、看电影、看剧等等，放松一下吧，也没什么特别的。。"]
+        ],
+        "nextXianzhe": ["0013"]
+    }, {
+        "id": "0008",
+        "details": [
+            ["喜欢啊！", "最喜欢的书是《红楼梦》，是全世界最棒的书！"]
+        ],
+        "responses": [{
+            "content": "哇！我也这么觉得呢~",
+            "nextXianzhe": ["0010"]
+        }, {
+            "content": "好吧……",
+            "nextXianzhe": ["0010"]
+        }]
+    }, {
+        "id": "0009",
+        "details": [
+            ["哈哈哈，你猜？"]
+        ],
+        "responses": [{
+            "content": "羡辙这么可爱，一定是男孩纸吧！所以…应该有女朋友！",
+            "nextXianzhe": ["0015"]
+        }, {
+            "content": "就算你有，也千万别告诉我！",
+            "nextXianzhe": ["0018"]
+        }, {
+            "content": "哈哈哈，你才不会有呢！",
+            "nextXianzhe": ["0017"]
+        }]
+    }, {
+        "id": "0010",
+        "details": [
+            ["想要我给你推荐一点好书吗？"]
+        ],
+        "responses": [{
+            "content": "好啊！羡辙推荐的书一定很棒~",
+            "nextXianzhe": ["0011"]
+        }, {
+            "content": "算了，我不是很感兴趣……",
+            "nextXianzhe": ["0012"]
+        }]
+    }, {
+        "id": "0011",
+        "details": [
+            ["这是<a href='https://book.douban.com/people/ovilia1024/collect?sort=rating&start=0&mode=grid&tags_sort=count'>我最近读过的好书</a>，希望你也喜欢~"]
+        ],
+        "nextXianzhe": ["0013"]
+    }, {
+        "id": "0012",
+        "details": [
+            ["哦"],
+            ["好吧……"],
+            ["哼~"]
+        ]
+    }, {
+        "id": "0013",
+        "details": [
+            ["想看看我画的画吗？", "虽然……", "没啥天赋……"]
+        ],
+        "responses": [{
+            "content": "好啊好啊！",
+            "nextXianzhe": ["0014"]
+        }, {
+            "content": "唔，算了吧……",
+            "nextXianzhe": ["0012"]
+        }]
+    }, {
+        "id": "0014",
+        "details": [
+            ["<img src='img/mushroom.jpg'>", "<img src='img/trees.jpg'>"]
+        ]
+    }, {
+        "id": "0015",
+        "details": [
+            ["哈哈，你猜对了！", "这是我女朋友", "<img src='img/xianzhe.jpg'>"]
+        ],
+        "responses": [{
+            "content": "……",
+            "nextXianzhe": ["0016"]
+        }]
+    }, {
+        "id": "0016",
+        "details": [
             [
-                "羡辙是我在阿里实习时候起的花名，具体参见这篇文章",
-                "<a href='http://zhangwenli.com/blog/2015/04/29/new-name/'>http://zhangwenli.com/blog/2015/04/29/new-name</a>"
+                "好吧，我还是说明确一点（那种讲个笑话没人 get 到梗，还信以为真的事真是尴尬啊~）",
+                "这是我自己的照片啦~",
+                "怎么样，骗到真相还是很开心的吧？"
+            ]
+        ],
+        "responses": [{
+            "content": "你真逗……"
+        }, {
+            "content": "这一点都不好笑……"
+        }]
+    }, {
+        "id": "0017",
+        "details": [
+            ["你……", "我就当你是在恭维我吧……"]
+        ],
+        "nextXianzhe": ["0018"]
+    }, {
+        "id": "0018",
+        "details": [
+            ["嘘……", "<img src='img/yumao.jpg'>"]
+        ],
+        "responses": [{
+            "content": "唉，很好奇怎样的人能俘获羡辙的芳心啊~~",
+            "nextXianzhe": ["0020"]
+        }, {
+            "content": "哦，那我们也没什么好说的了。再见。:)"
+        }]
+    }, {
+        "id": "0019",
+        "details": [
+            [
+                "这个嘛……我也不大好说",
+                "可能就是比较古灵精怪吧？有的时候鬼点子比较多，不喜欢太过平庸的东西",
+                "很容易觉得无聊，对很多事情觉得提不起兴趣，但本身又是个兴趣很广泛的人"
+            ]
+        ],
+        "nextUser": ["1000"]
+    }, {
+        "id": "0020",
+        "details": [
+            ["唔……我想想……", "有了！", "既可以悟言一室之内，又可以放浪形骸之外的人"]
+        ],
+        "responses": [{
+            "content": "啥意思？",
+            "nextXianzhe": ["0021"]
+        }]
+    }, {
+        "id": "0021",
+        "details": [
+            ["你看，这你都听不懂……知道为什么我不会喜欢你了吧？"]
+        ],
+        "responses": [{
+            "content": "……"
+        }]
+    }, {
+        "id": "0022",
+        "details": [
+            [
+                "<img src='img/bunny.png'>",
+                "<img src='img/dragon-3d.png'>",
+                "<img src='img/yumao-xianzhe.png'>",
+                "这是最近的一些作品~",
+                "业余时间喜欢看看设计类的书，自己动手做一些东西。虽然跟科班出身的设计相比距离很大，但是作为一项技能和爱好还是挺有意思的",
+                "希望你喜欢~"
             ]
         ]
     }],
@@ -64,6 +220,38 @@
         "details": [
             "你有什么业余爱好呀？",
             "羡辙的业余时间都做什么呀？"
-        ]
+        ],
+        "nextXianzhe": ["0007"]
+    }, {
+        "id": "1002",
+        "brief": "读书",
+        "details": [
+            "羡辙喜欢读书吗？",
+            "羡辙喜欢读书吗？羡辙有什么喜欢的书吗？"
+        ],
+        "nextXianzhe": ["0008"]
+    }, {
+        "id": "1003",
+        "brief": "恋爱",
+        "details": [
+            "可以八卦一下羡辙的感情生活吗？嘿嘿……",
+            "羡辙有男朋友嘛？"
+        ],
+        "nextXianzhe": ["0009"]
+    }, {
+        "id": "1004",
+        "brief": "性格",
+        "details": [
+            "羡辙觉得自己是什么性格的人呢？",
+            "很好奇啊，羡辙是怎样一个人呢~"
+        ],
+        "nextXianzhe": ["0019"]
+    }, {
+        "id": "1005",
+        "brief": "设计",
+        "details": [
+            "可以看看你的设计作品吗？"
+        ],
+        "nextXianzhe": ["0022"]
     }]
 }

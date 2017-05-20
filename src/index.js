@@ -5,6 +5,8 @@
         ME: 'me'
     };
 
+    let msgSendingHandler = null;
+
     const vm = new Vue({
         el: '#mobile',
 
@@ -12,7 +14,12 @@
             messages: [],
             dialogs: null,
             lastDialog: null,
-            nextDialogs: ['0000'], // dialogs not yet send
+
+            // messages not sent yet
+            nextMsgs: [],
+
+            // topics that user can ask
+            nextTopics: [],
 
             hasPrompt: false
         },
@@ -20,45 +27,59 @@
         mounted: () => {
             $.getJSON('./assets/dialog.json', data => {
                 vm.dialogs = data;
-                vm.nextMsg();
 
-                // TODO: add animation here
-                setInterval(() => {
-                    vm.nextMsg();
-                }, 1000);
+                // TODO: update nextTopics according to dialog
+                vm.nextTopics = vm.dialogs.fromUser;
+
+                vm.appendDialog('0000');
+
+                // auto-play messages
+                vm.restartClock();
             });
         },
 
         methods: {
-            nextMsg: () => {
-                if (vm.nextDialogs.length > 0) {
-                    // send next messages
-                    const dialogId = vm.nextDialogs.shift();
-                    vm.appendDialog(dialogId);
 
-                    // add next dialog
-                    const dialog = getDialog(dialogId);
-                    vm.nextDialogs = vm.nextDialogs.concat(
-                        dialog.nextXianzhe || []
-                    );
+            playNext: () => {
+                if (vm.nextMsgs.length > 0) {
+                    // has unsent msg, send one
+                    var msg = vm.nextMsgs.shift();
+                    vm.sendMsg(msg.content, msg.author);
+
+                    // check if to append new dialogs
+                    if (vm.lastDialog && (vm.nextMsgs.length === 0
+                        || vm.nextMsgs[0].dialog.id !== msg.dialog.id)
+                    ) {
+                        // end of messages with the same dialog
+                        vm.appendDialog(msg.dialog.nextXianzhe);
+                    }
+
+                    vm.lastDialog = msg.dialog;
                 }
             },
 
             appendDialog: id => {
-                if (!vm.dialogs) {
+                if (typeof id === 'object' && id.length > 0) {
+                    // array of dialog ids
+                    id.forEach(id => vm.appendDialog(id));
+                    return;
+                }
+                else if (id == null) {
                     return;
                 }
 
-                let dialog = getDialog(id);
-                vm.lastDialog = dialog;
+                let dialog = vm.getDialog(id);
 
                 getRandomMsg(dialog.details)
-                    .forEach(
-                        content => vm.appendMsg(content, AUTHOR.XIANZHE)
-                    );
+                    .forEach(content => vm.nextMsgs.push({
+                            content: content,
+                            author: AUTHOR.XIANZHE,
+                            dialog: dialog
+                    }));
+
             },
 
-            appendMsg: (message, author) => {
+            sendMsg: (message, author) => {
                 vm.messages.push({
                     author: author,
                     type: '',
@@ -71,7 +92,13 @@
             getDialog: id => {
                 // only one dialog should be matched by id
                 const dialogs = vm.dialogs.fromXianzhe
-                    .concat(vm.dialogs.fromUser)
+                    .filter(dialog => dialog.id === id);
+                return dialogs ? dialogs[0] : null;
+            },
+
+            getDialogFromUser: id => {
+                // only one dialog should be matched by id
+                const dialogs = vm.dialogs.fromUser
                     .filter(dialog => dialog.id === id);
                 return dialogs ? dialogs[0] : null;
             },
@@ -80,17 +107,46 @@
                 vm.hasPrompt = toShow;
             },
 
-            respond: (response) => {
+            respond: response => {
                 // close prompt
                 vm.hasPrompt = false;
 
                 // send my response
-                vm.appendMsg(response.content, AUTHOR.ME);
+                vm.sendMsg(response.content, AUTHOR.ME);
 
                 // add xianzhe's next dialogs
-                vm.nextDialogs = vm.nextDialogs.concat(
-                    response.nextXianzhe || []
-                );
+                vm.appendDialog(response.nextXianzhe);
+
+                // clear possible responses
+                vm.lastDialog.responses = null;
+
+                // send msg after a duration
+                vm.restartClock();
+            },
+
+            ask: fromUser => {
+                // close prompt
+                vm.hasPrompt = false;
+
+                // send user msg
+                var content = getRandomMsg(fromUser.details);
+                vm.sendMsg(content, AUTHOR.ME);
+
+                // update xianzhe dialog
+                vm.appendDialog(fromUser.nextXianzhe);
+            },
+
+            restartClock: () => {
+                // stop interval
+                if (msgSendingHandler) {
+                    clearInterval(msgSendingHandler);
+                    msgSendingHandler = null;
+                }
+
+                // start interval
+                msgSendingHandler = setInterval(() => {
+                    vm.playNext();
+                }, 1000);
             }
         }
     });

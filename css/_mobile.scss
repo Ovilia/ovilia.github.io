@@ -18,7 +18,6 @@
         height: $mobile-head-height - 1;
 
         background: white;
-        border-bottom: 1px solid $clr-border-light;
     }
 
         #mobile-head-title {
@@ -43,3 +42,24 @@
             padding: 18px 25px;
             color: $clr-text-unimportant;
         }
+
+
+@media (max-width: 480px) {
+    #mobile {
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin-left: 0;
+        width: auto;
+        border-radius: 0;
+
+        &.has-prompt:after {
+            border-radius: 0 !important;
+        }
+    }
+
+    #prompt-body {
+        border-radius: 0 !important;
+    }
+}

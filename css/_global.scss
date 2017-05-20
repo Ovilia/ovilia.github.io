@@ -96,9 +96,11 @@ li {
     list-style: none;
 }
 
+img {
+    max-width: 100%;
+}
+
 
 .primary-bg {
-    background: linear-gradient(20deg,
-        lighten(#22A9C3, 10%) 0%,
-        lighten($clr-primary, 10%) 100%);
+    background: linear-gradient(20deg, #3FD1E1 0%, #44D7CD 100%);
 }
