@@ -19,7 +19,9 @@
                     <div class="msg-row"
                         v-for="msg in messages"
                         :class="msg.author === 'xianzhe' ? 'msg-xianzhe' : 'msg-me'">
-                        <div class="msg msg-txt" v-html="msg.content"></div>
+                        <div class="msg"
+                            :class="'msg-bounce-in-' + (msg.author === 'xianzhe' ? 'left': 'right')"
+                            v-html="msg.content"></div>
                     </div>
                 </div>
             </div>
@@ -55,6 +57,7 @@
 
         <script src="lib/zepto.min.js"></script>
         <script src="lib/vue.js"></script>
+        <!--<script src="lib/anime.min.js"></script>-->
 
         <script src="js/index.js"></script>
 

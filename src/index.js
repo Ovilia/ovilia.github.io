@@ -5,6 +5,8 @@
         ME: 'me'
     };
 
+    const TYPING_MSG_CONTENT = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+
     let msgSendingHandler = null;
 
     const vm = new Vue({
@@ -72,21 +74,60 @@
 
                 getRandomMsg(dialog.details)
                     .forEach(content => vm.nextMsgs.push({
-                            content: content,
-                            author: AUTHOR.XIANZHE,
-                            dialog: dialog
+                        content: content,
+                        author: AUTHOR.XIANZHE,
+                        dialog: dialog
                     }));
 
             },
 
             sendMsg: (message, author) => {
-                vm.messages.push({
+                switch (author) {
+                    case 'me':
+                        return vm.sendUserMsg(message);
+                    default:
+                        return vm.sendFriendMsg(message, author);
+                }
+            },
+
+            sendFriendMsg: (message, author) => {
+                const content = getRandomMsg(message);
+                const length = content.length;
+                const isTyping = length > 5;
+
+                const msg = {
                     author: author,
-                    type: '',
-                    content: getRandomMsg(message)
+                    content: isTyping ? TYPING_MSG_CONTENT : content
+                };
+                vm.messages.push(msg);
+
+                onMessageSending();
+
+                if (isTyping) {
+                    return new Promise(resolve => {
+                        setTimeout(
+                            () => {
+                                msg.content = content;      
+                                onMessageSending();
+                                resolve();
+                            },
+                            Math.min(200 * length, 2000) // TODO: 参数调优
+                        )
+                    });
+                }
+
+                return Promise.resolve();
+            },
+
+            sendUserMsg: (message) => {
+                vm.messages.push({
+                    author: AUTHOR.ME,
+                    content: message
                 });
 
                 onMessageSending();
+
+                return Promise.resolve();
             },
 
             getDialog: id => {
@@ -171,14 +212,16 @@
      */
     function onMessageSending() {
         setTimeout(() => {
-            // update scroll position when vue has updated ui
             const $chatbox = $('#mobile-body-content');
+
+            // update scroll position when vue has updated ui
             $chatbox.scrollTop(
                 $chatbox[0].scrollHeight - $chatbox.height()
             );
 
             // add target="_blank" for links
-            $('.msg a').attr('target', '_blank');
+            const $latestMsg = $chatbox.find('.msg-row:last-child .msg');
+            $latestMsg.find('a').attr('target', '_blank');
         });
     }
 
