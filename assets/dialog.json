@@ -53,12 +53,24 @@
         "id": "0005",
         "details": [
             ["羡辙是我在阿里实习时候起的花名，具体参见这篇文章", "<a href='http://zhangwenli.com/blog/2015/04/29/new-name/'>http://zhangwenli.com/blog/2015/04/29/new-name</a>"]
-        ]
+        ],
+        "responses": [{
+            "content": "你的职业是？",
+            "nextXianzhe": ["0023"]
+        }, {
+            "content": "真有意思~",
+            "nextXianzhe": ["0026"]
+        }]
     }, {
         "id": "0006",
         "details": [
             ["话是没错啦……", "不过，反正你也不能输入文字哈哈~"]
-        ]
+        ],
+        "responses": [{
+            "content": "……"
+        }, {
+            "content": "算你狠"
+        }]
     }, {
         "id": "0007",
         "details": [
@@ -213,6 +225,105 @@
                 "希望你喜欢~"
             ]
         ]
+    }, {
+        "id": "0023",
+        "details": [
+            ["唔，我是一个程序媛", "准确地说，是在百度工作的前端工程师"]
+        ],
+        "responses": [{
+            "content": "嗯哼~ 百度？",
+            "nextXianzhe": ["0024"]
+        }]
+    }, {
+        "id": "0024",
+        "details": [
+            ["是的", "我在百度 ECharts 团队做可视化相关的工作"]
+        ],
+        "responses": [{
+            "content": "听起来很有意思~ 可以具体跟我说说你做了什么吗？",
+            "nextXianzhe": ["0025"]
+        }, {
+            "content": "哦"
+        }]
+    }, {
+        "id": "0025",
+        "details": [
+            [
+                "<a href='http://echarts.baidu.com/theme-builder/'>ECharts 主题编辑器</a>",
+                "<img src='img/echarts-theme-editor.png'>",
+                "<a href='https://github.com/ecomfe/echarts-liquidfill'>水球图</a>",
+                "<img src='img/echarts-liquidfill.jpg'>",
+                "极坐标系下的柱状图",
+                "<img src='img/echarts-polar-bar.png'>",
+                "等等"
+            ]
+        ]
+    }, {
+        "id": "0026",
+        "details": [
+            ["谢谢喜欢~"],
+            ["XD"],
+            ["嘿嘿嘿嘿~"]
+        ]
+    }, {
+        "id": "0027",
+        "details": [
+            [
+                "主页的创意来自对话式的游戏",
+                "现在我们很多时候了解一个人都是通过类似的即时工具聊天吧？",
+                "那么，这样一种形式让你了解我，和在生活中认识我，又有多少差别呢？"
+            ]
+        ],
+        "responses": [{
+            "content": "赞！"
+        }, {
+            "content": "嗯嗯"
+        }, {
+            "content": "哦"
+        }]
+    }, {
+        "id": "0028",
+        "details": [
+            ["<img src='img/photo-1.jpg'>", "交大闵行校区的图书馆楼梯"]
+        ],
+        "responses": [{
+            "content": "这是你最满意的作品吗？",
+            "nextXianzhe": ["0029"]
+        }]
+    }, {
+        "id": "0029",
+        "details": [
+            ["不，最满意的是这张", "<img src='img/yumao-smile.jpg'>"]
+        ],
+        "responses": [{
+            "content": "……"
+        }]
+    }, {
+        "id": "0030",
+        "details": [
+            ["我美吗？"]
+        ],
+        "responses": [{
+            "content": "还没看呢",
+            "nextXianzhe": ["0031"]
+        }, {
+            "content": "羡辙当然最美啦！",
+            "nextXianzhe": ["0032"]
+        }]
+    }, {
+        "id": "0031",
+        "details": [
+            ["哦，那算了"],
+            ["哼，那没了"]
+        ],
+        "responses": [{
+            "content": "……"
+        }]
+    }, {
+        "id": "0032",
+        "details": [
+            ["嘻嘻，哪里哪里~", "<img src='img/xianzhe.jpg'>"]
+        ]
     }],
     "fromUser": [{
         "id": "1000",
@@ -253,5 +364,29 @@
             "可以看看你的设计作品吗？"
         ],
         "nextXianzhe": ["0022"]
+    }, {
+        "id": "1005",
+        "brief": "摄影",
+        "details": [
+            "羡辙要不要秀一下自己的摄影作品啊？",
+            "发张你拍的照来看看？"
+        ],
+        "nextXianzhe": ["0028"]
+    }, {
+        "id": "1007",
+        "brief": "真相",
+        "details": [
+            "求真相",
+            "羡辙羡辙！我要看你的真相~~"
+        ],
+        "nextXianzhe": ["0030"]
+    }, {
+        "id": "1006",
+        "brief": "主页创意",
+        "details": [
+            "这个主页好有意思啊！",
+            "这个主页的创意很棒~"
+        ],
+        "nextXianzhe": ["0026", "0027"]
     }]
 }
