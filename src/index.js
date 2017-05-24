@@ -53,12 +53,12 @@
                 getRandomMsg(dialog.details)
                     .forEach(content => {
                         this.msgChain = this.msgChain
+                            .then(() => delay(700))
                             .then(() => this.sendMsg(content, AUTHOR.XIANZHE));
                     });
 
-                this.msgChain
+                return this.msgChain
                     .then(() => {
-                        console.log(dialog);
                         this.lastDialog = dialog;
                     });
             },
@@ -86,16 +86,11 @@
                 onMessageSending();
 
                 if (isTyping) {
-                    return new Promise(resolve => {
-                        setTimeout(
-                            () => {
-                                msg.content = content;      
-                                onMessageSending();
-                                resolve();
-                            },
-                            Math.min(100 * length, 2000) // TODO: 参数调优
-                        )
-                    });
+                    return delay(Math.min(100 * length, 2000)) // TODO: 参数调优
+                        .then(() => {
+                            msg.content = content;
+                            onMessageSending();
+                        });
                 }
 
                 return Promise.resolve();
@@ -108,7 +103,7 @@
                 });
 
                 onMessageSending();
-
+                
                 return Promise.resolve();
             },
 
@@ -131,26 +126,24 @@
             },
 
             respond(response) {
-                // close prompt
-                this.hasPrompt = false;
-
-                // send my response
-                this.sendMsg(response.content, AUTHOR.ME);
-
-                // add xianzhe's next dialogs
-                this.appendDialog(response.nextXianzhe);
+                return this.say(response.content, response.nextXianzhe);
             },
 
             ask(fromUser) {
+                const content = getRandomMsg(fromUser.details);
+                return this.say(content, fromUser.nextXianzhe);
+            },
+
+            say(content, dialogId) {
                 // close prompt
                 this.hasPrompt = false;
-
-                // send user msg
-                var content = getRandomMsg(fromUser.details);
-                this.sendMsg(content, AUTHOR.ME);
-
-                // update xianzhe dialog
-                this.appendDialog(fromUser.nextXianzhe);
+ 
+                return delay(200)
+                    // send user msg
+                    .then(() => this.sendMsg(content, AUTHOR.ME))
+                    .then(() => delay(300))
+                    // add xianzhe's next dialogs
+                    .then(() => this.appendDialog(dialogId)); 
             }
         }
     });
@@ -185,6 +178,12 @@
             // add target="_blank" for links
             const $latestMsg = $chatbox.find('.msg-row:last-child .msg');
             $latestMsg.find('a').attr('target', '_blank');
+        });
+    }
+
+    function delay(amount = 0) {
+        return new Promise(resolve => {
+            setTimeout(resolve, amount);
         });
     }
 

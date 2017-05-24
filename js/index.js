@@ -62,12 +62,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
                 getRandomMsg(dialog.details).forEach(function (content) {
                     _this2.msgChain = _this2.msgChain.then(function () {
+                        return delay(700);
+                    }).then(function () {
                         return _this2.sendMsg(content, AUTHOR.XIANZHE);
                     });
                 });
 
-                this.msgChain.then(function () {
-                    console.log(dialog);
+                return this.msgChain.then(function () {
                     _this2.lastDialog = dialog;
                 });
             },
@@ -93,13 +94,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 onMessageSending();
 
                 if (isTyping) {
-                    return new Promise(function (resolve) {
-                        setTimeout(function () {
-                            msg.content = content;
-                            onMessageSending();
-                            resolve();
-                        }, Math.min(100 * length, 2000) // TODO: 参数调优
-                        );
+                    return delay(Math.min(100 * length, 2000)) // TODO: 参数调优
+                    .then(function () {
+                        msg.content = content;
+                        onMessageSending();
                     });
                 }
 
@@ -133,25 +131,29 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 this.hasPrompt = toShow;
             },
             respond: function respond(response) {
-                // close prompt
-                this.hasPrompt = false;
-
-                // send my response
-                this.sendMsg(response.content, AUTHOR.ME);
-
-                // add xianzhe's next dialogs
-                this.appendDialog(response.nextXianzhe);
+                return this.say(response.content, response.nextXianzhe);
             },
             ask: function ask(fromUser) {
+                var content = getRandomMsg(fromUser.details);
+                return this.say(content, fromUser.nextXianzhe);
+            },
+            say: function say(content, dialogId) {
+                var _this3 = this;
+
                 // close prompt
                 this.hasPrompt = false;
 
+                return delay(200)
                 // send user msg
-                var content = getRandomMsg(fromUser.details);
-                this.sendMsg(content, AUTHOR.ME);
-
-                // update xianzhe dialog
-                this.appendDialog(fromUser.nextXianzhe);
+                .then(function () {
+                    return _this3.sendMsg(content, AUTHOR.ME);
+                }).then(function () {
+                    return delay(300);
+                })
+                // add xianzhe's next dialogs
+                .then(function () {
+                    return _this3.appendDialog(dialogId);
+                });
             }
         }
     });
@@ -182,6 +184,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             // add target="_blank" for links
             var $latestMsg = $chatbox.find('.msg-row:last-child .msg');
             $latestMsg.find('a').attr('target', '_blank');
+        });
+    }
+
+    function delay() {
+        var amount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+        return new Promise(function (resolve) {
+            setTimeout(resolve, amount);
         });
     }
 })();
