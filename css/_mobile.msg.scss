@@ -59,21 +59,6 @@
         img {
             margin: 8px 0;
         }
-    }
-
-    .msg-bounce-in-left {
-        transform-origin: 0 0;
-        animation: msgBounceIn $msg-animation-duration;
-    }
-
-    .msg-bounce-in-right {
-        transform-origin: 100% 100%;
-        animation: msgBounceIn $msg-animation-duration;
-    }
-
-    .msg-typing {
-        height: 36px;
-        line-height: 36px;
 
         .dot {
             position: relative;
@@ -97,4 +82,14 @@
                 margin-left: 5px;
             }
         }
+    }
+
+    .msg-bounce-in-left {
+        transform-origin: 0 0;
+        animation: msgBounceIn $msg-animation-duration;
+    }
+
+    .msg-bounce-in-right {
+        transform-origin: 100% 100%;
+        animation: msgBounceIn $msg-animation-duration;
     }
