@@ -43,6 +43,8 @@
                     return;
                 }
                 else if (id == null) {
+                    // clear possible responses
+                    this.lastDialog.responses = null;
                     return;
                 }
 
@@ -56,6 +58,7 @@
 
                 this.msgChain
                     .then(() => {
+                        console.log(dialog);
                         this.lastDialog = dialog;
                     });
             },
@@ -136,9 +139,6 @@
 
                 // add xianzhe's next dialogs
                 this.appendDialog(response.nextXianzhe);
-
-                // clear possible responses
-                this.lastDialog.responses = null;
             },
 
             ask(fromUser) {

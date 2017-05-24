@@ -53,6 +53,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     });
                     return;
                 } else if (id == null) {
+                    // clear possible responses
+                    this.lastDialog.responses = null;
                     return;
                 }
 
@@ -65,6 +67,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 });
 
                 this.msgChain.then(function () {
+                    console.log(dialog);
                     _this2.lastDialog = dialog;
                 });
             },
@@ -138,9 +141,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
                 // add xianzhe's next dialogs
                 this.appendDialog(response.nextXianzhe);
-
-                // clear possible responses
-                this.lastDialog.responses = null;
             },
             ask: function ask(fromUser) {
                 // close prompt
