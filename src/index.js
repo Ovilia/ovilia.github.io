@@ -16,9 +16,7 @@
             messages: [],
             dialogs: null,
             lastDialog: null,
-
-            // messages not sent yet
-            nextMsgs: [],
+            msgChain: Promise.resolve(),
 
             // topics that user can ask
             nextTopics: [],
@@ -26,71 +24,52 @@
             hasPrompt: false
         },
 
-        mounted: () => {
+        mounted() {
             $.getJSON('./assets/dialog.json', data => {
-                vm.dialogs = data;
+                this.dialogs = data;
 
                 // TODO: update nextTopics according to dialog
-                vm.nextTopics = vm.dialogs.fromUser;
+                this.nextTopics = this.dialogs.fromUser;
 
-                vm.appendDialog('0000');
-
-                // auto-play messages
-                vm.restartClock();
+                this.appendDialog('0000');
             });
         },
 
         methods: {
-
-            playNext: () => {
-                if (vm.nextMsgs.length > 0) {
-                    // has unsent msg, send one
-                    var msg = vm.nextMsgs.shift();
-                    vm.sendMsg(msg.content, msg.author);
-
-                    // check if to append new dialogs
-                    if (vm.lastDialog && (vm.nextMsgs.length === 0
-                        || vm.nextMsgs[0].dialog.id !== msg.dialog.id)
-                    ) {
-                        // end of messages with the same dialog
-                        vm.appendDialog(msg.dialog.nextXianzhe);
-                    }
-
-                    vm.lastDialog = msg.dialog;
-                }
-            },
-
-            appendDialog: id => {
+            appendDialog(id) {
                 if (typeof id === 'object' && id.length > 0) {
                     // array of dialog ids
-                    id.forEach(id => vm.appendDialog(id));
+                    id.forEach(id => this.appendDialog(id));
                     return;
                 }
                 else if (id == null) {
                     return;
                 }
 
-                let dialog = vm.getDialog(id);
+                const dialog = this.getDialog(id);
 
                 getRandomMsg(dialog.details)
-                    .forEach(content => vm.nextMsgs.push({
-                        content: content,
-                        author: AUTHOR.XIANZHE,
-                        dialog: dialog
-                    }));
+                    .forEach(content => {
+                        this.msgChain = this.msgChain
+                            .then(() => this.sendMsg(content, AUTHOR.XIANZHE));
+                    });
 
+                this.msgChain
+                    .then(() => {
+                        this.lastDialog = dialog;
+                    });
             },
 
-            sendMsg: (message, author) => {
+            sendMsg(message, author) {
                 switch (author) {
                     case 'me':
-                        return vm.sendUserMsg(message);
+                        return this.sendUserMsg(message);
                     default:
-                        return vm.sendFriendMsg(message, author);
+                        return this.sendFriendMsg(message, author);
                 }
             },
 
-            sendFriendMsg: (message, author) => {
+            sendFriendMsg(message, author) {
                 const content = getRandomMsg(message);
                 const length = content.length;
                 const isTyping = length > 5;
@@ -99,7 +78,7 @@
                     author: author,
                     content: isTyping ? TYPING_MSG_CONTENT : content
                 };
-                vm.messages.push(msg);
+                this.messages.push(msg);
 
                 onMessageSending();
 
@@ -111,7 +90,7 @@
                                 onMessageSending();
                                 resolve();
                             },
-                            Math.min(200 * length, 2000) // TODO: 参数调优
+                            Math.min(100 * length, 2000) // TODO: 参数调优
                         )
                     });
                 }
@@ -119,8 +98,8 @@
                 return Promise.resolve();
             },
 
-            sendUserMsg: (message) => {
-                vm.messages.push({
+            sendUserMsg(message) {
+                this.messages.push({
                     author: AUTHOR.ME,
                     content: message
                 });
@@ -130,64 +109,48 @@
                 return Promise.resolve();
             },
 
-            getDialog: id => {
+            getDialog(id) {
                 // only one dialog should be matched by id
-                const dialogs = vm.dialogs.fromXianzhe
+                const dialogs = this.dialogs.fromXianzhe
                     .filter(dialog => dialog.id === id);
                 return dialogs ? dialogs[0] : null;
             },
 
-            getDialogFromUser: id => {
+            getDialogFromUser(id) {
                 // only one dialog should be matched by id
-                const dialogs = vm.dialogs.fromUser
+                const dialogs = this.dialogs.fromUser
                     .filter(dialog => dialog.id === id);
                 return dialogs ? dialogs[0] : null;
             },
 
-            togglePrompt: toShow => {
-                vm.hasPrompt = toShow;
+            togglePrompt(toShow) {
+                this.hasPrompt = toShow;
             },
 
-            respond: response => {
+            respond(response) {
                 // close prompt
-                vm.hasPrompt = false;
+                this.hasPrompt = false;
 
                 // send my response
-                vm.sendMsg(response.content, AUTHOR.ME);
+                this.sendMsg(response.content, AUTHOR.ME);
 
                 // add xianzhe's next dialogs
-                vm.appendDialog(response.nextXianzhe);
+                this.appendDialog(response.nextXianzhe);
 
                 // clear possible responses
-                vm.lastDialog.responses = null;
-
-                // send msg after a duration
-                vm.restartClock();
+                this.lastDialog.responses = null;
             },
 
-            ask: fromUser => {
+            ask(fromUser) {
                 // close prompt
-                vm.hasPrompt = false;
+                this.hasPrompt = false;
 
                 // send user msg
                 var content = getRandomMsg(fromUser.details);
-                vm.sendMsg(content, AUTHOR.ME);
+                this.sendMsg(content, AUTHOR.ME);
 
                 // update xianzhe dialog
-                vm.appendDialog(fromUser.nextXianzhe);
-            },
-
-            restartClock: () => {
-                // stop interval
-                if (msgSendingHandler) {
-                    clearInterval(msgSendingHandler);
-                    msgSendingHandler = null;
-                }
-
-                // start interval
-                msgSendingHandler = setInterval(() => {
-                    vm.playNext();
-                }, 1000);
+                this.appendDialog(fromUser.nextXianzhe);
             }
         }
     });
@@ -202,7 +165,7 @@
             return messages;
         }
 
-        let id = Math.floor(Math.random() * messages.length);
+        const id = Math.floor(Math.random() * messages.length);
         return messages[id];
     }
 

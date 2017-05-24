@@ -20,9 +20,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             messages: [],
             dialogs: null,
             lastDialog: null,
-
-            // messages not sent yet
-            nextMsgs: [],
+            msgChain: Promise.resolve(),
 
             // topics that user can ask
             nextTopics: [],
@@ -31,68 +29,53 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         },
 
         mounted: function mounted() {
+            var _this = this;
+
             $.getJSON('./assets/dialog.json', function (data) {
-                vm.dialogs = data;
+                _this.dialogs = data;
 
                 // TODO: update nextTopics according to dialog
-                vm.nextTopics = vm.dialogs.fromUser;
+                _this.nextTopics = _this.dialogs.fromUser;
 
-                vm.appendDialog('0000');
-
-                // auto-play messages
-                vm.restartClock();
+                _this.appendDialog('0000');
             });
         },
 
+
         methods: {
-
-            playNext: function playNext() {
-                if (vm.nextMsgs.length > 0) {
-                    // has unsent msg, send one
-                    var msg = vm.nextMsgs.shift();
-                    vm.sendMsg(msg.content, msg.author);
-
-                    // check if to append new dialogs
-                    if (vm.lastDialog && (vm.nextMsgs.length === 0 || vm.nextMsgs[0].dialog.id !== msg.dialog.id)) {
-                        // end of messages with the same dialog
-                        vm.appendDialog(msg.dialog.nextXianzhe);
-                    }
-
-                    vm.lastDialog = msg.dialog;
-                }
-            },
-
             appendDialog: function appendDialog(id) {
+                var _this2 = this;
+
                 if ((typeof id === 'undefined' ? 'undefined' : _typeof(id)) === 'object' && id.length > 0) {
                     // array of dialog ids
                     id.forEach(function (id) {
-                        return vm.appendDialog(id);
+                        return _this2.appendDialog(id);
                     });
                     return;
                 } else if (id == null) {
                     return;
                 }
 
-                var dialog = vm.getDialog(id);
+                var dialog = this.getDialog(id);
 
                 getRandomMsg(dialog.details).forEach(function (content) {
-                    return vm.nextMsgs.push({
-                        content: content,
-                        author: AUTHOR.XIANZHE,
-                        dialog: dialog
+                    _this2.msgChain = _this2.msgChain.then(function () {
+                        return _this2.sendMsg(content, AUTHOR.XIANZHE);
                     });
                 });
-            },
 
+                this.msgChain.then(function () {
+                    _this2.lastDialog = dialog;
+                });
+            },
             sendMsg: function sendMsg(message, author) {
                 switch (author) {
                     case 'me':
-                        return vm.sendUserMsg(message);
+                        return this.sendUserMsg(message);
                     default:
-                        return vm.sendFriendMsg(message, author);
+                        return this.sendFriendMsg(message, author);
                 }
             },
-
             sendFriendMsg: function sendFriendMsg(message, author) {
                 var content = getRandomMsg(message);
                 var length = content.length;
@@ -102,7 +85,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     author: author,
                     content: isTyping ? TYPING_MSG_CONTENT : content
                 };
-                vm.messages.push(msg);
+                this.messages.push(msg);
 
                 onMessageSending();
 
@@ -112,16 +95,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                             msg.content = content;
                             onMessageSending();
                             resolve();
-                        }, Math.min(200 * length, 2000) // TODO: 参数调优
+                        }, Math.min(100 * length, 2000) // TODO: 参数调优
                         );
                     });
                 }
 
                 return Promise.resolve();
             },
-
             sendUserMsg: function sendUserMsg(message) {
-                vm.messages.push({
+                this.messages.push({
                     author: AUTHOR.ME,
                     content: message
                 });
@@ -130,67 +112,46 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
                 return Promise.resolve();
             },
-
             getDialog: function getDialog(id) {
                 // only one dialog should be matched by id
-                var dialogs = vm.dialogs.fromXianzhe.filter(function (dialog) {
+                var dialogs = this.dialogs.fromXianzhe.filter(function (dialog) {
                     return dialog.id === id;
                 });
                 return dialogs ? dialogs[0] : null;
             },
-
             getDialogFromUser: function getDialogFromUser(id) {
                 // only one dialog should be matched by id
-                var dialogs = vm.dialogs.fromUser.filter(function (dialog) {
+                var dialogs = this.dialogs.fromUser.filter(function (dialog) {
                     return dialog.id === id;
                 });
                 return dialogs ? dialogs[0] : null;
             },
-
             togglePrompt: function togglePrompt(toShow) {
-                vm.hasPrompt = toShow;
+                this.hasPrompt = toShow;
             },
-
             respond: function respond(response) {
                 // close prompt
-                vm.hasPrompt = false;
+                this.hasPrompt = false;
 
                 // send my response
-                vm.sendMsg(response.content, AUTHOR.ME);
+                this.sendMsg(response.content, AUTHOR.ME);
 
                 // add xianzhe's next dialogs
-                vm.appendDialog(response.nextXianzhe);
+                this.appendDialog(response.nextXianzhe);
 
                 // clear possible responses
-                vm.lastDialog.responses = null;
-
-                // send msg after a duration
-                vm.restartClock();
+                this.lastDialog.responses = null;
             },
-
             ask: function ask(fromUser) {
                 // close prompt
-                vm.hasPrompt = false;
+                this.hasPrompt = false;
 
                 // send user msg
                 var content = getRandomMsg(fromUser.details);
-                vm.sendMsg(content, AUTHOR.ME);
+                this.sendMsg(content, AUTHOR.ME);
 
                 // update xianzhe dialog
-                vm.appendDialog(fromUser.nextXianzhe);
-            },
-
-            restartClock: function restartClock() {
-                // stop interval
-                if (msgSendingHandler) {
-                    clearInterval(msgSendingHandler);
-                    msgSendingHandler = null;
-                }
-
-                // start interval
-                msgSendingHandler = setInterval(function () {
-                    vm.playNext();
-                }, 1000);
+                this.appendDialog(fromUser.nextXianzhe);
             }
         }
     });
