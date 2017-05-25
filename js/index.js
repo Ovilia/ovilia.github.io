@@ -158,16 +158,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
     });
 
-    function bindImageLoad() {
-        console.log('bind');
-
-        $('#mobile-body-content').one('load', 'img', function () {
-            console.log('image load');
-        }).each(function () {
-            console.log(this);
-        });
-    }
-
     /**
      * get a random message from message array
      */
@@ -205,7 +195,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     function updateScroll() {
         var $chatbox = $('#mobile-body-content');
 
-        $chatbox.scrollTop($chatbox[0].scrollHeight - $chatbox.height());
+        var distance = $chatbox[0].scrollHeight - $chatbox.height() - $chatbox.scrollTop();
+        var duration = 200;
+        var startTime = Date.now();
+
+        // TODO: 加速再加速
+        requestAnimationFrame(function step() {
+            var p = Math.min(1, (Date.now() - startTime) / duration);
+            $chatbox.scrollTop($chatbox.scrollTop() + distance * p * p);
+            p < 1 && requestAnimationFrame(step);
+        });
     }
 
     function delay() {

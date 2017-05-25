@@ -188,9 +188,16 @@
     function updateScroll() {
         const $chatbox = $('#mobile-body-content');
 
-        $chatbox.scrollTop(
-            $chatbox[0].scrollHeight - $chatbox.height()
-        );
+        const distance = $chatbox[0].scrollHeight - $chatbox.height() - $chatbox.scrollTop();
+        const duration = 200;
+        const startTime = Date.now();
+
+        // TODO: 加速再加速
+        requestAnimationFrame(function step() {
+            const p = Math.min(1, (Date.now() - startTime) / duration);
+            $chatbox.scrollTop($chatbox.scrollTop() + distance * p * p);
+            p < 1 && requestAnimationFrame(step);
+        });
     }
 
     function delay(amount = 0) {
