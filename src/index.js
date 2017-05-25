@@ -86,7 +86,7 @@
                 onMessageSending();
 
                 if (isTyping) {
-                    return delay(Math.min(100 * length, 2000)) // TODO: 参数调优
+                    return delay(Math.min(100 * length, 1000)) // TODO: 参数调优
                         .then(() => {
                             msg.content = content;
                             onMessageSending();
@@ -149,6 +149,16 @@
     });
 
 
+    function bindImageLoad() {
+        console.log('bind');
+
+        $('#mobile-body-content').one('load', 'img', () => {
+            console.log('image load');
+        }).each(function () {
+            console.log(this);
+        });
+    }
+
     /**
      * get a random message from message array
      */
@@ -168,17 +178,29 @@
      */
     function onMessageSending() {
         setTimeout(() => {
-            const $chatbox = $('#mobile-body-content');
-
             // update scroll position when vue has updated ui
-            $chatbox.scrollTop(
-                $chatbox[0].scrollHeight - $chatbox.height()
-            );
+            updateScroll();
+            
+            const $latestMsg = $('#mobile-body-content .msg-row:last-child .msg');
 
             // add target="_blank" for links
-            const $latestMsg = $chatbox.find('.msg-row:last-child .msg');
             $latestMsg.find('a').attr('target', '_blank');
+
+            // update scroll position when images are loaded
+            $latestMsg.find('img').one('load', updateScroll)
+                .each((index, target) => {
+                    // trigger load when the image is cached
+                    target.complete && $(target).trigger('load');
+                });
         });
+    }
+
+    function updateScroll() {
+        const $chatbox = $('#mobile-body-content');
+
+        $chatbox.scrollTop(
+            $chatbox[0].scrollHeight - $chatbox.height()
+        );
     }
 
     function delay(amount = 0) {

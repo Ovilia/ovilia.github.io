@@ -94,7 +94,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 onMessageSending();
 
                 if (isTyping) {
-                    return delay(Math.min(100 * length, 2000)) // TODO: 参数调优
+                    return delay(Math.min(100 * length, 1000)) // TODO: 参数调优
                     .then(function () {
                         msg.content = content;
                         onMessageSending();
@@ -158,6 +158,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
     });
 
+    function bindImageLoad() {
+        console.log('bind');
+
+        $('#mobile-body-content').one('load', 'img', function () {
+            console.log('image load');
+        }).each(function () {
+            console.log(this);
+        });
+    }
+
     /**
      * get a random message from message array
      */
@@ -176,15 +186,26 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      */
     function onMessageSending() {
         setTimeout(function () {
-            var $chatbox = $('#mobile-body-content');
-
             // update scroll position when vue has updated ui
-            $chatbox.scrollTop($chatbox[0].scrollHeight - $chatbox.height());
+            updateScroll();
+
+            var $latestMsg = $('#mobile-body-content .msg-row:last-child .msg');
 
             // add target="_blank" for links
-            var $latestMsg = $chatbox.find('.msg-row:last-child .msg');
             $latestMsg.find('a').attr('target', '_blank');
+
+            // update scroll position when images are loaded
+            $latestMsg.find('img').one('load', updateScroll).each(function (index, target) {
+                // trigger load when the image is cached
+                target.complete && $(target).trigger('load');
+            });
         });
+    }
+
+    function updateScroll() {
+        var $chatbox = $('#mobile-body-content');
+
+        $chatbox.scrollTop($chatbox[0].scrollHeight - $chatbox.height());
     }
 
     function delay() {
