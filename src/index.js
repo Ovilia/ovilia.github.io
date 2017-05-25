@@ -149,16 +149,6 @@
     });
 
 
-    function bindImageLoad() {
-        console.log('bind');
-
-        $('#mobile-body-content').one('load', 'img', () => {
-            console.log('image load');
-        }).each(function () {
-            console.log(this);
-        });
-    }
-
     /**
      * get a random message from message array
      */
