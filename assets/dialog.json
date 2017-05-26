@@ -2,7 +2,7 @@
     "fromXianzhe": [{
         "id": "0000",
         "details": [
-            ["Hi! <a href='./2016'>This link takes you to previous home page</a> if you cannot speak Chinese.", "很高兴遇见你"]
+            ["很高兴遇见你"]
         ],
         "responses": [{
             "content": "我也是！",
@@ -367,7 +367,8 @@
             ]
         ],
         "responses": [{
-            "content": "……"
+            "content": "……",
+            "nextXianzhe": ["0035"]
         }]
     }, {
         "id": "0035",
@@ -376,15 +377,15 @@
         ],
         "responses": [{
             "content": "这恩爱秀得……行行行，狗粮费拿去就是！",
-            "nextXianzhe": ["0026"]
+            "nextXianzhe": ["0037"]
         }, {
             "content": "我要围观代码！",
-            "nextXianzhe": ["0026"]
+            "nextXianzhe": ["0036"]
         }]
     }, {
         "id": "0036",
         "details": [
-            ["代码在 GitHub 上开源", "https://github.com/Ovilia/ovilia.github.io", "欢迎围观点赞"]
+            ["代码在 GitHub 上开源", "<a href='https://github.com/Ovilia/ovilia.github.io'>https://github.com/Ovilia/ovilia.github.io</a>", "欢迎围观点赞"]
         ]
     }, {
         "id": "0037",
