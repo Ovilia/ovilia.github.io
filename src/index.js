@@ -5,7 +5,11 @@
         ME: 'me'
     };
 
-    const TYPING_MSG_CONTENT = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+    const TYPING_MSG_CONTENT = `
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    `;
 
     let msgSendingHandler = null;
 
@@ -57,8 +61,9 @@
                             .then(() => this.sendMsg(content, AUTHOR.XIANZHE));
                     });
 
-                return this.msgChain
-                    .then(() => {
+                return dialog.nextXianzhe
+                    ? this.appendDialog(dialog.nextXianzhe)
+                    : this.msgChain.then(() => {
                         this.lastDialog = dialog;
                     });
             },
@@ -79,7 +84,8 @@
 
                 const msg = {
                     author: author,
-                    content: isTyping ? TYPING_MSG_CONTENT : content
+                    content: isTyping ? TYPING_MSG_CONTENT : content,
+                    isTyping: isTyping
                 };
                 this.messages.push(msg);
 
@@ -89,6 +95,7 @@
                     return delay(Math.min(100 * length, 1000)) // TODO: 参数调优
                         .then(() => {
                             msg.content = content;
+                            msg.isTyping = false;
                             onMessageSending();
                         });
                 }

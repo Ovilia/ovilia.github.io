@@ -20,7 +20,7 @@
                         v-for="msg in messages"
                         :class="msg.author === 'xianzhe' ? 'msg-xianzhe' : 'msg-me'">
                         <div class="msg"
-                            :class="'msg-bounce-in-' + (msg.author === 'xianzhe' ? 'left': 'right')"
+                            :class="'msg-bounce-in-' + (msg.author === 'xianzhe' ? 'left': 'right') + (msg.isTyping ? ' typing' : '')"
                             v-html="msg.content"></div>
                     </div>
                 </div>
