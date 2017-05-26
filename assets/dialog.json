@@ -2,7 +2,7 @@
     "fromXianzhe": [{
         "id": "0000",
         "details": [
-            ["很高兴遇见你"]
+            ["Hi! <a href='./2016'>This link takes you to previous home page</a> if you cannot speak Chinese.", "很高兴遇见你"]
         ],
         "responses": [{
             "content": "我也是！",
@@ -74,7 +74,11 @@
     }, {
         "id": "0007",
         "details": [
-            ["我经常觉得自己挺无聊的……", "业余时间会看书、看电影、看剧等等，放松一下吧，也没什么特别的。。"]
+            [
+                "我经常觉得自己挺无聊的……",
+                "无聊的时候，会读书、弹尤克里里、画画（全靠脑洞）、拉小提琴（很久没碰）、拍拍照片（但宅在家里怎么破）等等",
+                "有点三分钟热度，所以接触的兴趣爱好倒不少，就是都没啥特别厉害的~"
+            ]
         ],
         "nextXianzhe": ["0013"]
     }, {
@@ -144,7 +148,7 @@
     }, {
         "id": "0014",
         "details": [
-            ["<img src='img/mushroom.jpg'>", "<img src='img/trees.jpg'>"]
+            ["<img src='img/mushroom.jpg'>", "<img src='img/trees.jpg'>", "<img src='img/fried-chicken.jpg'>"]
         ]
     }, {
         "id": "0015",
@@ -233,6 +237,9 @@
         "responses": [{
             "content": "嗯哼~ 百度？",
             "nextXianzhe": ["0024"]
+        }, {
+            "content": "你想跳槽吗？",
+            "nextXianzhe": ["0033"]
         }]
     }, {
         "id": "0024",
@@ -242,6 +249,9 @@
         "responses": [{
             "content": "听起来很有意思~ 可以具体跟我说说你做了什么吗？",
             "nextXianzhe": ["0025"]
+        }, {
+            "content": "我们在做一件很酷的事，愿不愿意加入我们？",
+            "nextXianzhe": ["0033"]
         }, {
             "content": "哦"
         }]
@@ -270,16 +280,19 @@
         "details": [
             [
                 "主页的创意来自对话式的游戏",
-                "现在我们很多时候了解一个人都是通过类似的即时工具聊天吧？",
-                "那么，这样一种形式让你了解我，和在生活中认识我，又有多少差别呢？"
+                "现在很多时候，我们了解一个人都是通过类似的即时工具聊天吧？",
+                "这样聊天产生的对我的印象，又比现实中偏差大多少呢？"
             ]
         ],
         "responses": [{
-            "content": "赞！"
+            "content": "赞！",
+            "nextXianzhe": ["0034"]
         }, {
-            "content": "嗯嗯"
+            "content": "嗯嗯",
+            "nextXianzhe": ["0034"]
         }, {
-            "content": "哦"
+            "content": "……",
+            "nextXianzhe": ["0034"]
         }]
     }, {
         "id": "0028",
@@ -297,6 +310,9 @@
         ],
         "responses": [{
             "content": "……"
+        }, {
+            "content": "不就是狗粮费么？！拿去就是！",
+            "nextXianzhe": ["0037"]
         }]
     }, {
         "id": "0030",
@@ -324,6 +340,98 @@
         "details": [
             ["嘻嘻，哪里哪里~", "<img src='img/xianzhe.jpg'>"]
         ]
+    }, {
+        "id": "0033",
+        "details": [
+            [
+                "虽然目前没有换工作的打算，不过对于有趣的工作机会保持开放态度",
+                "我的简历可以在 <a href='http://www.linkedin.com/in/wenlizhang/'>LinkedIn</a> 查看",
+                "如果能在意我的想法，发挥我的脑洞和技术特长，欢迎邮件至 <a href='mailto:me@zhangwenli.com'>me@zhangwenli.com</a> 勾搭~",
+                "其实不是程序员的职位，也挺不错的嘛~"
+            ]
+        ],
+        "responses": [{
+            "content": "哈哈好的，等我当了老板，就来请你",
+            "nextXianzhe": ["0026"]
+        }, {
+            "content": "好，我看看"
+        }]
+    }, {
+        "id": "0034",
+        "details": [
+            [
+                "当然，写得比较仓促，可能有些细节处理得不是很好，后面会进一步加工",
+                "但重要的是，我想通过这样一个主页传递一个信息",
+                "就是",
+                "这个世界上大部分人的大部分时间都在做很无聊的事，但我仍希望能有一小部分自我，能稍稍地带来一些不同"
+            ]
+        ],
+        "responses": [{
+            "content": "……"
+        }]
+    }, {
+        "id": "0035",
+        "details": [
+            ["对了，本站的动画效果都是男朋友帮我写的", "<a href='https://github.com/devyumao'>GitHub</a> 和<a href='http://weibo.com/u/2769530531'>微博</a> ID 都是 devyumao"]
+        ],
+        "responses": [{
+            "content": "这恩爱秀得……行行行，狗粮费拿去就是！",
+            "nextXianzhe": ["0026"]
+        }, {
+            "content": "我要围观代码！",
+            "nextXianzhe": ["0026"]
+        }]
+    }, {
+        "id": "0036",
+        "details": [
+            ["代码在 GitHub 上开源", "https://github.com/Ovilia/ovilia.github.io", "欢迎围观点赞"]
+        ]
+    }, {
+        "id": "0037",
+        "details": [
+            [
+                "嘿嘿嘿，这是我想读的书",
+                "<a href='https://book.douban.com/people/ovilia1024/wish'>https://book.douban.com/people/ovilia1024/wish</a>",
+                "如果愿意的话，可以给我支付宝转账打赏，多少随意哈！",
+                "<img src='img/zhifu.png'>"
+            ]
+        ],
+        "responses": [{
+            "content": "有啥好处？",
+            "nextXianzhe": ["0038"]
+        }, {
+            "content": "已打赏，快谢恩！",
+            "nextXianzhe": ["0039"]
+        }, {
+            "content": "哎，我很穷啊……",
+            "nextXianzhe": ["0040"]
+        }]
+    }, {
+        "id": "0038",
+        "details": [
+            ["比如……", "会让你意外遇到的这个小姑娘变得更有趣？", "嘿嘿，圣诞节我会寄来自制明信片，打赏后可以发邮件告诉我你的收信地址"]
+        ],
+        "responses": [{
+            "content": "好哒！"
+        }, {
+            "content": "算啦~"
+        }]
+    }, {
+        "id": "0039",
+        "details": [
+            ["谢主隆恩！！！", "嘿嘿，圣诞节我会寄来自制明信片，打赏后可以发邮件告诉我你的收信地址", "<a href='mailto:me@zhangwenli.com'>me@zhangwenli.com</a>"]
+        ],
+        "responses": [{
+            "content": "好哒！"
+        }]
+    }, {
+        "id": "0040",
+        "details": [
+            ["嘿嘿，没关系，你能够在这个网站多停留一秒，我就很开心啦！"]
+        ],
+        "responses": [{
+            "content": "O(∩_∩)O哈哈~"
+        }]
     }],
     "fromUser": [{
         "id": "1000",
@@ -365,6 +473,13 @@
         ],
         "nextXianzhe": ["0022"]
     }, {
+        "id": "1014",
+        "brief": "送书",
+        "details": [
+            "羡辙好棒啊！我想送你书~~"
+        ],
+        "nextXianzhe": ["0037"]
+    }, {
         "id": "1005",
         "brief": "摄影",
         "details": [
@@ -372,6 +487,13 @@
             "发张你拍的照来看看？"
         ],
         "nextXianzhe": ["0028"]
+    }, {
+        "id": "1008",
+        "brief": "职业",
+        "details": [
+            "羡辙这么多才多艺，究竟靠什么吃饭呢？"
+        ],
+        "nextXianzhe": ["0023"]
     }, {
         "id": "1007",
         "brief": "真相",
@@ -382,7 +504,7 @@
         "nextXianzhe": ["0030"]
     }, {
         "id": "1006",
-        "brief": "主页创意",
+        "brief": "关于",
         "details": [
             "这个主页好有意思啊！",
             "这个主页的创意很棒~"

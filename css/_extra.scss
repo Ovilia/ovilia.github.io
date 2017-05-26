@@ -1,0 +1,21 @@
+#extra-link {
+    position: absolute;
+    right: $distance-lg;
+    bottom: $distance-lg;
+
+    a {
+        display: inline-block;
+        margin: 0 5px;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+@media (max-width: 720px) {
+    #extra-link {
+        display: none;
+    }
+}
