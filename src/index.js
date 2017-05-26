@@ -110,7 +110,7 @@
                 });
 
                 onMessageSending();
-                
+
                 return Promise.resolve();
             },
 
@@ -144,13 +144,13 @@
             say(content, dialogId) {
                 // close prompt
                 this.hasPrompt = false;
- 
+
                 return delay(200)
                     // send user msg
                     .then(() => this.sendMsg(content, AUTHOR.ME))
                     .then(() => delay(300))
                     // add xianzhe's next dialogs
-                    .then(() => this.appendDialog(dialogId)); 
+                    .then(() => this.appendDialog(dialogId));
             }
         }
     });
@@ -177,7 +177,7 @@
         setTimeout(() => {
             // update scroll position when vue has updated ui
             updateScroll();
-            
+
             const $latestMsg = $('#mobile-body-content .msg-row:last-child .msg');
 
             // add target="_blank" for links

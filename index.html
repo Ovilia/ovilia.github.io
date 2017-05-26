@@ -15,7 +15,7 @@
             <div id="mobile-body">
                 <div id="mobile-body-bg"></div>
                 <div id="mobile-body-content">
-                    <div class="msg-time">21:40</div>
+                    <!--<div class="msg-time">21:40</div>-->
                     <div class="msg-row"
                         v-for="msg in messages"
                         :class="msg.author === 'xianzhe' ? 'msg-xianzhe' : 'msg-me'">
@@ -53,6 +53,7 @@
                     说点什么……
                 </div>
             </div>
+            <div id="prompt-bg" v-on:click="togglePrompt(false)"></div>
         </div>
 
         <script src="lib/zepto.min.js"></script>
