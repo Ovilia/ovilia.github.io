@@ -44,6 +44,7 @@
         box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);
 
         transition: width 2s;
+        transform: translate3d(0, 0, 0);
 
         &.typing {
             max-width: 60px;
