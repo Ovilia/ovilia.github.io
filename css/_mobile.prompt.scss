@@ -118,10 +118,11 @@
             }
 
             .topics {
+                text-align: center;
+
                 li {
                     display: inline-block;
-                    margin-right: $distance-inline;
-                    margin-bottom: $distance-inline;
+                    margin: 5px 3px;
 
                     a {
                         @extend .primary-bg;
@@ -144,3 +145,19 @@
             }
         }
     }
+
+
+@media (max-width: 480px) {
+    #prompt-bg {
+        border-radius: 0 !important;
+    }
+
+    #prompt-head .say-something {
+        padding-top: $distance-sm + 3px;
+        padding-bottom: $distance-sm + 3px;
+    }
+
+    #prompt-body .responses li a {
+        padding: $distance-sm + 3px $distance-h + 3px;
+    }
+}

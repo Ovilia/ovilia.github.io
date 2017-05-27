@@ -101,3 +101,10 @@
         transform-origin: 100% 100%;
         animation: msgBounceIn $msg-animation-duration;
     }
+
+
+@media (max-width: 480px) {
+    .msg {
+        font-size: $font-size-lg;
+    }
+}

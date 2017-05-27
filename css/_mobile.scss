@@ -23,7 +23,7 @@
     }
 
         #mobile-head-title {
-            padding: 18px;
+            padding: 12px;
 
             color: $clr-text-light;
             text-align: center;
@@ -58,11 +58,20 @@
         right: 0;
         margin-left: 0;
         width: auto;
+
         border-radius: 0;
 
         &.has-prompt:after {
             border-radius: 0 !important;
         }
+    }
+
+    #mobile-head {
+        display: none;
+    }
+
+    #mobile-body {
+        top: 0 !important;
     }
 
     #prompt-body {
