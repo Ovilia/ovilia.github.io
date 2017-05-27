@@ -45,6 +45,10 @@
             color: $clr-text-unimportant;
         }
 
+            #input-hint.clickable {
+                cursor: pointer;
+            }
+
 
 @media (max-width: 480px) {
     #mobile {
