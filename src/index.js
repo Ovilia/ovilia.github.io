@@ -143,10 +143,19 @@
             },
 
             respond(response) {
+                // send to ga
+                if (_gaq) {
+                    _gaq.push(['_trackEvent', 'Home', "respond", response.content]);
+                }
+
                 return this.say(response.content, response.nextXianzhe);
             },
 
             ask(fromUser) {
+                // send to ga
+                if (_gaq) {
+                    _gaq.push(['_trackEvent', 'Home', "ask", fromUser.brief]);
+                }
                 const content = getRandomMsg(fromUser.details);
                 return this.say(content, fromUser.nextXianzhe);
             },

@@ -50,7 +50,7 @@ gulp.task('babel', function () {
  * Watch scss files for changes & recompile
  * Watch html/md files, run jekyll & reload BrowserSync
  */
-gulp.task('watch', ['sass'],function () {
+gulp.task('watch', ['sass', 'babel'], function () {
     gulp.watch('css/*.scss', ['sass'])
         .on('change', browserSync.reload);
 
