@@ -87,11 +87,13 @@
             sendFriendMsg(message, author) {
                 const content = getRandomMsg(message);
                 const length = content.replace(/<[^>]+>/g,"").length;
-                const isTyping = length > 5;
+                const isImg = /<img[^>]+>/.test(content);
+                const isTyping = length > 5 || isImg;
 
                 const msg = {
                     author: author,
-                    content: isTyping ? TYPING_MSG_CONTENT : content
+                    content: isTyping ? TYPING_MSG_CONTENT : content,
+                    isImg: isImg
                 };
                 this.messages.push(msg);
 
@@ -101,9 +103,10 @@
 
                     return delay(Math.min(100 * length, 2000))
                         .then(() => {
-                            this.markMsgSize(msg, content);
-                            return delay(120);
+                            return this.markMsgSize(msg, content);
+                            // return isImg ? onImageLoad($('#mock-msg img')) : null;
                         })
+                        .then(() => delay(150))
                         .then(() => {
                             msg.content = content;
                             onMessageSending();
@@ -128,10 +131,13 @@
             
             markMsgSize(msg, content = null) {
                 this.latestMsgContent = content || msg.content;
-                setTimeout(() => {
-                    Object.assign(msg, getMockMsgSize());
-                    this.messages = [...this.messages];
-                });
+                
+                return delay(0)
+                    .then(() => msg.isImg && onImageLoad($('#mock-msg img')))
+                    .then(() => {
+                        Object.assign(msg, getMockMsgSize());
+                        this.messages = [...this.messages];
+                    });
             },
 
             getDialog(id) {
@@ -252,6 +258,16 @@
             width: $mockMsg.width(),
             height: $mockMsg.height()
         };
+    }
+
+    function onImageLoad($img) {
+        return new Promise(resolve => {
+            $img.one('load', resolve)
+                .each((index, target) => {
+                    // trigger load when the image is cached
+                    target.complete && $(target).trigger('load');
+                });
+        });
     }
 
 })();
