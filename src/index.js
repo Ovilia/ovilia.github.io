@@ -223,8 +223,7 @@
             $latestMsg.find('a').attr('target', '_blank');
 
             // update scroll position when images are loaded
-            onImageLoad($latestMsg)
-                .then(updateScroll);
+            onImageLoad($latestMsg).then(updateScroll);
         });
     }
 
