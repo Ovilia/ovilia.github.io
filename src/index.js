@@ -104,7 +104,6 @@
                     return delay(Math.min(100 * length, 2000))
                         .then(() => {
                             return this.markMsgSize(msg, content);
-                            // return isImg ? onImageLoad($('#mock-msg img')) : null;
                         })
                         .then(() => delay(150))
                         .then(() => {
@@ -224,11 +223,8 @@
             $latestMsg.find('a').attr('target', '_blank');
 
             // update scroll position when images are loaded
-            $latestMsg.find('img').one('load', updateScroll)
-                .each((index, target) => {
-                    // trigger load when the image is cached
-                    target.complete && $(target).trigger('load');
-                });
+            onImageLoad($latestMsg)
+                .then(updateScroll);
         });
     }
 
