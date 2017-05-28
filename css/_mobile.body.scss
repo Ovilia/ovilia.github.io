@@ -1,3 +1,6 @@
+$scroll-bar-width: 8px;
+
+
 #mobile-body {
     position: absolute;
     top: $mobile-head-height;
@@ -53,26 +56,26 @@
         right: 0;
         bottom: 0;
 
-        padding: 10px $distance-h;
+        padding: 16px $distance-h - $scroll-bar-width 16px $distance-h;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: scroll;
 
         color: $clr-text;
 
         &::-webkit-scrollbar {
-            width: 8px;
+            width: $scroll-bar-width;
         }
 
         &::-webkit-scrollbar-thumb {
             background-color: $clr-primary-lighter;
-            border-radius: 4px;
+            border-radius: $scroll-bar-width / 2;
         }
     }
 
     #mock-msg-row {
         position: absolute;
         top: -1000px;
-        left: 22px;
-        right: 22px;
+        left: 18px;
+        right: 10px;
         visibility: hidden;
     }

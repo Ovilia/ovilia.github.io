@@ -31,7 +31,7 @@
     .msg {
         display: inline-block;
 
-        padding: 10px 18px;
+        padding: 9px 14px;
         max-width: 65%;
         overflow: hidden;
         word-wrap: break-word;
@@ -44,6 +44,7 @@
         box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);
 
         transition: width .12s;
+        transform: translate3d(0, 0, 0);
 
         .msg-xianzhe & {
             border-radius: 0 $msg-radius $msg-radius $msg-radius;
@@ -96,3 +97,10 @@
         transform-origin: 100% 100%;
         animation: msgBounceIn $msg-animation-duration;
     }
+
+
+@media (max-width: 480px) {
+    .msg {
+        font-size: $font-size-lg;
+    }
+}

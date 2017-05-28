@@ -22,6 +22,8 @@
             lastDialog: null,
             msgChain: Promise.resolve(),
 
+            isXianzheTyping: false,
+
             // topics that user can ask
             nextTopics: [],
 
@@ -54,6 +56,8 @@
                     return;
                 }
 
+                this.isXianzheTyping = true;
+
                 const dialog = this.getDialog(id);
 
                 getRandomMsg(dialog.details)
@@ -67,6 +71,7 @@
                     ? this.appendDialog(dialog.nextXianzhe)
                     : this.msgChain.then(() => {
                         this.lastDialog = dialog;
+                        this.isXianzheTyping = false;
                     });
             },
 
@@ -144,14 +149,28 @@
             },
 
             togglePrompt(toShow) {
+                if (this.isXianzheTyping) {
+                    // don't prompt if xianzhe is typing
+                    return;
+                }
+
                 this.hasPrompt = toShow;
             },
 
             respond(response) {
+                // send to ga
+                if (_gaq) {
+                    _gaq.push(['_trackEvent', 'Home', "respond", response.content]);
+                }
+
                 return this.say(response.content, response.nextXianzhe);
             },
 
             ask(fromUser) {
+                // send to ga
+                if (_gaq) {
+                    _gaq.push(['_trackEvent', 'Home', "ask", fromUser.brief]);
+                }
                 const content = getRandomMsg(fromUser.details);
                 return this.say(content, fromUser.nextXianzhe);
             },

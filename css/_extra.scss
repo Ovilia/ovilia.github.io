@@ -11,6 +11,15 @@
         &:hover {
             text-decoration: none;
         }
+
+        &#en {
+            position: relative;
+            top: -4px;
+
+            font-size: 17px;
+            color: white;
+            text-decoration: none;
+        }
     }
 }
 

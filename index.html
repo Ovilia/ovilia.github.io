@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=100%, initial-scale=1">
         <link rel="shortcut icon" href="blog/img/owl.ico">
-        <title>Ovilia</title>
+        <title>与羡辙聊天中</title>
         <link href="css/main.min.css" rel="stylesheet" type="text/css">
     </head>
     <body>
@@ -25,7 +25,7 @@
                         :class="msg.author === 'xianzhe' ? 'msg-xianzhe' : 'msg-me'">
                         <div class="msg"
                             :class="'msg-bounce-in-' + (msg.author === 'xianzhe' ? 'left': 'right')"
-                            :style="msg.width && msg.height && {width: msg.width - 34 + 'px', height: msg.height - 20 + 'px'}"
+                            :style="msg.width && msg.height && {width: msg.width - 26 + 'px', height: msg.height - 18 + 'px'}"
                             v-html="msg.content"></div>
                     </div>
                 </div>
@@ -54,14 +54,19 @@
                     </div>
                 </div>
                 <div id="input-hint" class="say-something"
-                    v-on:click="togglePrompt(true)">
-                    说点什么……
+                    v-on:click="togglePrompt(true)"
+                    :class="{'clickable': !isXianzheTyping }">
+                    <span v-if="!isXianzheTyping">说点什么……</span>
+                    <span v-if="isXianzheTyping">羡辙正在输入中</span>
                 </div>
             </div>
             <div id="prompt-bg" v-on:click="togglePrompt(false)"></div>
         </div>
 
         <div id="extra-link">
+            <a id="en" href="/2016" target="_blank">
+                EN
+            </a>
             <a href="./blog" target="_blank">
                 <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -150,13 +155,6 @@
         <script src="js/index.js"></script>
 
         <script type="text/javascript">
-            var _hmt = _hmt || [];
-            (function() {
-                var hm = document.createElement("script");
-                hm.src = "//hm.baidu.com/hm.js?dcee78e565eeaedc76defba5d096b344";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-38205696-1']);
             _gaq.push(['_trackPageview']);
