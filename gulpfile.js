@@ -5,6 +5,7 @@ var uglify      = require('gulp-uglify');
 var rename      = require('gulp-rename');
 var jade        = require('gulp-jade');
 var babel       = require('gulp-babel');
+var minify      = require('gulp-minify');
 var browserSync = require('browser-sync').create();
 
 /**
@@ -26,16 +27,6 @@ gulp.task('sass', function () {
 });
 
 /**
- * Build jade files to html
- */
-gulp.task('jade', function () {
-    // return gulp.src('*.jade')
-    //     .pipe(jade())
-    //     .pipe(gulp.dest('.'))
-    //     .pipe(browserSync.stream());
-});
-
-/**
  * compile es6
  */
 gulp.task('babel', function () {
@@ -43,8 +34,10 @@ gulp.task('babel', function () {
         .pipe(babel({
             presets: ['es2015']
         }))
+        .pipe(minify())
         .pipe(gulp.dest('js'));
 });
+
 
 /**
  * Watch scss files for changes & recompile
