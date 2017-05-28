@@ -16,11 +16,16 @@
                 <div id="mobile-body-bg"></div>
                 <div id="mobile-body-content">
                     <!--<div class="msg-time">21:40</div>-->
+                    <div id="mock-msg-row" class="msg-row">
+                        <div id="mock-msg" class="msg" v-html="latestMsgContent"></div>
+                    </div>
                     <div class="msg-row"
-                        v-for="msg in messages"
+                        v-for="(msg, index) in messages"
+                        :key="index"
                         :class="msg.author === 'xianzhe' ? 'msg-xianzhe' : 'msg-me'">
                         <div class="msg"
-                            :class="'msg-bounce-in-' + (msg.author === 'xianzhe' ? 'left': 'right') + (msg.isTyping ? ' typing' : '')"
+                            :class="'msg-bounce-in-' + (msg.author === 'xianzhe' ? 'left': 'right')"
+                            :style="msg.width && msg.height && {width: msg.width - 34 + 'px', height: msg.height - 20 + 'px'}"
                             v-html="msg.content"></div>
                     </div>
                 </div>
@@ -141,7 +146,6 @@
 
         <script src="lib/zepto.min.js"></script>
         <script src="lib/vue.js"></script>
-        <!--<script src="lib/anime.min.js"></script>-->
 
         <script src="js/index.js"></script>
 

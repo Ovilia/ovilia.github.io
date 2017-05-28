@@ -68,3 +68,11 @@
             border-radius: 4px;
         }
     }
+
+    #mock-msg-row {
+        position: absolute;
+        top: -1000px;
+        left: 22px;
+        right: 22px;
+        visibility: hidden;
+    }

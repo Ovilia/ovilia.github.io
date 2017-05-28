@@ -25,7 +25,9 @@
             // topics that user can ask
             nextTopics: [],
 
-            hasPrompt: false
+            hasPrompt: false,
+
+            latestMsgContent: null
         },
 
         mounted() {
@@ -79,26 +81,31 @@
 
             sendFriendMsg(message, author) {
                 const content = getRandomMsg(message);
-                const length = content.length;
+                const length = content.replace(/<[^>]+>/g,"").length;
                 const isTyping = length > 5;
 
                 const msg = {
                     author: author,
-                    content: isTyping ? TYPING_MSG_CONTENT : content,
-                    isTyping: isTyping
+                    content: isTyping ? TYPING_MSG_CONTENT : content
                 };
                 this.messages.push(msg);
 
-                onMessageSending();
-
                 if (isTyping) {
-                    return delay(Math.min(100 * length, 1000)) // TODO: 参数调优
+                    this.markMsgSize(msg);
+                    setTimeout(updateScroll);
+
+                    return delay(Math.min(100 * length, 2000))
+                        .then(() => {
+                            this.markMsgSize(msg, content);
+                            return delay(120);
+                        })
                         .then(() => {
                             msg.content = content;
-                            msg.isTyping = false;
                             onMessageSending();
                         });
                 }
+
+                onMessageSending();
 
                 return Promise.resolve();
             },
@@ -112,6 +119,14 @@
                 onMessageSending();
 
                 return Promise.resolve();
+            },
+            
+            markMsgSize(msg, content = null) {
+                this.latestMsgContent = content || msg.content;
+                setTimeout(() => {
+                    Object.assign(msg, getMockMsgSize());
+                    this.messages = [...this.messages];
+                });
             },
 
             getDialog(id) {
@@ -210,6 +225,14 @@
         return new Promise(resolve => {
             setTimeout(resolve, amount);
         });
+    }
+
+    function getMockMsgSize() {
+        const $mockMsg = $('#mock-msg');
+        return {
+            width: $mockMsg.width(),
+            height: $mockMsg.height()
+        };
     }
 
 })();
