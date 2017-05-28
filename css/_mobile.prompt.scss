@@ -1,5 +1,5 @@
 #prompt-bg {
-    display: none;
+    opacity: 0;
 
     #mobile.has-prompt & {
         position: absolute;
@@ -12,6 +12,9 @@
 
         background-color: $clr-mask;
         border-radius: $radius-lg;
+        
+        opacity: 1;
+        transition: opacity .3s;
     }
 }
 
