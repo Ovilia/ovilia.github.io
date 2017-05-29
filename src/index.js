@@ -36,7 +36,6 @@
             $.getJSON('./assets/dialog.json', data => {
                 this.dialogs = data;
 
-                // TODO: update nextTopics according to dialog
                 this.nextTopics = this.dialogs.fromUser;
 
                 this.appendDialog('0000');
@@ -127,10 +126,10 @@
 
                 return Promise.resolve();
             },
-            
+
             markMsgSize(msg, content = null) {
                 this.latestMsgContent = content || msg.content;
-                
+
                 return delay(0)
                     .then(() => msg.isImg && onImageLoad($('#mock-msg img')))
                     .then(() => {
