@@ -6,7 +6,7 @@
         ],
         "responses": [{
             "content": "我也是！",
-            "nextXianzhe": ["0003"]
+            "nextXianzhe": ["0041"]
         }, {
             "content": "我很怀疑这点……",
             "nextXianzhe": ["0001"]
@@ -20,13 +20,13 @@
         "details": [
             ["……", "好吧"]
         ],
-        "nextXianzhe": ["0003"]
+        "nextXianzhe": ["0041"]
     }, {
         "id": "0002",
         "details": [
             ["我随便说说的，别在意"]
         ],
-        "nextXianzhe": ["0003"]
+        "nextXianzhe": ["0041"]
     }, {
         "id": "0003",
         "details": [
@@ -372,7 +372,7 @@
     }, {
         "id": "0035",
         "details": [
-            ["对了，本站的动画效果都是男朋友帮我写的", "<a href='https://github.com/devyumao'>GitHub</a> 和<a href='http://weibo.com/u/2769530531'>微博</a> ID 都是 devyumao"]
+            ["对了，本站的动画效果都是<del>男朋友</del><ins>老公</ins>帮我写的", "<a href='https://github.com/devyumao'>GitHub</a> 和<a href='http://weibo.com/u/2769530531'>微博</a> ID 都是 devyumao"]
         ],
         "responses": [{
             "content": "这恩爱秀得……行行行，狗粮费拿去就是！",
@@ -431,6 +431,49 @@
         ],
         "responses": [{
             "content": "O(∩_∩)O哈哈~"
+        }]
+    }, {
+        "id": "0041",
+        "details": [
+            [
+                "我最近做了一个名叫“牙哈哈心情日记”的 iOS 应用，可以用来记录每天的心情~",
+                "<img src='img/gooday.jpg'>",
+                "很可爱吧？\\(^o^)/~"
+            ]
+        ],
+        "responses": [{
+            "content": "哇，有意思！哪里可以下载？",
+            "nextXianzhe": ["0042"]
+        }, {
+            "content": "没有安卓？差评啊~",
+            "nextXianzhe": ["0043"]
+        }, {
+            "content": "……",
+            "nextXianzhe": ["0003"]
+        }]
+    }, {
+        "id": "0042",
+        "details": [
+            [
+                "可以在苹果商店搜索“牙哈哈”，或是扫下面的二维码。谢谢支持！",
+                "<img src='img/gooday-qr.png'>"
+            ]
+        ],
+        "nextXianzhe": ["0003"]
+    }, {
+        "id": "0043",
+        "details": [
+            [
+                "如果 iOS 下载量达到我付的年费的话，我也会出安卓版的。暂时打算先把 iOS 版做好！",
+                "如果你实在想支持我，可以送书给我~"
+            ]
+        ],
+        "responses": [{
+            "content": "好哇！我最喜欢爱读书的女孩子了~",
+            "nextXianzhe": ["0037"]
+        }, {
+            "content": "……",
+            "nextXianzhe": ["0003"]
         }]
     }],
     "fromUser": [{
