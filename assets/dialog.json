@@ -6,7 +6,7 @@
         ],
         "responses": [{
             "content": "我也是！",
-            "nextXianzhe": ["0041"]
+            "nextXianzhe": ["0003"]
         }, {
             "content": "我很怀疑这点……",
             "nextXianzhe": ["0001"]
@@ -20,13 +20,13 @@
         "details": [
             ["……", "好吧"]
         ],
-        "nextXianzhe": ["0041"]
+        "nextXianzhe": ["0003"]
     }, {
         "id": "0002",
         "details": [
             ["我随便说说的，别在意"]
         ],
-        "nextXianzhe": ["0041"]
+        "nextXianzhe": ["0003"]
     }, {
         "id": "0003",
         "details": [
