@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const root = pathname => path.resolve(__dirname, pathname);
 const devMode = process.env.NODE_ENV !== 'production';
@@ -54,6 +55,16 @@ module.exports = {
                         minimize: true
                     }
                 }],
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    process.env.NODE_ENV !== 'production'
+                        ? 'style-loader'
+                        : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader'
+                ]
             }
         ]
     },
@@ -71,6 +82,12 @@ module.exports = {
                 to: root('dist/')
             }
         ]),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: '[name].css',
+            chunkFilename: '[id].css'
+        }),
         ...(
             !devMode
                 ? [new webpack.LoaderOptionsPlugin({
