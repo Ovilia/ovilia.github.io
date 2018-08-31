@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const root = pathname => path.resolve(__dirname, pathname);
 const devMode = process.env.NODE_ENV !== 'production';
@@ -11,12 +12,12 @@ const excludePaths = [/node_modules/, /2014/, /2015/, /2016/, /2017/];
 module.exports = {
     mode: process.env.NODE_ENV,
 
-    devtool: devMode ? 'cheap-module-eval-source-map' : false,
+    devtool: devMode ? 'source-map' : false,
 
     context: root('src'),
 
     entry: {
-        app: root('src/js/app.js')
+        index: root('src/js/index.js')
     },
 
     output: {
@@ -26,6 +27,9 @@ module.exports = {
 
     resolve: {
         extensions: ['.js', '.html'],
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        }
     },
 
     module: {
@@ -51,9 +55,9 @@ module.exports = {
                 exclude: excludePaths,
                 use: [{
                     loader: 'html-loader',
-                    options: {
-                        minimize: true
-                    }
+                    // options: {
+                    //     minimize: true
+                    // }
                 }],
             },
             {
@@ -74,27 +78,32 @@ module.exports = {
             template: root('src/index.html'),
             inject: true,
             cache: false,
-            filename: '../index.html'
+            // filename: '../index.html'
         }),
-        new CopyWebpackPlugin([
-            {
-                from: 'model/**/*',
-                to: root('dist/')
-            }
-        ]),
+        // new CopyWebpackPlugin([
+        //     {
+        //         from: 'model/**/*',
+        //         to: root('dist/')
+        //     }
+        // ]),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
             filename: '[name].css',
             chunkFilename: '[id].css'
         }),
-        ...(
-            !devMode
-                ? [new webpack.LoaderOptionsPlugin({
-                    minimize: true,
-                    debug: false
-                })]
-                : []
-        )
+        // new BrowserSyncPlugin({
+        //     host: 'localhost',
+        //     port: 8123,
+        //     proxy: 'http://localhost:8080/'
+        // }),
+        // ...(
+        //     !devMode
+        //         ? [new webpack.LoaderOptionsPlugin({
+        //             minimize: true,
+        //             debug: false
+        //         })]
+        //         : []
+        // )
     ]
 }

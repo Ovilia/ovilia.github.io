@@ -1,3 +1,9 @@
-body {
-    background: red;
-}
+@import 'variables';
+@import 'global';
+
+@import 'mobile'; // including mobile head and foot
+@import 'mobile.body';
+@import 'mobile.msg';
+@import 'mobile.prompt';
+
+@import 'extra';
