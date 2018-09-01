@@ -1,12 +1,11 @@
 #mobile {
     position: absolute;
     left: 50%;
-    top: 30px;
-    bottom: 30px;
+    top: 50%;
     overflow: hidden;
 
     width: $mobile-width;
-    margin-left: -$mobile-width / 2;
+    margin: 0 auto;
 
     background-color: white;
     border-radius: $radius-lg;
@@ -52,11 +51,6 @@
 
 @media (max-width: 480px) {
     #mobile {
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        margin-left: 0;
         width: auto;
 
         border-radius: 0;

@@ -3,12 +3,19 @@ import Vue from 'vue';
 import './components/components';
 
 export class Main {
+
     constructor() {
-        console.log('11');
+        this.data = {
+            inApp: false
+        };
 
         this.vm = new Vue({
-            el: '#content'
+            el: '#content',
+            data: this.data
         });
-        console.log(this.vm);
+
+        // setTimeout(() => {
+        //     this.data.inApp = true;
+        // }, 2000);
     }
 }

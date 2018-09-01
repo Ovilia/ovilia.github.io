@@ -9,13 +9,25 @@
 <body>
     <div id="content">
         <div id="mobile">
-            <div id="mobile-head">
+            <div id="system-status">
+                <div id="system-status-left" class="system-status-content">left</div>
+                <div id="system-status-center" class="system-status-content">
+                    <status-time></status-time>
+                </div>
+                <div id="system-status-right" class="system-status-content">right</div>
+            </div>
+            <div class="mobile-out-app" v-if="!inApp">
 
             </div>
-            <div id="mobile-body">
-                <div id="mobile-body-bg"></div>
-                <div id="mobile-body-content">
-                    aaa
+            <div class="mobile-in-app" v-if="inApp">
+                <div class="mobile-head">
+
+                </div>
+                <div class="mobile-body">
+                    <div class="mobile-body-bg"></div>
+                    <div class="mobile-body-content">
+                        aaa
+                    </div>
                 </div>
             </div>
         </div>
