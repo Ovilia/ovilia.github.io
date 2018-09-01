@@ -1,0 +1,25 @@
+.app-container {
+    margin-top: $system-status-height;
+    padding: 0 10px;
+}
+
+    .app {
+        float: left;
+        width: 25%;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+        .app-icon {
+            width: 48px;
+            height: 48px;
+            margin: 5px auto;
+            background: #fff;
+            border-radius: 10px;
+        }
+
+        .app-name {
+            color: #fff;
+            font-size: 0.8rem;
+        }

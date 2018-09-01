@@ -16,10 +16,18 @@
                 <div id="system-status-center" class="system-status-content">
                     <status-time></status-time>
                 </div>
-                <div id="system-status-right" class="system-status-content">right</div>
+                <div id="system-status-right" class="system-status-content">
+
+                </div>
             </div>
             <div class="mobile-out-app" v-if="!inApp">
-
+                <div class="app-container">
+                    <app app-name="GitHub"></app>
+                    <app app-name="Gooday"></app>
+                    <app app-name="知乎"></app>
+                    <app app-name="微博"></app>
+                    <app app-name="微信"></app>
+                </div>
             </div>
             <div class="mobile-in-app" v-if="inApp">
                 <div class="mobile-head">
