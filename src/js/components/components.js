@@ -1,2 +1,2 @@
-export * from './message/dialog';
 export * from './message/statusTime';
+export * from './message/statusSignal';

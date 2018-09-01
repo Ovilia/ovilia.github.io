@@ -2,7 +2,9 @@
 @import 'global';
 
 @import 'system.status';
-@import 'mobile'; // including mobile head and foot
+@import 'mobile';
+@import 'mobile.outapp';
+@import 'mobile.inapp';
 @import 'mobile.body';
 @import 'mobile.msg';
 @import 'mobile.prompt';

@@ -1,0 +1,40 @@
+#mobile-head {
+    width: 100%;
+    height: $mobile-head-height - 1;
+
+    background: white;
+}
+
+    #mobile-head-title {
+        padding: 12px;
+
+        color: $clr-text-light;
+        text-align: center;
+    }
+
+#mobile-foot {
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    height: $mobile-foot-height - 1;
+
+    background: white;
+    border-top: 1px solid $clr-border-light;
+}
+
+    .say-something {
+        padding: 18px 25px;
+        color: $clr-text-unimportant;
+    }
+
+        #input-hint.clickable {
+            cursor: pointer;
+        }
+
+
+@media (max-width: 480px) {
+    #mobile-head {
+        display: none;
+    }
+}

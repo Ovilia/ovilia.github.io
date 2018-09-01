@@ -1,6 +1,11 @@
 #system-status {
     position: relative;
     height: $system-status-height;
+    z-index: 10;
+
+    &.theme-dark {
+        color: #fff;
+    }
 }
 
     .system-status-content {
@@ -16,6 +21,40 @@
     #system-status-left {
         padding-left: $distance-sm;
     }
+
+        #system-status-signal {
+            display: inline-block;
+
+            .signal {
+                display: inline-block;
+                width: 3px;
+                margin-right: 1px;
+                border-radius: 2px;
+                background: rgba(255, 255, 255, 0.2);
+
+                &.on {
+                    background: #fff;
+                }
+            }
+
+            .signal-1 {
+                height: 4px;
+            }
+            .signal-2 {
+                height: 6px;
+            }
+            .signal-3 {
+                height: 8px;
+            }
+            .signal-4 {
+                height: 10px;
+            }
+        }
+
+        #system-status-connection {
+            display: inline-block;
+            margin: 0 5px;
+        }
 
     #system-status-center {
         text-align: center;

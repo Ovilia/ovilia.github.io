@@ -26,7 +26,9 @@ export default Vue.component('status-time', {
                 str += '晚上';
             }
 
-            str += ' ' + hour + ':' + this.time.getMinutes();
+            let minutes = this.time.getHours();
+            minutes = (minutes < 10 ? '0' : '') + minutes;
+            str += ' ' + hour + ':' + minutes;
             return str;
         }
     },
