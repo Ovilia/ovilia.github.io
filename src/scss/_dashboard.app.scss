@@ -1,6 +1,5 @@
 .app-container {
-    margin-top: $system-status-height;
-    padding: 0 10px;
+    padding: 10px;
 }
 
     .app {
@@ -12,9 +11,10 @@
     }
 
         .app-icon {
-            width: 48px;
-            height: 48px;
-            margin: 5px auto;
+            width: $app-size;
+            height: $app-size;
+            margin: 0 auto;
+            margin-bottom: 5px;
             background: #fff;
             border-radius: 10px;
         }
