@@ -1,4 +1,6 @@
 import zhihuPath from './svgs/zhihu';
+import githubPath from './svgs/github';
+import wechatPath from './svgs/wechat';
 import goodayPath from './images/gooday';
 import weiboPath from './images/weibo';
 
@@ -9,6 +11,19 @@ const icons = {
         size: [31, 33],
         path: zhihuPath,
         link: 'https://www.zhihu.com/people/ovilia'
+    },
+    github: {
+        type: 'svg',
+        color: '#24292e',
+        size: [34, 33.19],
+        path: githubPath,
+        link: 'https://github.com/Ovilia'
+    },
+    wechat: {
+        type: 'svg',
+        color: '#20B62A',
+        size: [36.969, 29.031],
+        path: wechatPath
     },
     gooday: {
         type: 'img',

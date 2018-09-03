@@ -74,6 +74,8 @@ export default Vue.component('app', {
                     scale = preferredSize / originSize[1];
                     dx = (svgSize - originSize[0] * scale) / 2;
                 }
+                dx /= scale;
+                dy /= scale;
                 return `scale(${scale}, ${scale}) translate(${dx}, ${dy})`;
             }
             else {
