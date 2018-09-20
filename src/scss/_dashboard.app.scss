@@ -1,4 +1,7 @@
-$app-max-height: $app-size * 32 / 28;
+$app-img-size: 28;
+$app-img-depth: 4;
+$app-max-height: $app-size * 32 / $app-img-size;
+$app-depth: $app-size * $app-img-depth / $app-img-size;
 $msg-counter-size: 20px;
 
 .app-container {
@@ -19,6 +22,18 @@ $msg-counter-size: 20px;
             margin: 0 auto;
             margin-bottom: 5px;
             position: relative;
+
+            &:active {
+                .app-img-content {
+                    margin-top: $app-depth;
+                }
+
+                .app-img-bg {
+                    background-position-y: -$app-max-height;
+                    margin-top: $app-depth;
+                    height: $app-size;
+                }
+            }
         }
 
             .app-msg-counter {
@@ -66,15 +81,15 @@ $msg-counter-size: 20px;
                     background-size: 400%;
 
                     &.light {
-                        background-position: 0 0;
+                        background-position-x: 0;
                     }
 
                     &.medium {
-                        background-position: -$app-size 0;
+                        background-position-x: -$app-size;
                     }
 
                     &.dark {
-                        background-position: -$app-size * 2 0;
+                        background-position-x: -$app-size * 2;
                     }
                 }
 

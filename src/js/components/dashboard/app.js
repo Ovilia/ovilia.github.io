@@ -14,14 +14,14 @@ export default Vue.component('app', {
 
     template:
         `<div class="app">
-            <a class="app-icon">
+            <a class="app-icon" :href="icons[appId].link || 'javascript:;'" :target="icons[appId].link ? '_blank' : '_self'">
                 <div class="app-msg-counter" v-if="msgCount">{{ msgCount }}</div>
                 <div class="app-img-container">
                     <div class="img app-img-content" :style="{'background-position': appContentImagePosition}"></div>
-                    <div class="img app-img-bg" :class="icons[this.appId].theme"></div>
+                    <div class="img app-img-bg" :class="icons[appId].theme"></div>
                 </div>
             </a>
-            <div class="app-name">{{ icons[this.appId].name }}</div>
+            <div class="app-name">{{ icons[appId].name }}</div>
         </div>`,
 
     data: function () {
@@ -103,5 +103,8 @@ export default Vue.component('app', {
         // logoFill: function () {
         //     return icons[this.appIcon].color;
         // }
+    },
+
+    methods: {
     }
 });
