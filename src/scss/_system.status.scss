@@ -4,7 +4,8 @@
     z-index: 10;
 
     &.theme-dark {
-        color: #fff;
+        color: $clr-text-light;
+        @include text-shadow;
     }
 }
 
@@ -33,7 +34,7 @@
                 background: rgba(255, 255, 255, 0.2);
 
                 &.on {
-                    background: #fff;
+                    background: $clr-text-light;
                 }
             }
 
@@ -64,3 +65,9 @@
         text-align: right;
         padding-right: $distance-sm;
     }
+
+@media (max-width: 480px) {
+    #system-status {
+        display: none;
+    }
+}

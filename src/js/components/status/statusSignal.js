@@ -40,7 +40,7 @@ export default Vue.component('status-signal', {
 
         setConnect: function () {
             const connect = navigator.connection;
-            if (connect.type === 'wifi') {
+            if (!connect || connect.type === 'wifi') {
                 this.connection = 'Wifi';
             }
             else {

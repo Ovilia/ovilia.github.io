@@ -12,7 +12,7 @@
 
         background-color: $clr-mask;
         border-radius: $radius-lg;
-        
+
         opacity: 1;
         transition: opacity .3s;
     }
@@ -116,8 +116,6 @@
 
                 font-size: $font-size-basic;
                 font-weight: normal;
-
-                color: $clr-text-unimportant;
             }
 
             .topics {

@@ -22,16 +22,36 @@
             </div>
             <div class="mobile-out-app" v-if="!inApp">
                 <div class="app-container">
-                    <app app-name="GitHub" app-icon="github"></app>
-                    <app app-name="Gooday" app-icon="gooday"></app>
-                    <app app-name="知乎" app-icon="zhihu"></app>
-                    <app app-name="微博" app-icon="weibo"></app>
+                    <div class="app-group">
+                        <div class="app-group-title">作品</div>
+                        <div class="app-group-content">
+                            <app app-id="github"></app>
+                            <app app-id="gooday"></app>
+                            <app app-id="wedding"></app>
+                        </div>
+                    </div>
+                    <div class="app-group">
+                        <div class="app-group-title">社交网站</div>
+                        <div class="app-group-content">
+                            <app app-id="bilibili"></app>
+                            <app app-id="dribbble"></app>
+                            <app app-id="weibo"></app>
+                            <app app-id="douban"></app>
+                            <app app-id="zhihu"></app>
+                        </div>
+                    </div>
+                    <div class="app-group">
+                        <div class="app-group-title">其他</div>
+                        <div class="app-group-content">
+                            <app app-id="blog"></app>
+                            <app app-id="email"></app>
+                            <app app-id="music"></app>
+                        </div>
+                    </div>
                 </div>
                 <div class="mobile-out-app-bottom app-container">
-                    <app app-icon="wechat"></app>
-                    <app></app>
-                    <app></app>
-                    <app></app>
+                    <app app-id="zhifubao"></app>
+                    <app app-id="wechat"></app>
                 </div>
             </div>
             <div class="mobile-in-app" v-if="inApp">
@@ -47,6 +67,7 @@
         </div>
     </div>
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400" rel="stylesheet">
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-38205696-1']);

@@ -10,6 +10,10 @@
     }
 }
 
+@mixin text-shadow {
+    text-shadow: 1px 1px rgba($clr-primary-dark, 0.5);
+}
+
 
 // @font-face {
 //     font-family: 'Lato';
@@ -83,12 +87,10 @@ html, body {
 body {
     position: relative;
 
-    font-family: Lato;
+    font-family: 'Roboto Slab', sans-serif;
     font-size: $font-size-basic;
 
-    background-color: lighten($clr-primary, 50%);
-    background-image: radial-gradient(ellipse farthest-corner at 50% 0,
-        #DBF5F1 0%, #9BE4D8 100%);
+    background-color: $clr-bg-dark;
 }
 
 ul {
@@ -102,6 +104,10 @@ li {
 
 img {
     max-width: 100%;
+}
+
+@mixin nearest-neighbor {
+    image-rendering: pixelated;
 }
 
 

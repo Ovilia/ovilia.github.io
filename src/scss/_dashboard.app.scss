@@ -1,5 +1,8 @@
+$app-max-height: $app-size * 32 / 28;
+$msg-counter-size: 20px;
+
 .app-container {
-    padding: 10px;
+    padding: $distance-smer $distance-sm;
 }
 
     .app {
@@ -13,20 +16,70 @@
         .app-icon {
             display: block;
             width: $app-size;
-            height: $app-size;
             margin: 0 auto;
             margin-bottom: 5px;
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-
-            svg {
-                width: 100%;
-                height: 100%;
-            }
+            position: relative;
         }
 
+            .app-msg-counter {
+                position: absolute;
+                overflow: hidden;
+                right: -$msg-counter-size / 2;
+                top: -$msg-counter-size / 2;
+                min-width: $msg-counter-size + 2px;
+                padding: 2px 4px;
+                z-index: 20;
+                font-size: $font-size-smer;
+                border-radius: $msg-counter-size;
+                background-color: $clr-border;
+                color: $clr-text-light;
+                border: 1px solid $clr-text-light;
+            }
+
+            .app-img-container {
+                width: $app-size;
+                height: $app-max-height;
+                position: relative;
+
+                .img {
+                    @include nearest-neighbor;
+                    width: $app-size;
+                }
+            }
+
+                .app-img-content {
+                    height: $app-size;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    background: url('https://zwl-1256209664.cos.ap-shanghai.myqcloud.com/home/app-icon-all.png');
+                    background-size: 400%; // image has 4 icons in a line
+                }
+
+                .app-img-bg {
+                    height: $app-max-height;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background: url('https://zwl-1256209664.cos.ap-shanghai.myqcloud.com/home/app-button.png');
+                    background-size: 400%;
+
+                    &.light {
+                        background-position: 0 0;
+                    }
+
+                    &.medium {
+                        background-position: -$app-size 0;
+                    }
+
+                    &.dark {
+                        background-position: -$app-size * 2 0;
+                    }
+                }
+
         .app-name {
-            color: #fff;
+            color: $clr-text-light;
             font-size: 0.8rem;
+            @include text-shadow;
         }

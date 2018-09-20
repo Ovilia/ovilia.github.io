@@ -71,7 +71,7 @@ $scroll-bar-width: 8px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: $clr-primary-lighter;
+            background-color: $clr-primary-light;
             border-radius: $scroll-bar-width / 2;
         }
     }
