@@ -78,7 +78,7 @@ module.exports = {
             template: root('src/index.html'),
             inject: true,
             cache: false,
-            // filename: '../index.html'
+            filename: devMode ? 'index.html' : '../index.html'
         }),
         // new CopyWebpackPlugin([
         //     {
