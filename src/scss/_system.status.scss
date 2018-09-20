@@ -2,14 +2,23 @@
     position: relative;
     height: $system-status-height;
     z-index: 10;
+    color: $clr-text;
 
-    &.theme-dark {
+    &.theme-light {
         color: $clr-text-light;
         @include text-shadow;
+
+        #system-status-signal .signal {
+            background: rgba($clr-text-light, 0.4);
+
+            &.on {
+                background: $clr-text-light;
+            }
+        }
     }
 }
 
-    .system-status-content {
+    %system-status-content {
         position: absolute;
         left: 0;
         top: 0;
@@ -17,6 +26,10 @@
         height: 100%;
         padding: 5px;
         box-sizing: border-box;
+    }
+
+    .system-status-content {
+        @extend %system-status-content;
     }
 
     #system-status-left {
@@ -31,10 +44,10 @@
                 width: 3px;
                 margin-right: 1px;
                 border-radius: 2px;
-                background: rgba(255, 255, 255, 0.2);
+                background: rgba($clr-text, 0.4);
 
                 &.on {
-                    background: $clr-text-light;
+                    background: $clr-text;
                 }
             }
 

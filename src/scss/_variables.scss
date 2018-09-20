@@ -9,6 +9,7 @@ $clr-secondary-dark:   #585153;
 $clr-mask: rgba(200, 200, 200, 0.3);
 
 $clr-bg-light: $clr-secondary-light;
+$clr-bg-lighter: lighten($clr-secondary-light, 10%);
 $clr-bg-dark: $clr-secondary-dark;
 
 $clr-text: $clr-primary-dark;

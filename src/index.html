@@ -9,7 +9,7 @@
 <body>
     <div id="content">
         <div id="mobile">
-            <div id="system-status" class="theme-dark">
+            <div id="system-status" :class="'theme-' + statusTheme">
                 <div id="system-status-left" class="system-status-content">
                     <status-signal></status-signal>
                 </div>
@@ -26,7 +26,7 @@
                         <div class="app-group-title">作品</div>
                         <div class="app-group-content">
                             <app app-id="github"></app>
-                            <app app-id="gooday"></app>
+                            <app app-id="gooday" @open-app="openApp('gooday', $event)"></app>
                             <app app-id="wedding"></app>
                         </div>
                     </div>
@@ -44,26 +44,17 @@
                         <div class="app-group-title">其他</div>
                         <div class="app-group-content">
                             <app app-id="blog"></app>
-                            <app app-id="email"></app>
-                            <app app-id="music"></app>
+                            <app app-id="email" @open-app="openApp('email', $event)"></app>
+                            <app app-id="music" @open-app="openApp('music', $event)"></app>
                         </div>
                     </div>
                 </div>
                 <div class="mobile-out-app-bottom app-container">
-                    <app app-id="zhifubao"></app>
-                    <app app-id="wechat"></app>
+                    <app app-id="zhifubao" @open-app="openApp('zhifubao', $event)"></app>
+                    <app app-id="wechat" @open-app="openApp('wechat', $event)"></app>
                 </div>
             </div>
-            <div class="mobile-in-app" v-if="inApp">
-                <div class="mobile-head">
-
-                </div>
-                <div class="mobile-body">
-                    <div class="mobile-body-bg"></div>
-                    <div class="mobile-body-content">
-                    </div>
-                </div>
-            </div>
+            <inapp v-if="inApp" @exit="exitApp()"></inapp>
         </div>
     </div>
 
