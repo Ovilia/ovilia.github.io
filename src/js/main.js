@@ -1,8 +1,11 @@
 import Vue from 'vue';
 
 import './components/components';
+import { getPixelImage } from './utils/image';
+import colors from './constants/colors';
+import pagesConfig from './configs/pages';
 
-const openAppDuration = 0.2; // seconds
+const openAppDuration = 0.3; // seconds
 
 export class Main {
 
@@ -10,7 +13,12 @@ export class Main {
         this.data = {
             inApp: false,
             statusTheme: 'light',
-            lastAppOpenPosition: [0, 0] // TODO: multiple apps?
+            lastAppOpenPosition: [0, 0], // TODO: multiple apps?
+
+            pages: pagesConfig,
+
+            outAppImg: '',
+            outAppBottomImg: ''
         };
 
         this.vm = new Vue({
@@ -20,15 +28,11 @@ export class Main {
 
             methods: {
                 openApp: function (name, event) {
+                    console.log(name, event);
                     this.inApp = true;
 
                     // TODO: config somewhere
-                    if (/*['gooday'].indexOf(name) > -1*/ true) {
-                        this.statusTheme = 'dark';
-                    }
-                    else {
-                        this.statusTheme = 'light';
-                    }
+                    this.statusTheme = 'dark';
 
                     this.$nextTick(() => {
                         const mobile = document.getElementById('mobile');
@@ -58,7 +62,28 @@ export class Main {
                         this.inApp = false;
                         this.statusTheme = 'light';
                     }, openAppDuration * 1000);
+                },
+
+                resize: function () {
+                    const mobile = document.getElementById('mobile');
+                    this.outAppImg = getPixelImage(
+                        mobile.clientWidth, mobile.clientHeight,
+                        3, 0, colors.bgLighter, colors.border
+                    );
+
+                    const bottom = document.getElementById('mobile-out-app-bottom');
+                    this.outAppBottomImg = getPixelImage(
+                        bottom.clientWidth, bottom.clientHeight,
+                        [0, 0, 3, 3], 0, colors.appGroup, 'transparent'
+                    );
                 }
+            },
+
+            mounted: function () {
+                this.resize();
+                window.addEventListener('resize', this.resize);
+
+                this.$on('open-app', this.openApp);
             }
         });
     }

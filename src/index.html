@@ -20,36 +20,12 @@
 
                 </div>
             </div>
-            <div class="mobile-out-app" v-if="!inApp">
+            <div class="mobile-out-app" v-if="!inApp" :style="{'background-image': 'url(' + outAppImg + ')'}">
                 <div class="app-container">
-                    <div class="app-group">
-                        <div class="app-group-title">作品</div>
-                        <div class="app-group-content">
-                            <app app-id="github"></app>
-                            <app app-id="gooday" @open-app="openApp('gooday', $event)"></app>
-                            <app app-id="wedding"></app>
-                        </div>
-                    </div>
-                    <div class="app-group">
-                        <div class="app-group-title">社交网站</div>
-                        <div class="app-group-content">
-                            <app app-id="bilibili"></app>
-                            <app app-id="dribbble"></app>
-                            <app app-id="weibo"></app>
-                            <app app-id="douban"></app>
-                            <app app-id="zhihu"></app>
-                        </div>
-                    </div>
-                    <div class="app-group">
-                        <div class="app-group-title">其他</div>
-                        <div class="app-group-content">
-                            <app app-id="blog"></app>
-                            <app app-id="email" @open-app="openApp('email', $event)"></app>
-                            <app app-id="music" @open-app="openApp('music', $event)"></app>
-                        </div>
-                    </div>
+                    <slider :pages="pages" @open-app="openApp()"></slider>
                 </div>
-                <div class="mobile-out-app-bottom app-container">
+                <div id="mobile-out-app-bottom" class="mobile-out-app-bottom app-container"
+                    :style="{'background-image': 'url(' + outAppBottomImg + ')'}">
                     <app app-id="zhifubao" @open-app="openApp('zhifubao', $event)"></app>
                     <app app-id="wechat" @open-app="openApp('wechat', $event)"></app>
                 </div>

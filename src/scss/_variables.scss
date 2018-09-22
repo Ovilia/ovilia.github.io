@@ -17,6 +17,7 @@ $clr-text-light: lighten($clr-primary-light, 10%);
 
 $clr-border: $clr-primary-darker;
 $clr-border-light: $clr-secondary-dark;
+$clr-border-dark: darken($clr-primary-darker, 10%);
 
 $mobile-width: 360px;
 $mobile-head-height: 45px;
