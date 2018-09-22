@@ -79,11 +79,15 @@ export class Main {
                 }
             },
 
+            created: function () {
+                this.$root.$on('open-app', (appId, event) => {
+                    this.openApp(appId, event);
+                });
+            },
+
             mounted: function () {
                 this.resize();
                 window.addEventListener('resize', this.resize);
-
-                this.$on('open-app', this.openApp);
             }
         });
     }

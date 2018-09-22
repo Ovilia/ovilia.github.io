@@ -60,7 +60,7 @@ export default Vue.component('app', {
 
             // Open app
             console.log('emit')
-            this.$emit('open-app', event);
+            this.$root.$emit('open-app', this.appId, event);
         }
     }
 });
