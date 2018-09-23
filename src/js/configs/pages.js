@@ -9,6 +9,14 @@ export default [{
     }]
 }, {
     id: 1,
-    title: '其他',
-    apps: ['email', 'music']
+    groups: [{
+        title: '其他',
+        apps: ['email', 'music']
+    }]
+}, {
+    id: 2,
+    groups: [{
+        title: 'xxx',
+        apps: ['email', 'music']
+    }]
 }];

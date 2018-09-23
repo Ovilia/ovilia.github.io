@@ -21,9 +21,7 @@
                 </div>
             </div>
             <div class="mobile-out-app" v-if="!inApp" :style="{'background-image': 'url(' + outAppImg + ')'}">
-                <div class="app-container">
-                    <slider :pages="pages"></slider>
-                </div>
+                <slider :pages="pages"></slider>
                 <div id="mobile-out-app-bottom" class="mobile-out-app-bottom app-container"
                     :style="{'background-image': 'url(' + outAppBottomImg + ')'}">
                     <app app-id="zhifubao" @open-app="openApp('zhifubao', $event)"></app>

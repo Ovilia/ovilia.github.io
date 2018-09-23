@@ -13,7 +13,7 @@ export default Vue.component('app', {
 
     template:
         `<div class="app">
-            <a class="app-icon" @click="appClick"
+            <a class="app-icon" @click="appClick" draggable="false"
                 :href="icons[appId].link || 'javascript:;'"
                 :target="icons[appId].link ? '_blank' : '_self'">
                 <div class="app-msg-counter" v-if="msgCount">{{ msgCount }}</div>

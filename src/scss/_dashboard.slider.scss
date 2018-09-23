@@ -1,0 +1,32 @@
+.slider {
+    position: absolute;
+    top: $system-status-height;
+    bottom: $out-app-bottom-height;
+    left: 0;
+    width: 98.4%;
+    margin: $distance-smer 0.8%;
+}
+
+    .slider-page-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        overflow: hidden;
+    }
+
+        .slider-page {
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            flex-shrink: 0;
+            padding: 0 $distance-smer;
+        }
+
+    .slider-control {
+        position: absolute;
+        left: 0;
+        bottom: $distance-sm;
+    }
