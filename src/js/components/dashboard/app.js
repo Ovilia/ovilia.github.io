@@ -59,7 +59,6 @@ export default Vue.component('app', {
             }
 
             // Open app
-            console.log('emit')
             this.$root.$emit('open-app', this.appId, event);
         }
     }

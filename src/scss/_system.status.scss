@@ -2,11 +2,13 @@
     position: relative;
     height: $system-status-height;
     z-index: 10;
-    color: $clr-text;
+    color: $clr-text-lightest;
+    font-size: $font-size-sm;
+    @include text-shadow;
 
     &.theme-light {
         color: $clr-text-light;
-        @include text-shadow;
+        text-shadow: none;
 
         #system-status-signal .signal {
             background: rgba($clr-text-light, 0.4);
@@ -44,10 +46,10 @@
                 width: 3px;
                 margin-right: 1px;
                 border-radius: 2px;
-                background: rgba($clr-text, 0.4);
+                background: rgba($clr-text-lightest, 0.4);
 
                 &.on {
-                    background: $clr-text;
+                    background: $clr-text-lightest;
                 }
             }
 

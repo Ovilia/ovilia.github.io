@@ -1,5 +1,6 @@
 export default {
-    bgLighter: '#a39990',
+    bgDefault: '#a39990',
+    bgLight: '#d1c4af',
     border: '#504a4b',
     borderDarker: '#363132',
 

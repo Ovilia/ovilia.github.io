@@ -5,3 +5,4 @@ export * from './dashboard/appGroup';
 export * from './dashboard/slider-page';
 export * from './dashboard/slider';
 export * from './dashboard/inapp';
+export * from './app/gooday';

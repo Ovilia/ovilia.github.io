@@ -4,7 +4,7 @@ $scroll-bar-width: 8px;
 .mobile-body {
     position: absolute;
     top: $mobile-head-height;
-    bottom: $mobile-foot-height;
+    bottom: 0;
 
     width: 100%;
 
@@ -14,33 +14,6 @@ $scroll-bar-width: 8px;
     }
 }
 
-    .mobile-body-bg {
-        width: 100%;
-        height: 100%;
-
-        &:before, &:after {
-            content: '';
-
-            display: block;
-            z-index: 10;
-        }
-
-        &:before {
-            position: relative;
-
-            width: 100%;
-            height: 25px;
-        }
-
-        &:after {
-            position: absolute;
-            bottom: 0;
-
-            width: 100%;
-            height: 15px;
-        }
-    }
-
     .mobile-body-content {
         position: absolute;
         top: 0;
@@ -48,7 +21,7 @@ $scroll-bar-width: 8px;
         right: 0;
         bottom: 0;
 
-        padding: 16px $distance-h - $scroll-bar-width 16px $distance-h;
+        padding: $distance-sm $distance-h;
         overflow-x: hidden;
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch;

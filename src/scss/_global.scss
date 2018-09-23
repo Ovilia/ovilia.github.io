@@ -14,6 +14,9 @@
     text-shadow: 1px 1px rgba($clr-primary-dark, 0.5);
 }
 
+@mixin text-shadow-light {
+    text-shadow: 1px 1px rgba($clr-secondary-light, 0.5);
+}
 
 // @font-face {
 //     font-family: 'Lato';

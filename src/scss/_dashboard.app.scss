@@ -47,8 +47,8 @@ $msg-counter-size: 20px;
                 font-size: $font-size-smer;
                 border-radius: $msg-counter-size;
                 background-color: $clr-border;
-                color: $clr-text-light;
-                border: 1px solid $clr-text-light;
+                color: $clr-text-lightest;
+                // border: 1px solid $clr-text-dark;
             }
 
             .app-img-container {
@@ -94,7 +94,7 @@ $msg-counter-size: 20px;
                 }
 
         .app-name {
-            color: $clr-text-light;
+            color: $clr-text-lightest;
             font-size: 0.8rem;
             @include text-shadow;
         }

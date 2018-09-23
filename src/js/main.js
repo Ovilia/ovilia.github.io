@@ -4,6 +4,7 @@ import './components/components';
 import { getPixelImage } from './utils/image';
 import colors from './constants/colors';
 import pagesConfig from './configs/pages';
+import icons from './constants/icons';
 
 const openAppDuration = 0.3; // seconds
 
@@ -12,12 +13,14 @@ export class Main {
     constructor() {
         this.data = {
             inApp: false,
-            statusTheme: 'light',
+            statusTheme: 'default',
             lastAppOpenPosition: [0, 0], // TODO: multiple apps?
+            openedAppId: null,
 
             pages: pagesConfig,
 
-            outAppImg: '',
+            appDefaultBgImg: '',
+            appLightBgImg: '',
             outAppBottomImg: ''
         };
 
@@ -26,13 +29,25 @@ export class Main {
 
             data: this.data,
 
+            computed: {
+                appBgImg: function () {
+                    if (this.statusTheme === 'light') {
+                        console.log('light')
+                        return this.appLightBgImg;
+                    }
+                    else {
+                        console.log('default')
+                        return this.appDefaultBgImg;
+                    }
+                }
+            },
+
             methods: {
                 openApp: function (name, event) {
-                    console.log(name, event);
                     this.inApp = true;
+                    this.openedAppId = name;
 
-                    // TODO: config somewhere
-                    this.statusTheme = 'dark';
+                    this.statusTheme = icons[name].appStatusTheme || 'default';
 
                     this.$nextTick(() => {
                         const mobile = document.getElementById('mobile');
@@ -60,15 +75,19 @@ export class Main {
 
                     setTimeout(() => {
                         this.inApp = false;
-                        this.statusTheme = 'light';
+                        this.statusTheme = 'default';
                     }, openAppDuration * 1000);
                 },
 
                 resize: function () {
                     const mobile = document.getElementById('mobile');
-                    this.outAppImg = getPixelImage(
+                    this.appLightBgImg = getPixelImage(
                         mobile.clientWidth, mobile.clientHeight,
-                        3, 0, colors.bgLighter, colors.border
+                        3, 0, colors.bgLight, colors.border
+                    );
+                    this.appDefaultBgImg = getPixelImage(
+                        mobile.clientWidth, mobile.clientHeight,
+                        3, 0, colors.bgDefault, colors.border
                     );
 
                     const bottom = document.getElementById('mobile-out-app-bottom');

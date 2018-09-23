@@ -13,14 +13,16 @@ $clr-bg-lighter: lighten($clr-secondary-light, 10%);
 $clr-bg-dark: $clr-secondary-dark;
 
 $clr-text: $clr-primary-dark;
-$clr-text-light: lighten($clr-primary-light, 10%);
+$clr-text-light: $clr-primary;
+$clr-text-lightest: lighten($clr-primary-light, 10%);
+$clr-text-dark: $clr-primary-darker;
 
 $clr-border: $clr-primary-darker;
 $clr-border-light: $clr-secondary-dark;
 $clr-border-dark: darken($clr-primary-darker, 10%);
 
 $mobile-width: 360px;
-$mobile-head-height: 45px;
+$mobile-head-height: 55px;
 $mobile-foot-height: 55px;
 
 $msg-radius: 20px;

@@ -26,12 +26,14 @@ export default {
     gooday: {
         name: '牙哈哈',
         pos: [3, 0],
-        theme: THEMES.LIGHT
+        theme: THEMES.LIGHT,
+        appStatusTheme: THEMES.DARK
     },
     wechat: {
         name: '微信',
         pos: [0, 1],
-        theme: THEMES.DARK
+        theme: THEMES.DARK,
+        appStatusTheme: THEMES.LIGHT
     },
     weibo: {
         name: '微博',
@@ -42,7 +44,8 @@ export default {
     zhifubao: {
         name: '支付宝',
         pos: [2, 1],
-        theme: THEMES.MEDIUM
+        theme: THEMES.MEDIUM,
+        appStatusTheme: THEMES.DARK
     },
     zhihu: {
         name: '知乎',
@@ -59,12 +62,14 @@ export default {
     email: {
         name: 'Email',
         pos: [1, 2],
-        theme: THEMES.MEDIUM
+        theme: THEMES.MEDIUM,
+        appStatusTheme: THEMES.LIGHT
     },
     music: {
         name: '音乐',
         pos: [2, 2],
-        theme: THEMES.LIGHT
+        theme: THEMES.LIGHT,
+        appStatusTheme: THEMES.LIGHT
     },
     blog: {
         name: '博客',
