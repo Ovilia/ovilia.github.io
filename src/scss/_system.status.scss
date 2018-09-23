@@ -1,7 +1,7 @@
 #system-status {
     position: relative;
     height: $system-status-height;
-    z-index: 10;
+    z-index: 20;
     color: $clr-text-lightest;
     font-size: $font-size-sm;
     @include text-shadow;
@@ -17,6 +17,19 @@
                 background: $clr-text-light;
             }
         }
+    }
+
+    &.theme-dark {
+        color: $clr-text-lightest;
+        @include text-shadow;
+
+        // #system-status-signal .signal {
+        //     background: rgba($clr-text-light, 0.4);
+
+        //     &.on {
+        //         background: $clr-text-light;
+        //     }
+        // }
     }
 }
 

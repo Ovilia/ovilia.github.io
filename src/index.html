@@ -20,7 +20,7 @@
 
                 </div>
             </div>
-            <div class="mobile-out-app" v-if="!inApp" :style="{'background-image': 'url(' + appBgImg + ')'}">
+            <div class="mobile-out-app" :style="{'background-image': 'url(' + appBgImg + ')'}">
                 <slider :pages="pages"></slider>
                 <div id="mobile-out-app-bottom" class="mobile-out-app-bottom app-container"
                     :style="{'background-image': 'url(' + outAppBottomImg + ')'}">
@@ -28,8 +28,7 @@
                     <app app-id="wechat" @open-app="openApp('wechat', $event)"></app>
                 </div>
             </div>
-            <inapp v-if="inApp" :app-id="openedAppId" @exit="exitApp()"
-                :style="{'background-image': 'url(' + appBgImg + ')'}">
+            <inapp v-if="inApp" :app-id="openedAppId" @exit="exitApp()">
             </inapp>
         </div>
     </div>

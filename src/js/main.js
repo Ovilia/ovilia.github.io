@@ -31,14 +31,7 @@ export class Main {
 
             computed: {
                 appBgImg: function () {
-                    if (this.statusTheme === 'light') {
-                        console.log('light')
-                        return this.appLightBgImg;
-                    }
-                    else {
-                        console.log('default')
-                        return this.appDefaultBgImg;
-                    }
+                    return this.appDefaultBgImg;
                 }
             },
 
@@ -47,12 +40,12 @@ export class Main {
                     this.inApp = true;
                     this.openedAppId = name;
 
-                    this.statusTheme = icons[name].appStatusTheme || 'default';
-
                     this.$nextTick(() => {
                         const mobile = document.getElementById('mobile');
                         const mobileLeft = mobile.offsetLeft;
                         const mobileTop = mobile.offsetTop;
+
+                        this.statusTheme = icons[name].appStatusTheme || 'default';
 
                         // TODO: multiple apps?
                         const x = event.clientX - mobileLeft;
