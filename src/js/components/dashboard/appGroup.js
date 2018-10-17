@@ -38,14 +38,20 @@ export default Vue.component('app-group', {
         resize: function () {
             const group = this.$el;
 
-            this.appGroupImg = getPixelImage(
-                group.clientWidth, group.clientHeight, 2, 0,
-                colors.appGroup, colors.appGroup);
+            this.appGroupImg = getPixelImage({
+                width: group.clientWidth,
+                height: group.clientHeight,
+                radius: 2,
+                fillColor: colors.appGroup
+            });
 
             const title = group.getElementsByClassName('app-group-title')[0];
-            this.appGroupTitleImg = getPixelImage(
-                title.clientWidth, title.clientHeight, [2, 2, 0, 0], 0,
-                colors.appGroupTitle, colors.appGroupTitle);
+            this.appGroupTitleImg = getPixelImage({
+                width: title.clientWidth,
+                height: title.clientHeight,
+                radius: [2, 2, 0, 0],
+                fillColor: colors.appGroupTitle
+            });
         },
 
         openApp: function () {

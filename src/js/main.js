@@ -74,20 +74,29 @@ export class Main {
 
                 resize: function () {
                     const mobile = document.getElementById('mobile');
-                    this.appLightBgImg = getPixelImage(
-                        mobile.clientWidth, mobile.clientHeight,
-                        3, 0, colors.bgLight, colors.border
-                    );
-                    this.appDefaultBgImg = getPixelImage(
-                        mobile.clientWidth, mobile.clientHeight,
-                        3, 0, colors.bgDefault, colors.border
-                    );
+                    this.appLightBgImg = getPixelImage({
+                        width: mobile.clientWidth,
+                        height: mobile.clientHeight,
+                        radius: 3,
+                        fillColor: colors.bgLight,
+                        borderColor: colors.border
+                    });
+                    this.appDefaultBgImg = getPixelImage({
+                        width: mobile.clientWidth,
+                        height: mobile.clientHeight,
+                        radius: 3,
+                        fillColor: colors.bgDefault,
+                        borderColor: colors.border
+                    });
 
                     const bottom = document.getElementById('mobile-out-app-bottom');
-                    this.outAppBottomImg = getPixelImage(
-                        bottom.clientWidth, bottom.clientHeight,
-                        [0, 0, 3, 3], 0, colors.appGroup, 'transparent'
-                    );
+                    this.outAppBottomImg = getPixelImage({
+                        width: bottom.clientWidth,
+                        height: bottom.clientHeight,
+                        radius: [0, 0, 2, 2],
+                        fillColor: colors.appGroup,
+                        margin: [0, 1, 1, 1]
+                    });
                 }
             },
 

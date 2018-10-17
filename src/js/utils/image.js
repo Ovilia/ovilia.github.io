@@ -1,4 +1,5 @@
-import { pixelSize as pixel } from '../constants/size';
+import { pixelSize } from '../constants/size';
+import { getValueArray } from './math';
 
 /**
  * Get pixel image in base 64.
@@ -10,17 +11,18 @@ import { pixelSize as pixel } from '../constants/size';
  * |x| | | |
  * |x| | | |
  *
- * @param {number} width image width
- * @param {number} height image height
- * @param {number|Array.<number>} radius in pixel, from 0 to 4,
- *                                       can be array like border-radius
- * @param {string} fillColor background color
- * @param {string} borderColor border color
+ * @param {Object} config config
+ * @param {number} config.width image width
+ * @param {number} config.height image height
+ * @param {number|Array.<number>} config.radius in pixel, from 0 to 4, can be array like border-radius
+ * @param {string} config.fillColor background color
+ * @param {string} config.borderColor border color, undefined for no border
+ * @param {number|number[]} config.margin margin outside of border
  */
-export function getPixelImage(width, height, radius, shadowSize, fillColor, borderColor, shadowColor) {
+export function getPixelImage(config) {
     const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = config.width;
+    canvas.height = config.height;
 
     const ctx = canvas.getContext('2d');
     ctx.webkitImageSmoothingEnabled = false;
@@ -28,146 +30,69 @@ export function getPixelImage(width, height, radius, shadowSize, fillColor, bord
     ctx.mozImageSmoothingEnabled = false;
     ctx.msImageSmoothingEnabled = false;
 
-    const pixelSize = pixel;
-    const innerWidth = width - shadowSize;
-    const innerHeight = height - shadowSize;
+    const margin = getValueArray(config.margin || 0);
+    const top = pixelSize * margin[0];
+    const right = canvas.width - pixelSize * margin[1];
+    const bottom = canvas.height - pixelSize * margin[2];
+    const left = pixelSize * margin[3];
 
-    let r;
-    if (typeof radius === 'number') {
-        r = [radius, radius, radius, radius];
-    }
-    else if (radius.length === 4) {
-        r = radius;
-    }
-    else if (radius.length === 3) {
-        r = [radius[0], radius[1], radius[2], radius[1]];
-    }
-    else if (radius.length === 2) {
-        r = [radius[0], radius[1], radius[0], radius[1]];
-    }
-    else if (radius.length === 1) {
-        r = [radius[0], radius[0], radius[0], radius[0]];
-    }
-    else {
-        console.warn('Error radius value', radius);
-        r = [0, 0, 0, 0];
-    }
+    const r = getValueArray(config.radius);
 
-    ctx.fillStyle = fillColor;
-    // Left-top
-    if (r[0] === 0) {
-        ctx.moveTo(pixelSize, pixelSize);
-    }
-    else {
-        ctx.moveTo(pixelSize, r[0] * pixelSize);
-        for (let i = 0; i < r[0] - 1; ++i) {
-            ctx.lineTo(pixelSize * (i + 2), pixelSize * (r[0] - i));
-            ctx.lineTo(pixelSize * (i + 2), pixelSize * (r[0] - i - 1));
-        }
-    }
-    // Right-top
-    if (r[1] === 0) {
-        ctx.lineTo(innerWidth - pixelSize, pixelSize);
-    }
-    else {
-        ctx.lineTo(innerWidth - pixelSize * r[1], pixelSize);
-        for (let i = 0; i < r[1] - 1; ++i) {
-            ctx.lineTo(innerWidth - pixelSize * (r[1] - i), pixelSize * (i + 2));
-            ctx.lineTo(innerWidth - pixelSize * (r[1] - i - 1), pixelSize * (i + 2));
-        }
-    }
-    // Right-bottom
-    if (r[2] === 0) {
-        ctx.lineTo(innerWidth - pixelSize, innerHeight - pixelSize);
-    }
-    else {
-        ctx.lineTo(innerWidth - pixelSize, innerHeight - pixelSize * r[2]);
-        for (let i = 0; i < r[2] - 1; ++i) {
-            ctx.lineTo(innerWidth - pixelSize * (i + 2), innerHeight - pixelSize * (r[2] - i));
-            ctx.lineTo(innerWidth - pixelSize * (i + 2), innerHeight - pixelSize * (r[2] - i - 1));
-        }
-    }
-    // Left-bottom
-    if (r[3] === 0) {
-        ctx.lineTo(pixelSize, innerHeight - pixelSize);
-    }
-    else {
-        ctx.lineTo(pixelSize * r[3], innerHeight - pixelSize);
-        for (let i = 0; i < r[3] - 1; ++i) {
-            ctx.lineTo(pixelSize * (r[3] - i), innerHeight - pixelSize * (i + 2));
-            ctx.lineTo(pixelSize * (r[3] - i - 1), innerHeight - pixelSize * (i + 2));
-        }
-    }
-    ctx.closePath();
-    ctx.fill();
+    if (config.borderColor) {
+        const borderWidth = pixelSize;
+        // Border
+        drawSimplePixelImage(ctx, left, top, right - left, bottom - top, r, config.borderColor);
 
-    ctx.fillStyle = borderColor;
-
-    // Right
-    ctx.fillRect(
-        innerWidth - pixelSize,
-        pixelSize * r[1],
-        pixelSize,
-        innerHeight - pixelSize * (r[1] + r[2])
-    );
-    // Bottom
-    ctx.fillRect(
-        pixelSize * r[3],
-        innerHeight - pixelSize,
-        innerWidth - pixelSize * (r[3] + r[2]),
-        pixelSize
-    );
-    // Left
-    ctx.fillRect(
-        0,
-        pixelSize * r[0],
-        pixelSize,
-        innerHeight - pixelSize * (r[0] + r[3])
-    );
-    // Top
-    ctx.fillRect(
-        pixelSize * r[0],
-        0,
-        innerWidth - pixelSize * (r[0] + r[1]),
-        pixelSize
-    );
-
-    // Left-top
-    if (r[0] === 0) {
-        ctx.fillRect(0, 0, pixelSize, pixelSize);
+        // Fill
+        const innerR = [r[0] - 1, r[1] - 1, r[2] - 1, r[3] - 1];
+        drawSimplePixelImage(ctx, left + borderWidth, left + borderWidth,
+            right - left - borderWidth * 2, bottom - top - borderWidth * 2, innerR, config.fillColor);
     }
     else {
-        for (let i = 0; i < r[0] - 1; ++i) {
-            ctx.fillRect(pixelSize * (i + 1), pixelSize * (r[0] - 1 - i), pixelSize, pixelSize);
-        }
-    }
-    // Right-top
-    if (r[1] === 0) {
-        ctx.fillRect(innerWidth - pixelSize, 0, pixelSize, pixelSize);
-    }
-    else {
-        for (let i = 0; i < r[1] - 1; ++i) {
-            ctx.fillRect(innerWidth - pixelSize * (i + 2), pixelSize * (r[1] - 1 - i), pixelSize, pixelSize);
-        }
-    }
-    // Right-bottom
-    if (r[2] === 0) {
-        ctx.fillRect(innerWidth - pixelSize, innerHeight - pixelSize, pixelSize, pixelSize);
-    }
-    else {
-        for (let i = 0; i < r[2] - 1; ++i) {
-            ctx.fillRect(innerWidth - pixelSize * (i + 2), innerHeight - pixelSize * (r[2] - i), pixelSize, pixelSize);
-        }
-    }
-    // Left-bottom
-    if (r[3] === 0) {
-        ctx.fillRect(0, innerHeight - pixelSize, pixelSize, pixelSize);
-    }
-    else {
-        for (let i = 0; i < r[3] - 1; ++i) {
-            ctx.fillRect(pixelSize * (i + 1), innerHeight - pixelSize * (r[3] - i), pixelSize, pixelSize);
-        }
+        // Fill
+        drawSimplePixelImage(ctx, left, top, right - left, bottom - top, r, config.fillColor);
     }
 
     return canvas.toDataURL();
+}
+
+
+
+function drawSimplePixelImage(ctx, left, top, width, height, r, color) {
+    const right = left + width;
+    const bottom = top + height;
+
+    ctx.fillStyle = color;
+    ctx.beginPath();
+
+    // Left-top
+    ctx.moveTo(left, top + pixelSize * r[0]);
+    for (let i = 0; i < r[0]; ++i) {
+        ctx.lineTo(left + pixelSize * (i + 1), top + pixelSize * (r[0] - i));
+        ctx.lineTo(left + pixelSize * (i + 1), top + pixelSize * (r[0] - i - 1));
+    }
+
+    // Right-top
+    ctx.lineTo(right - pixelSize * r[1], top);
+    for (let i = 0; i < r[1]; ++i) {
+        ctx.lineTo(right - pixelSize * (r[1] - i), top + pixelSize * (i + 1));
+        ctx.lineTo(right - pixelSize * (r[1] - i - 1), top + pixelSize * (i + 1));
+    }
+
+    // Right-bottom
+    ctx.lineTo(right, bottom - pixelSize * r[2]);
+    for (let i = 0; i < r[2]; ++i) {
+        ctx.lineTo(right - pixelSize * (i + 1), bottom - pixelSize * (r[2] - i));
+        ctx.lineTo(right - pixelSize * (i + 1), bottom - pixelSize * (r[2] - i - 1));
+    }
+
+    // Left-bottom
+    ctx.lineTo(left + pixelSize * r[3], bottom);
+    for (let i = 0; i < r[3]; ++i) {
+        ctx.lineTo(left + pixelSize * (r[3] - i), bottom - pixelSize * (i + 1));
+        ctx.lineTo(left + pixelSize * (r[3] - i - 1), bottom - pixelSize * (i + 1));
+    }
+
+    ctx.closePath();
+    ctx.fill();
 }

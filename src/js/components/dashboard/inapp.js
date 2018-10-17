@@ -13,14 +13,15 @@ export default Vue.component('inapp', {
     },
 
     template:
-        `<div class="mobile-in-app" :class="'theme-' + icons[appId].appStatusTheme">
+        `<div class="mobile-in-app" :class="'theme-' + icons[appId].appStatusTheme"
+            :style="{'background-image': 'url(' + bodyBgImg + ')'}">
             <div class="mobile-head" :style="{'background-image': 'url(' + headBgImg + ')'}">
                 <div class="mobile-head-center">{{ icons[appId].name }}</div>
                 <div class="mobile-head-right">
                     <a class="btn-close" @click="exit()">返回</a>
                 </div>
             </div>
-            <div class="mobile-body" :style="{'background-image': 'url(' + bodyBgImg + ')'}">
+            <div class="mobile-body">
                 <app-gooday v-if="appId === 'gooday'"></app-gooday>
             </div>
         </div>`,
@@ -48,16 +49,26 @@ export default Vue.component('inapp', {
         },
 
         resize() {
+            const body = this.$el;
+            const bodyColor = colors.bgDefault;
+            this.bodyBgImg = getPixelImage({
+                width: body.clientWidth,
+                height: body.clientHeight,
+                radius: 2,
+                fillColor: bodyColor,
+                margin: 1
+            });
+
             const head = this.$el.getElementsByClassName('mobile-head')[0];
             // const headTheme = icons[this.appId].appStatusTheme; // TODO:
             const headColor = colors.appGroupTitle;
-            this.headBgImg = getPixelImage(head.clientWidth, head.clientHeight,
-                [3, 3, 0, 0], 0, headColor, headColor);
-
-            const body = this.$el.getElementsByClassName('mobile-body')[0];
-            const bodyColor = colors.bgDefault;
-            this.bodyBgImg = getPixelImage(body.clientWidth, body.clientHeight,
-                [0, 0, 3, 3], 0, bodyColor, bodyColor);
+            this.headBgImg = getPixelImage({
+                width: head.clientWidth,
+                height: head.clientHeight,
+                radius: [2, 2, 0, 0],
+                fillColor: headColor,
+                margin: [1, 1, 0, 1]
+            });
         }
     },
 
