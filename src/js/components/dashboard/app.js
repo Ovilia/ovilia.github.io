@@ -19,7 +19,7 @@ export default Vue.component('app', {
                 <div class="app-msg-counter" v-if="msgCount">{{ msgCount }}</div>
                 <div class="app-img-container">
                     <div class="img app-img-content" :style="{'background-position': appContentImagePosition}"></div>
-                    <div class="img app-img-bg" :class="icons[appId].theme"></div>
+                    <div class="img app-img-bg" :class="icons[appId].logoTheme"></div>
                 </div>
             </a>
             <div class="app-name">{{ icons[appId].name }}</div>

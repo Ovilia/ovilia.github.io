@@ -45,7 +45,7 @@ export class Main {
                         const mobileLeft = mobile.offsetLeft;
                         const mobileTop = mobile.offsetTop;
 
-                        this.statusTheme = icons[name].appStatusTheme || 'default';
+                        this.statusTheme = icons[name].appStatusTheme || 'dark';
 
                         // TODO: multiple apps?
                         const x = event.clientX - mobileLeft;
@@ -78,14 +78,14 @@ export class Main {
                         width: mobile.clientWidth,
                         height: mobile.clientHeight,
                         radius: 3,
-                        fillColor: colors.bgLight,
+                        fillColor: colors.bg.light,
                         borderColor: colors.border
                     });
                     this.appDefaultBgImg = getPixelImage({
                         width: mobile.clientWidth,
                         height: mobile.clientHeight,
                         radius: 3,
-                        fillColor: colors.bgDefault,
+                        fillColor: colors.bg.medium,
                         borderColor: colors.border
                     });
 

@@ -23,7 +23,7 @@ $scroll-bar-width: 8px;
 
         padding: $distance-sm $distance-h;
         overflow-x: hidden;
-        overflow-y: scroll;
+        // overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
 
         color: $clr-text;

@@ -15,7 +15,7 @@
     font-size: $font-size-lg;
     color: $clr-text-dark;
 
-    .theme-dark & {
+    .status-theme-dark & {
         color: $clr-text-lightest;
     }
 }

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import icons from '../../constants/icons';
 import { getPixelImage } from '../../utils/image';
 import colors from '../../constants/colors';
+import themes from '../../constants/themes';
 
 export default Vue.component('inapp', {
 
@@ -13,7 +14,7 @@ export default Vue.component('inapp', {
     },
 
     template:
-        `<div class="mobile-in-app" :class="'theme-' + icons[appId].appStatusTheme"
+        `<div class="mobile-in-app" :class="'status-theme-' + icons[appId].appStatusTheme"
             :style="{'background-image': 'url(' + bodyBgImg + ')'}">
             <div class="mobile-head" :style="{'background-image': 'url(' + headBgImg + ')'}">
                 <div class="mobile-head-center">{{ icons[appId].name }}</div>
@@ -23,6 +24,7 @@ export default Vue.component('inapp', {
             </div>
             <div class="mobile-body">
                 <app-gooday v-if="appId === 'gooday'"></app-gooday>
+                <app-wechat v-if="appId === 'wechat'"></app-wechat>
             </div>
         </div>`,
 
@@ -50,7 +52,19 @@ export default Vue.component('inapp', {
 
         resize() {
             const body = this.$el;
-            const bodyColor = colors.bgDefault;
+            const theme = icons[this.appId].appBgTheme;
+            const bodyColor = (() => {
+                switch(theme) {
+                    case themes.light:
+                        return colors.bg.light;
+                    case themes.medium:
+                        return colors.bg.medium;
+                    case themes.dark:
+                        return colors.bg.dark;
+                    default:
+                        return colors.bg.light;
+                }
+            })();
             this.bodyBgImg = getPixelImage({
                 width: body.clientWidth,
                 height: body.clientHeight,
@@ -60,8 +74,19 @@ export default Vue.component('inapp', {
             });
 
             const head = this.$el.getElementsByClassName('mobile-head')[0];
-            // const headTheme = icons[this.appId].appStatusTheme; // TODO:
-            const headColor = colors.appGroupTitle;
+            const headTheme = icons[this.appId].appStatusTheme;
+            const headColor = (() => {
+                switch(headTheme) {
+                    case themes.light:
+                        return colors.head.light;
+                    case themes.medium:
+                        return colors.head.medium;
+                    case themes.dark:
+                        return colors.head.dark;
+                    default:
+                        return colors.head.dark;
+                }
+            })();
             this.headBgImg = getPixelImage({
                 width: head.clientWidth,
                 height: head.clientHeight,

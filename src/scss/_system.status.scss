@@ -6,7 +6,7 @@
     font-size: $font-size-sm;
     @include text-shadow;
 
-    &.theme-light {
+    .status-theme-light & {
         color: $clr-text-light;
         text-shadow: none;
 
@@ -19,17 +19,17 @@
         }
     }
 
-    &.theme-dark {
-        color: $clr-text-lightest;
-        @include text-shadow;
+    .status-theme-dark & {
+        color: $clr-text-lighter;
+        @include text-shadow-dark;
 
-        // #system-status-signal .signal {
-        //     background: rgba($clr-text-light, 0.4);
+        #system-status-signal .signal {
+            background: rgba($clr-text-lighter, 0.4);
 
-        //     &.on {
-        //         background: $clr-text-light;
-        //     }
-        // }
+            &.on {
+                background: $clr-text-lighter;
+            }
+        }
     }
 }
 

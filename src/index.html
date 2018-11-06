@@ -7,9 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="content">
+    <div id="content" :class="'status-theme-' + statusTheme">
         <div id="mobile">
-            <div id="system-status" :class="'theme-' + statusTheme">
+            <div id="system-status">
                 <div id="system-status-left" class="system-status-content">
                     <status-signal></status-signal>
                 </div>
