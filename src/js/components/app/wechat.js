@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Message from '../../entities/message';
 import AUTHOR from '../../constants/author';
+import InkDialog from '../../entities/inkDialog';
 
 export default Vue.component('app-wechat', {
 
@@ -13,7 +14,8 @@ export default Vue.component('app-wechat', {
 
     data: function () {
         return {
-            messages: []
+            messages: [],
+            inkDialog: null
         };
     },
 
@@ -21,6 +23,7 @@ export default Vue.component('app-wechat', {
     },
 
     created: function () {
+        this.inkDialog = new InkDialog('wechat');
         // // tmp
         // for (let i = 0; i < 10; ++i) {
         //     this.messages.push(new Message(

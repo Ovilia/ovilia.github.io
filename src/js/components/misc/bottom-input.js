@@ -8,7 +8,7 @@ export default Vue.component('bottom-input', {
     },
 
     template:
-        `<div class="bottom-input" :class="has-prompt">
+        `<div class="bottom-input" :class="{'has-prompt': isPromptOpen}">
             <div class="input-prompt" v-if="isPromptOpen">
                 <div class="input-prompt-head">
                     <div class="say-something">说点什么……</div>
@@ -18,14 +18,14 @@ export default Vue.component('bottom-input', {
                 <div class="input-prompt-body">
                     <!--ul class="responses" v-if="lastDialog">
                         <li v-for="res in lastDialog.responses">
-                            <a href="javascript:;" v-on:click="respond(res)">{{ res.content }}</a>
+                            <a v-on:click="respond(res)">{{ res.content }}</a>
                         </li>
                     </ul>
                     <div class="next-topic"
                         v-if="!lastDialog || !lastDialog.responses">
                         <ul class="topics">
                             <li v-for="topic in nextTopics">
-                                <a href="javascript:;" v-on:click="ask(topic)">{{ topic.brief }}</a>
+                                <a v-on:click="ask(topic)">{{ topic.brief }}</a>
                             </li>
                         </ul>
                     </div-->
