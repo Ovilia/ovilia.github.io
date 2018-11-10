@@ -43,6 +43,7 @@
     "sass"
   ],
   "dependencies": {
+    "inkjs": "^1.8.0-beta.1",
     "vue": "^2.5.17"
   }
 }

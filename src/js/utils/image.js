@@ -1,4 +1,4 @@
-import { pixelSize } from '../constants/size';
+import { pixelSize as defaultPixelSize } from '../constants/size';
 import { getValueArray } from './math';
 
 /**
@@ -17,6 +17,8 @@ import { getValueArray } from './math';
  * @param {number|Array.<number>} config.radius in pixel, from 0 to 4, can be array like border-radius
  * @param {string} config.fillColor background color
  * @param {string} config.borderColor border color, undefined for no border
+ * @param {string} config.borderSize border size, 0 or 1, can be array like border-radius
+ * @param {number} config.pixelSize if not given, the value defined in contants will be used
  * @param {number|number[]} config.margin margin outside of border
  */
 export function getPixelImage(config) {
@@ -30,6 +32,8 @@ export function getPixelImage(config) {
     ctx.mozImageSmoothingEnabled = false;
     ctx.msImageSmoothingEnabled = false;
 
+    const pixelSize = config.pixelSize == null ? defaultPixelSize : config.pixelSize;
+
     const margin = getValueArray(config.margin || 0);
     const top = pixelSize * margin[0];
     const right = canvas.width - pixelSize * margin[1];
@@ -39,18 +43,30 @@ export function getPixelImage(config) {
     const r = getValueArray(config.radius);
 
     if (config.borderColor) {
-        const borderWidth = pixelSize;
+        const borderSize = getValueArray(config.borderSize || 1);
+        const borderWidth = [
+            borderSize[0] * pixelSize,
+            borderSize[1] * pixelSize,
+            borderSize[2] * pixelSize,
+            borderSize[3] * pixelSize
+        ];
         // Border
-        drawSimplePixelImage(ctx, left, top, right - left, bottom - top, r, config.borderColor);
+        drawSimplePixelImage(ctx, left, top, right - left, bottom - top, r, config.borderColor, pixelSize);
 
         // Fill
-        const innerR = [r[0] - 1, r[1] - 1, r[2] - 1, r[3] - 1];
-        drawSimplePixelImage(ctx, left + borderWidth, left + borderWidth,
-            right - left - borderWidth * 2, bottom - top - borderWidth * 2, innerR, config.fillColor);
+        const innerR = [
+            Math.max(r[0] - 1, 0),
+            Math.max(r[1] - 1, 0),
+            Math.max(r[2] - 1, 0),
+            Math.max(r[3] - 1, 0)
+        ];
+        drawSimplePixelImage(ctx, left + borderWidth[3], top + borderWidth[0],
+            right - left - borderWidth[1] - borderWidth[3], bottom - top - borderWidth[0] - borderWidth[2],
+            innerR, config.fillColor, pixelSize);
     }
     else {
         // Fill
-        drawSimplePixelImage(ctx, left, top, right - left, bottom - top, r, config.fillColor);
+        drawSimplePixelImage(ctx, left, top, right - left, bottom - top, r, config.fillColor, pixelSize);
     }
 
     return canvas.toDataURL();
@@ -58,7 +74,7 @@ export function getPixelImage(config) {
 
 
 
-function drawSimplePixelImage(ctx, left, top, width, height, r, color) {
+function drawSimplePixelImage(ctx, left, top, width, height, r, color, pixelSize) {
     const right = left + width;
     const bottom = top + height;
 

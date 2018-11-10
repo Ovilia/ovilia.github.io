@@ -56,7 +56,7 @@ export default Vue.component('inapp', {
             const bodyColor = (() => {
                 switch(theme) {
                     case themes.light:
-                        return colors.bg.light;
+                        return colors.bg.lightest;
                     case themes.medium:
                         return colors.bg.medium;
                     case themes.dark:

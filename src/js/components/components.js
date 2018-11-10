@@ -7,7 +7,10 @@ export * from './dashboard/slider-page';
 export * from './dashboard/slider';
 export * from './dashboard/inapp';
 
-export * from './layout/bottom-input';
+export * from './message/msg-container';
+export * from './message/msg';
+
+export * from './misc/bottom-input';
 
 export * from './app/gooday';
 export * from './app/wechat';

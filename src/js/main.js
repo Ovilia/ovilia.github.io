@@ -85,7 +85,7 @@ export class Main {
                         width: mobile.clientWidth,
                         height: mobile.clientHeight,
                         radius: 3,
-                        fillColor: colors.bg.medium,
+                        fillColor: colors.bg.light,
                         borderColor: colors.border
                     });
 
