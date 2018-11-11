@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import $ from 'zepto';
 import { getPixelImage } from '../../utils/image';
 import colors from '../../constants/colors';
 
@@ -93,6 +94,18 @@ export default Vue.component('bottom-input', {
                 fillColor: colors.bg.lighter,
                 borderSize: [0, 1, 1, 1],
                 borderColor: colors.border
+            });
+
+            const $content = $('.content-above-input');
+            $content.attr('style', `bottom: ${this.promptHeight}px`);
+            // Scroll to the end of content
+            const distance = $content[0].scrollHeight - $content.height() - $content.scrollTop();
+            const duration = 250;
+            const startTime = Date.now();
+            requestAnimationFrame(function step() {
+                const p = Math.min(1, (Date.now() - startTime) / duration);
+                $content.scrollTop($content.scrollTop() + distance * p);
+                p < 1 && requestAnimationFrame(step);
             });
         }
     },

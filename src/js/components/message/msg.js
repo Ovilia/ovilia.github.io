@@ -14,9 +14,8 @@ export default Vue.component('msg', {
 
     template:
         `<div class="msg-row" :class="'msg-' + message.author">
-            <div class="msg" ref="msg">
+            <div class="msg" ref="msg" :style="{'background-image': 'url(' + bgImg + ')'}">
                 {{ message.content }}
-                <img class="msg-bg pixel-img" :src="bgImg" v-if="bgImg">
             </div>
         </div>`,
 

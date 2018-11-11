@@ -38,6 +38,7 @@
 
         font-size: $font-size-basic;
         line-height: 20px;
+        @include nearest-neighbor;
 
         // TODO: not working with image background
         // transition: width .12s ease-out, height .12s ease-out;
@@ -45,10 +46,7 @@
 
         img {
             margin: 8px 0;
-
-            &.msg-bg {
-                margin: 0;
-            }
+            image-rendering: auto;
         }
 
         .dot {
@@ -81,15 +79,6 @@
     .msg-audience {
         text-align: right;
         color: $clr-text-dark;
-    }
-
-    .msg-bg {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        z-index: -1;
     }
 
     // .msg-bounce-in-left {
