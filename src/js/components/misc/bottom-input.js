@@ -14,14 +14,13 @@ export default Vue.component('bottom-input', {
     template:
         `<div class="bottom-input" :class="{'has-prompt': isPromptOpen}"
             :style="{'background-image': 'url(' + bgImg + ')', 'height': promptHeight + 'px'}">
-            <div class="input-prompt" ref="content" v-if="isPromptOpen">
+            <div class="input-prompt" ref="content" v-if="isPromptOpen && choices.length">
                 <div class="input-prompt-head">
                     <div class="say-something">说点什么……</div>
-                    <a class="close-btn"
-                        @click="togglePrompt(false)"></a>
+                    <a class="close-btn" @click="togglePrompt(false)"></a>
                 </div>
                 <div class="input-prompt-body">
-                    <ul class="choices" v-if="choices.length">
+                    <ul class="choices">
                         <li v-for="choice in choices">
                             <a @click="respond(choice)">{{ choice.text }}</a>
                         </li>
@@ -39,8 +38,8 @@ export default Vue.component('bottom-input', {
             <div class="input-hint say-something" v-if="!isPromptOpen"
                 @click="togglePrompt(true)"
                 :class="{'clickable': !isXianzheTyping }">
-                <span v-if="!isXianzheTyping">说点什么……</span>
-                <span v-if="isXianzheTyping">羡辙正在输入中</span>
+                <span v-if="choices.length">说点什么……</span>
+                <span v-if="!choices.length">羡辙下线了，过些时候再来看看吧！</span>
             </div>
         </div>`,
 
@@ -53,23 +52,40 @@ export default Vue.component('bottom-input', {
         };
     },
 
+    watch: {
+        choices: function (newValue) {
+            if (!newValue || !newValue.length) {
+                console.log('empty choices, go false');
+                this.togglePrompt(false);
+            }
+        }
+    },
+
     methods: {
         togglePrompt(toOpen) {
+            if (!this.choices.length && toOpen) {
+                // Ignore open when no choices
+                return;
+            }
+
             this.isPromptOpen = toOpen;
 
             this.$nextTick(() => {
-                const height = this.$refs.content.clientHeight;
-                this.promptHeight = height;
-
                 this.resize();
             });
         },
 
         respond(choice) {
             this.$emit('respond', choice);
+
+            this.$nextTick(() => {
+                this.resize();
+            });
         },
 
         resize() {
+            this.promptHeight = this.$refs.content ? this.$refs.content.clientHeight : 45;
+
             this.bgImg = getPixelImage({
                 width: this.$el.clientWidth,
                 height: this.promptHeight,

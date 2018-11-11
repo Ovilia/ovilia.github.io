@@ -29,7 +29,9 @@ export default Vue.component('ink-msg-container', {
         runNext() {
             let text = this.inkDialog.getNext();
             while (text) {
-                const msg = new Message(AUTHOR.XIANZHE, text);
+                const author = this.inkDialog.story.currentTags.indexOf('xianzhe') > -1
+                    ? AUTHOR.XIANZHE : AUTHOR.AUDIENCE;
+                const msg = new Message(author, text);
                 this.messages.push(msg);
 
                 text = this.inkDialog.getNext();
