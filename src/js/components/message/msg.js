@@ -14,9 +14,9 @@ export default Vue.component('msg', {
 
     template:
         `<div class="msg-row" :class="'msg-' + message.author">
-            <div class="msg">
-                This is msg from {{ message.author }}: {{ message.content }}
-                <img class="msg-bg pixel-img" :src="bgImg">
+            <div class="msg" ref="msg">
+                {{ message.content }}
+                <img class="msg-bg pixel-img" :src="bgImg" v-if="bgImg">
             </div>
         </div>`,
 
@@ -29,8 +29,7 @@ export default Vue.component('msg', {
     methods: {
         resize() {
             const isXianzhe = this.message.author === AUTHOR.XIANZHE;
-            const el = this.$el.getElementsByClassName('msg')[0];
-            console.log(el);
+            const el = this.$refs.msg;
             this.bgImg = getPixelImage({
                 width: el.clientWidth,
                 height: el.clientHeight,
@@ -42,7 +41,12 @@ export default Vue.component('msg', {
     },
 
     mounted: function () {
-        this.resize();
+        // TODO: not sure why need 0.3s delay here
+        console.log('before', this.$refs.msg.clientWidth, this.$refs.msg.clientHeight);
+        setTimeout(() => {
+            console.log('after', this.$refs.msg.clientWidth, this.$refs.msg.clientHeight);
+            this.resize();
+        }, 300);
         window.addEventListener('resize', this.resize);
     }
 });

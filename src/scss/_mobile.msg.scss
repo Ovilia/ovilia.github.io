@@ -39,8 +39,9 @@
         font-size: $font-size-basic;
         line-height: 20px;
 
-        transition: width .12s ease-out, height .12s ease-out;
-        transform: translate3d(0, 0, 0);
+        // TODO: not working with image background
+        // transition: width .12s ease-out, height .12s ease-out;
+        // transform: translate3d(0, 0, 0);
 
         img {
             margin: 8px 0;
@@ -91,15 +92,15 @@
         z-index: -1;
     }
 
-    .msg-bounce-in-left {
-        transform-origin: 0 0;
-        animation: msgBounceIn $msg-animation-duration;
-    }
+    // .msg-bounce-in-left {
+    //     transform-origin: 0 0;
+    //     animation: msgBounceIn $msg-animation-duration;
+    // }
 
-    .msg-bounce-in-right {
-        transform-origin: 100% 100%;
-        animation: msgBounceIn $msg-animation-duration;
-    }
+    // .msg-bounce-in-right {
+    //     transform-origin: 100% 100%;
+    //     animation: msgBounceIn $msg-animation-duration;
+    // }
 
 
 @media (max-width: 480px) {

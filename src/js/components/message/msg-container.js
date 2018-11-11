@@ -6,6 +6,10 @@ export default Vue.component('msg-container', {
         messages: {
             type: Array,
             default: () => []
+        },
+        choices: {
+            type: Array,
+            default: () => []
         }
     },
 
@@ -17,7 +21,7 @@ export default Vue.component('msg-container', {
                 </msg>
             </div>
 
-            <bottom-input></bottom-input>
+            <bottom-input :choices="choices" @respond="respond"></bottom-input>
         </div>`,
 
     data: function () {
@@ -26,5 +30,8 @@ export default Vue.component('msg-container', {
     },
 
     methods: {
+        respond(choice) {
+            this.$emit('respond', choice);
+        }
     }
 });

@@ -26,10 +26,7 @@
     z-index: 100;
 
     width: 100%;
-    height: $bottom-input-height;
-    margin-bottom: $bottom-input-height;
 
-    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
     transition-duration: $prompt-animation-duration;
     transition-property: transform;
 }
@@ -81,22 +78,20 @@
         }
 
     .input-prompt-body {
-        background-color: white;
         overflow: hidden;
 
-        .responses {
-            li {
-                border-bottom: 1px solid $clr-border-light;
+        .choices {
+            padding: 5px 0;
 
-                &:last-child {
-                    border-bottom: none;
-                }
+            li {
+                margin-left: 35px;
+                list-style: disc;
 
                 a {
                     display: block;
 
+                    padding: 10px 18px 10px 0;
                     height: 100%;
-                    padding: $distance-sm $distance-h;
 
                     color: $clr-text;
                     text-decoration: none;
@@ -152,7 +147,7 @@
         padding-bottom: $distance-sm + 3px;
     }
 
-    .input-prompt-body .responses li a {
+    .input-prompt-body .choices li a {
         padding: $distance-sm + 3px $distance-h + 3px;
     }
 }

@@ -69,6 +69,9 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ]
+            }, {
+                test: require.resolve('zepto'),
+                use: 'imports-loader?this=>window'
             }
         ]
     },
@@ -80,12 +83,12 @@ module.exports = {
             cache: false,
             filename: devMode ? 'index.html' : '../index.html'
         }),
-        // new CopyWebpackPlugin([
-        //     {
-        //         from: 'model/**/*',
-        //         to: root('dist/')
-        //     }
-        // ]),
+        new CopyWebpackPlugin([
+            {
+                from: 'assets/**/*',
+                to: root('dist/')
+            }
+        ]),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional

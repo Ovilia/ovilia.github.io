@@ -29,6 +29,11 @@ $scroll-bar-width: 8px;
         z-index: 1;
     }
 
+        .ink-msg-container {
+            width: 100%;
+            height: 100%;
+        }
+
         .msg-container {
             position: relative;
             width: 100%;
