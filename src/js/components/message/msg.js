@@ -9,6 +9,10 @@ export default Vue.component('msg', {
         message: {
             type: Object,
             default: () => {}
+        },
+        needResize: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -23,6 +27,14 @@ export default Vue.component('msg', {
         return {
             bgImg: ''
         };
+    },
+
+    watch: {
+        needResize: function (newValue) {
+            if (newValue) {
+                this.resize();
+            }
+        }
     },
 
     methods: {
@@ -40,12 +52,7 @@ export default Vue.component('msg', {
     },
 
     mounted: function () {
-        // TODO: not sure why need 0.3s delay here
-        console.log('before', this.$refs.msg.clientWidth, this.$refs.msg.clientHeight);
-        setTimeout(() => {
-            console.log('after', this.$refs.msg.clientWidth, this.$refs.msg.clientHeight);
-            this.resize();
-        }, 300);
+        this.resize();
         window.addEventListener('resize', this.resize);
     }
 });

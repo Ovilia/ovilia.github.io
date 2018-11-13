@@ -52,7 +52,10 @@ export default Vue.component('ink-msg-container', {
         this.inkDialog = new InkDialog();
 
         this.inkDialog.load(this.inkFileName, () => {
-            this.runNext();
+            setTimeout(() => {
+                // Load first message after 0.3 seconds, that is when app is fully loaded
+                this.runNext();
+            }, 300);
         });
     }
 

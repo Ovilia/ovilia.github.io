@@ -16,8 +16,8 @@ export default Vue.component('msg-container', {
     template:
         `<div class="msg-container">
             <div class="content-above-input">
-                <msg v-for="message in messages"
-                    :message="message" :key="message.id">
+                <msg v-for="(message, id) in messages"
+                    :message="message" :key="message.id" :needResize="id === 0 && onMounted">
                 </msg>
             </div>
 
@@ -26,6 +26,7 @@ export default Vue.component('msg-container', {
 
     data: function () {
         return {
+            onMounted: false
         };
     },
 
@@ -33,5 +34,13 @@ export default Vue.component('msg-container', {
         respond(choice) {
             this.$emit('respond', choice);
         }
+    },
+
+    mounted() {
+        // Repaint first message bg since its width and height are not correct when first render
+        // due to app-open animation
+        setTimeout(() => {
+            this.onMounted = true;
+        }, 300);
     }
 });
