@@ -9,6 +9,10 @@ export default Vue.component('bottom-input', {
         choices: {
             type: Array,
             default: () => []
+        },
+        isDialogOver: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -39,8 +43,8 @@ export default Vue.component('bottom-input', {
             <div class="input-hint say-something" v-if="!isPromptOpen"
                 @click="togglePrompt(true)"
                 :class="{'clickable': !isXianzheTyping }">
-                <span v-if="choices.length">说点什么……</span>
-                <span v-if="!choices.length">羡辙下线了，过些时候再来看看吧！</span>
+                <span v-if="!isDialogOver && choices.length">说点什么……</span>
+                <span v-if="isDialogOver || !choices.length">{{isDialogOver}},{{choices.length}}羡辙下线了，过些时候再来看看吧！</span>
             </div>
         </div>`,
 
@@ -54,10 +58,9 @@ export default Vue.component('bottom-input', {
     },
 
     watch: {
-        choices: function (newValue) {
-            if (!newValue || !newValue.length) {
-                console.log('empty choices, go false');
-                this.togglePrompt(false);
+        isDialogOver: function (isOver) {
+            if (isOver) {
+                this.isPromptOpen = false;
             }
         }
     },
@@ -77,6 +80,8 @@ export default Vue.component('bottom-input', {
         },
 
         respond(choice) {
+            this.isPromptOpen = false;
+
             this.$emit('respond', choice);
 
             this.$nextTick(() => {

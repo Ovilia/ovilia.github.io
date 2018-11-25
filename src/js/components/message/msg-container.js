@@ -10,6 +10,10 @@ export default Vue.component('msg-container', {
         choices: {
             type: Array,
             default: () => []
+        },
+        isDialogOver: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -21,7 +25,9 @@ export default Vue.component('msg-container', {
                 </msg>
             </div>
 
-            <bottom-input :choices="choices" @respond="respond"></bottom-input>
+            <bottom-input :choices="choices" :isDialogOver="isDialogOver"
+                @respond="respond">
+            </bottom-input>
         </div>`,
 
     data: function () {

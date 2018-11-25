@@ -19,13 +19,14 @@ export default Vue.component('msg', {
     template:
         `<div class="msg-row" :class="'msg-' + message.author">
             <div class="msg" ref="msg" :style="{'background-image': 'url(' + bgImg + ')'}">
-                {{ message.content }}
+                {{ msgContent }}
             </div>
         </div>`,
 
     data: function () {
         return {
-            bgImg: ''
+            bgImg: '',
+            msgContent: ''
         };
     },
 
@@ -34,6 +35,12 @@ export default Vue.component('msg', {
             if (newValue) {
                 this.resize();
             }
+        },
+
+        msgContent: function () {
+            this.$nextTick(() => {
+                this.resize();
+            });
         }
     },
 
@@ -52,6 +59,22 @@ export default Vue.component('msg', {
     },
 
     mounted: function () {
+        if (this.message.author === AUTHOR.XIANZHE) {
+            this.msgContent = '.';
+            setTimeout(() => {
+                this.msgContent = '..';
+            }, 500);
+            setTimeout(() => {
+                this.msgContent = '...';
+            }, 1000);
+            setTimeout(() => {
+                this.msgContent = this.message.content;
+            }, 1500);
+        }
+        else {
+            this.msgContent = this.message.content;
+        }
+
         this.resize();
         window.addEventListener('resize', this.resize);
     }
