@@ -45,6 +45,9 @@ export default Vue.component('ink-msg-container', {
                         if (text) {
                             iterator();
                         }
+                        else {
+                            this.runNext();
+                        }
                     }, 2000);
                 };
 
@@ -70,7 +73,6 @@ export default Vue.component('ink-msg-container', {
         },
 
         respond(choice) {
-            console.log('respond', choice);
             this.inkDialog.story.ChooseChoiceIndex(choice.index);
             this.runNext();
         }

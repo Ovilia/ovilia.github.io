@@ -44,7 +44,8 @@ export default Vue.component('bottom-input', {
                 @click="togglePrompt(true)"
                 :class="{'clickable': !isXianzheTyping }">
                 <span v-if="!isDialogOver && choices.length">说点什么……</span>
-                <span v-if="isDialogOver || !choices.length">{{isDialogOver}},{{choices.length}}羡辙下线了，过些时候再来看看吧！</span>
+                <span v-if="!isDialogOver && !choices.length">等待羡辙回复……</span>
+                <span v-if="isDialogOver">羡辙下线了，过些时候再来看看吧！</span>
             </div>
         </div>`,
 
@@ -108,9 +109,9 @@ export default Vue.component('bottom-input', {
             const duration = 250;
             const startTime = Date.now();
             requestAnimationFrame(function step() {
-                const p = Math.min(1, (Date.now() - startTime) / duration);
+                const p = (Date.now() - startTime) / duration;
                 $content.scrollTop($content.scrollTop() + distance * p);
-                p < 1 && requestAnimationFrame(step);
+                p > 0 && requestAnimationFrame(step);
             });
         }
     },

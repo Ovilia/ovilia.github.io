@@ -148,6 +148,6 @@
     }
 
     .input-prompt-body .choices li a {
-        padding: $distance-sm + 3px $distance-h + 3px;
+        padding: $distance-sm + 3px $distance-h + 3px $distance-sm + 3px 5px;
     }
 }
