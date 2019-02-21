@@ -1,5 +1,10 @@
 language: node_js
-
+node_js:
+  - "v10.10.0"
 branches:
   only:
     - dev
+before_script:
+ - npm install -g webpack@4.20.2
+script:
+  - npm run build
