@@ -7,4 +7,4 @@ branches:
 before_script:
  - npm install -g webpack@4.20.2
 script:
-  - npm run build
+ - npm run build

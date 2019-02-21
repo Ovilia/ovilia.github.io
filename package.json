@@ -46,6 +46,7 @@
   ],
   "dependencies": {
     "inkjs": "^1.8.0-beta.1",
+    "shortid": "^2.2.14",
     "vue": "^2.5.17",
     "zepto": "^1.2.0"
   }
