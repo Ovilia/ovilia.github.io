@@ -10,6 +10,10 @@
     @include clearfix;
     width: 100%;
     margin-bottom: 10px;
+
+    p {
+        margin: 0;
+    }
 }
 
 .msg-xianzhe {
@@ -32,7 +36,7 @@
         display: inline-block;
         position: relative;
 
-        padding: 8px 14px;
+        padding: 10px 15px;
         min-height: 36px;
         max-width: 75%;
         overflow: hidden;

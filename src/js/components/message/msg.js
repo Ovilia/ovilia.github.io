@@ -18,8 +18,8 @@ export default Vue.component('msg', {
 
     template:
         `<div class="msg-row" :class="'msg-' + message.author">
-            <div class="msg" ref="msg" :style="{'background-image': 'url(' + bgImg + ')'}">
-                {{ msgContent }}
+            <div class="msg" ref="msg" :style="{'background-image': 'url(' + bgImg + ')'}"
+                v-html="msgContent">
             </div>
         </div>`,
 
