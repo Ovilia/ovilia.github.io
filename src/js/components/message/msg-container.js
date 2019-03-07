@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import throttle from 'lodash/throttle';
 
 export default Vue.component('msg-container', {
 
@@ -20,7 +21,7 @@ export default Vue.component('msg-container', {
     template:
         `<div class="msg-container">
             <div class="content-above-input">
-                <msg v-for="(message, id) in messages"
+                <msg v-for="(message, id) in messages" @resized="scroll()"
                     :message="message" :key="message.id" :needResize="id === 0 && onMounted">
                 </msg>
             </div>
@@ -39,7 +40,12 @@ export default Vue.component('msg-container', {
     methods: {
         respond(choice) {
             this.$emit('respond', choice);
-        }
+        },
+
+        scroll: throttle(function () {
+            const $container = $('.content-above-input');
+            $container.scrollTop($container[0].scrollHeight - $container.height());
+        }, 1000)
     },
 
     mounted() {

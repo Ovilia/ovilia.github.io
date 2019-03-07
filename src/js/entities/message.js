@@ -6,7 +6,10 @@ export default class Message {
     constructor(author, content) {
         this.id = generateId();
         this.author = author;
-        this.content = marked(content);
+
+        const html = marked(content);
+        const re = new RegExp('\<a ');
+        this.content = html.replace(re, '<a target="_blank" ');
     }
 
 }

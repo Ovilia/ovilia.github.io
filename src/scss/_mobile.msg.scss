@@ -79,24 +79,14 @@
         }
     }
 
-    // .msg-xianzhe {
-    // }
-
     .msg-audience {
         text-align: right;
         color: $clr-text-dark;
+
+            .msg {
+                text-align: left;
+            }
     }
-
-    // .msg-bounce-in-left {
-    //     transform-origin: 0 0;
-    //     animation: msgBounceIn $msg-animation-duration;
-    // }
-
-    // .msg-bounce-in-right {
-    //     transform-origin: 100% 100%;
-    //     animation: msgBounceIn $msg-animation-duration;
-    // }
-
 
 @media (max-width: 480px) {
     .msg {

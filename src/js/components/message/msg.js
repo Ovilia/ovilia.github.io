@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { getPixelImage } from '../../utils/image';
 import colors from '../../constants/colors';
-import AUTHOR from '../../constants/author'
+import AUTHOR from '../../constants/author';
 
 export default Vue.component('msg', {
 
@@ -55,6 +55,8 @@ export default Vue.component('msg', {
                 fillColor: isXianzhe ? colors.bg.lightest : colors.bg.mediumDarker,
                 borderColor: isXianzhe ? '#948a7c' : '#645f5b'
             });
+
+            this.$emit('resized');
         }
     },
 
