@@ -1,9 +1,12 @@
 import '../scss/app.scss';
 
 import { Main } from './main';
+import ImageProcessor from './entities/imageProcessor';
 
 init();
 const main = new Main();
+
+const img = new ImageProcessor('');
 
 function init() {
     resize();

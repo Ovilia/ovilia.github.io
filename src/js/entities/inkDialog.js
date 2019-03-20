@@ -1,18 +1,24 @@
 import * as $ from 'zepto';
 import * as ink from 'inkjs';
+import localStorage from 'localStorage';
 
 export default class InkDialog {
 
     constructor() {
         this.story = null;
+        this.fileName = null;
     }
 
     load(fileName, callback) {
-        $.getJSON(`assets/dialogs/${fileName}.json`, data => {
-            console.log(data);
+        this.fileName = fileName;
+        // this.purgeState();
 
+        $.getJSON(`assets/dialogs/${fileName}.json`, data => {
             this.story = new ink.Story(data);
-            console.log(this.story);
+
+            if (this.hasState()) {
+                this.loadState();
+            }
 
             if (typeof callback === 'function') {
                 callback();
@@ -22,6 +28,7 @@ export default class InkDialog {
 
     getNext() {
         if (this.story.canContinue) {
+            this.saveState();
             return this.story.Continue();
         }
         else {
@@ -29,4 +36,33 @@ export default class InkDialog {
         }
     }
 
+    saveState() {
+        const state = this.story.state.ToJson();
+        localStorage.setItem(getStateKey(this.fileName), state);
+    }
+
+    loadState() {
+        const state = localStorage.getItem(getStateKey(this.fileName));
+        if (state && state !== 'null') {
+            this.story.state.LoadJson(state);
+        }
+    }
+
+    hasState() {
+        const state = localStorage.getItem(getStateKey(this.fileName));
+        return state && state !== 'null';
+    }
+
+    purgeState() {
+        localStorage.setItem(getStateKey(this.fileName), null);
+    }
+
+}
+
+function getStateKey(fileName) {
+    if (!fileName) {
+        console.warn('No fileName in getStateKey');
+        return '';
+    }
+    return 'inkState' + fileName;
 }

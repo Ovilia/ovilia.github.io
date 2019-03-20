@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import throttle from 'lodash/throttle';
+import localStorage from 'localStorage';
+import Message from '../../entities/message';
+
+const MESSAGES_KEY_IN_STORAGE = 'messages';
 
 export default Vue.component('msg-container', {
 
     props: {
-        messages: {
-            type: Array,
-            default: () => []
-        },
         choices: {
             type: Array,
             default: () => []
@@ -33,7 +33,8 @@ export default Vue.component('msg-container', {
 
     data: function () {
         return {
-            onMounted: false
+            onMounted: false,
+            messages: []
         };
     },
 
@@ -42,10 +43,38 @@ export default Vue.component('msg-container', {
             this.$emit('respond', choice);
         },
 
+        appendMessage(message) {
+            this.messages.push(message);
+            this.saveMessages();
+        },
+
         scroll: throttle(function () {
             const $container = $('.content-above-input');
-            $container.scrollTop($container[0].scrollHeight - $container.height());
-        }, 1000)
+            if ($container && $container.length) {
+                $container.scrollTop($container[0].scrollHeight - $container.height());
+            }
+        }, 1000),
+
+        saveMessages() {
+            const json = this.messages.map(msg => msg.toJson());
+            localStorage.setItem(MESSAGES_KEY_IN_STORAGE, JSON.stringify(json));
+        },
+
+        loadMessages() {
+            const inStorage = localStorage.getItem(MESSAGES_KEY_IN_STORAGE);
+            const messages = (JSON.parse(inStorage) || [])
+                .map(json => new Message().fromJson(json));
+            this.$set(this.messages, messages);
+        },
+
+        purgeStorage() {
+            localStorage.setItem(MESSAGES_KEY_IN_STORAGE, null);
+        }
+    },
+
+    created() {
+        // this.purgeStorage();
+        this.loadMessages();
     },
 
     mounted() {

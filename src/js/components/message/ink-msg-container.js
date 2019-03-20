@@ -14,7 +14,7 @@ export default Vue.component('ink-msg-container', {
 
     template:
         `<div class="ink-msg-container">
-            <msg-container :messages="messages" :choices="choices" :isDialogOver="isDialogOver"
+            <msg-container ref="msgContainer" :choices="choices" :isDialogOver="isDialogOver"
                 @respond="respond">
             </msg-container>
         </div>`,
@@ -22,9 +22,9 @@ export default Vue.component('ink-msg-container', {
     data: function () {
         return {
             inkDialog: null,
-            messages: [],
             choices: [],
-            isDialogOver: false
+            isDialogOver: false,
+            isFirstMessage: true
         };
     },
 
@@ -37,8 +37,7 @@ export default Vue.component('ink-msg-container', {
 
                 const iterator = () => {
                     setTimeout(() => {
-                        const msg = new Message(author, text);
-                        this.messages.push(msg);
+                        this.appendMessage(new Message(author, text));
 
                         // Next iteration
                         text = this.inkDialog.getNext();
@@ -52,13 +51,14 @@ export default Vue.component('ink-msg-container', {
                 };
 
                 if (author === AUTHOR.AUDIENCE) {
-                    this.messages.push(new Message(author, text));
+                    this.appendMessage(new Message(author, text));
                     this.runNext();
                 }
-                else if (this.messages.length === 0) {
+                else if (this.isFirstMessage) {
                     // First msg from xianzhe when open app
-                    this.messages.push(new Message(author, text));
+                    this.appendMessage(new Message(author, text));
                     this.runNext();
+                    this.isFirstMessage = true;
                 }
                 else {
                     iterator();
@@ -70,6 +70,10 @@ export default Vue.component('ink-msg-container', {
             if (!text && !this.choices.length) {
                 this.isDialogOver = true;
             }
+        },
+
+        appendMessage(msg) {
+            this.$refs.msgContainer.appendMessage(msg);
         },
 
         respond(choice) {

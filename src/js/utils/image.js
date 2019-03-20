@@ -2,6 +2,19 @@ import { pixelSize as defaultPixelSize } from '../constants/size';
 import { getValueArray } from './math';
 
 /**
+ * Get canvas instance with given width and height
+ *
+ * @param {number} width canvas width
+ * @param {number} height canvas height
+ */
+export function getCanvas(width, height) {
+    const canvas = document.createElement('canvas');
+    canvas.width = config.width;
+    canvas.height = config.height;
+    return canvas;
+}
+
+/**
  * Get pixel image in base 64.
  *
  * Here's an example of image with radius 2
@@ -22,10 +35,7 @@ import { getValueArray } from './math';
  * @param {number|number[]} config.margin margin outside of border
  */
 export function getPixelImage(config) {
-    const canvas = document.createElement('canvas');
-    canvas.width = config.width;
-    canvas.height = config.height;
-
+    const canvas = this.getCanvas(config.width, config.height);
     const ctx = canvas.getContext('2d');
     ctx.webkitImageSmoothingEnabled = false;
     ctx.imageSmoothingEnabled = false;
