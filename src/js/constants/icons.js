@@ -65,6 +65,12 @@ export default {
         logoTheme: themes.light,
         appStatusTheme: themes.light
     },
+    album: {
+        name: '相册',
+        pos: [2, 2], // TODO:
+        logoTheme: themes.dark,
+        appStatusTheme: themes.light
+    },
     blog: {
         name: '博客',
         pos: [3, 2],

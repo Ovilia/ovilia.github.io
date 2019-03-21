@@ -7,14 +7,14 @@
     @include text-shadow;
 
     .status-theme-light & {
-        color: $clr-text-light;
-        text-shadow: none;
+        color: $clr-text;
+        @include text-shadow-light;
 
         #system-status-signal .signal {
-            background: rgba($clr-text-light, 0.4);
+            background: rgba($clr-text, 0.4);
 
             &.on {
-                background: $clr-text-light;
+                background: $clr-text;
             }
         }
     }

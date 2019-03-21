@@ -69,6 +69,7 @@ export class Main {
                     setTimeout(() => {
                         this.inApp = false;
                         this.statusTheme = 'default';
+                        this.openedAppId = null;
                     }, openAppDuration * 1000);
                 },
 
@@ -102,6 +103,7 @@ export class Main {
 
             created: function () {
                 this.$root.$on('open-app', (appId, event) => {
+                    console.log('open-app', appId, event);
                     this.openApp(appId, event);
                 });
             },

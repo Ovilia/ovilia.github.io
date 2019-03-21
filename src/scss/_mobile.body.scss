@@ -27,6 +27,19 @@ $scroll-bar-width: 8px;
 
         // fix touch bug
         z-index: 1;
+
+        &.padding {
+            padding: $distance-sm;
+        }
+
+        &.scroll {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        h3 {
+            margin: $distance-sm 0;
+        }
     }
 
         .ink-msg-container {

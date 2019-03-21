@@ -15,3 +15,4 @@ export * from './misc/bottom-input';
 
 export * from './app/gooday';
 export * from './app/wechat';
+export * from './app/album';

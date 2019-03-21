@@ -103,6 +103,10 @@ export default Vue.component('bottom-input', {
             });
 
             const $content = $('.content-above-input');
+            if (!$content.length) {
+                return;
+            }
+
             $content.attr('style', `bottom: ${this.promptHeight}px`);
             // Scroll to the end of content
             const distance = $content[0].scrollHeight - $content.height() - $content.scrollTop();

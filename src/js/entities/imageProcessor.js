@@ -1,5 +1,6 @@
-import * as sunglass from 'sunglass';
+import sunglass from 'sunglass';
 import {getCanvas} from '../utils/image';
+import colors from '../constants/colors';
 
 export default class ImageProcessor {
     constructor() {
@@ -15,7 +16,10 @@ export default class ImageProcessor {
      */
     doSunglass(srcImage, distWidth, distHeight) {
         const resized = this._resize(srcImage, distWidth, distHeight);
-        return sunglass(resized);
+        const start = Date.now();
+        const canvas = sunglass(resized, colors.palette);
+        console.log('Time used: ' + (Date.now() - start));
+        return canvas.toDataURL();
     }
 
     /**

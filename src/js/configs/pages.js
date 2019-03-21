@@ -6,13 +6,13 @@ export default [{
     }, {
         title: '社交网站',
         apps: ['bilibili', 'dribbble', 'weibo', 'douban', 'zhihu']
+    }, {
+        title: '其他',
+        apps: ['album', 'email', 'music']
     }]
 }, {
     id: 1,
-    groups: [{
-        title: '其他',
-        apps: ['email', 'music']
-    }]
+    groups: []
 }, {
     id: 2,
     groups: [{

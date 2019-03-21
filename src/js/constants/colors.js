@@ -23,7 +23,7 @@ colors.bg = {
 };
 
 colors.head = {
-    light: colors.secondaryLight,
+    light: colors.appGroupTitle,
     medium: colors.primary,
     dark: colors.primaryDarkest
 }
@@ -31,5 +31,10 @@ colors.head = {
 colors.border = colors.primaryDarker;
 colors.borderLight = colors.primary;
 colors.borderDarker = colors.secondaryDarkest;
+
+colors.palette = [
+    colors.primary, colors.primaryLight, colors.primaryDark, colors.primaryDarker, colors.primaryDarkest,
+    colors.secondaryLight, colors.secondaryDark, colors.secondaryDarkest
+];
 
 export default colors;

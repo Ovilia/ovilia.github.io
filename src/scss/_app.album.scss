@@ -1,0 +1,28 @@
+.app-album {
+    .album-group {
+        &:first-child {
+            margin-top: -$distance-sm;
+        }
+    }
+
+        .album-group-content {
+            background-color: darken($clr-bg-light, 4%);
+            padding: $distance-sm + 2px $distance-sm $distance-sm $distance-sm;
+            border-radius: 4px;
+        }
+
+            .album-photo {
+                width: 33.33%;
+                height: 100px;
+                display: inline-block;
+                padding: 0 2px;
+            }
+
+                .album-photo-img {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    background-size: cover;
+                    image-rendering: pixelated;
+                }
+}

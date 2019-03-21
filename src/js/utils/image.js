@@ -1,5 +1,5 @@
-import { pixelSize as defaultPixelSize } from '../constants/size';
-import { getValueArray } from './math';
+import {pixelSize as defaultPixelSize} from '../constants/size';
+import {getValueArray} from './math';
 
 /**
  * Get canvas instance with given width and height
@@ -9,8 +9,8 @@ import { getValueArray } from './math';
  */
 export function getCanvas(width, height) {
     const canvas = document.createElement('canvas');
-    canvas.width = config.width;
-    canvas.height = config.height;
+    canvas.width = width;
+    canvas.height = height;
     return canvas;
 }
 
@@ -35,7 +35,7 @@ export function getCanvas(width, height) {
  * @param {number|number[]} config.margin margin outside of border
  */
 export function getPixelImage(config) {
-    const canvas = this.getCanvas(config.width, config.height);
+    const canvas = getCanvas(config.width, config.height);
     const ctx = canvas.getContext('2d');
     ctx.webkitImageSmoothingEnabled = false;
     ctx.imageSmoothingEnabled = false;
