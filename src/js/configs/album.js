@@ -1,14 +1,22 @@
 export default [{
-    id: 0,
-    title: '日常照片',
+    title: '业余项目',
     photos: [
-        '../assets/album/daily/1.jpg',
-        '../assets/album/daily/2.jpg',
-        '../assets/album/daily/3.jpg',
-        '../assets/album/daily/4.jpg'
+        '../assets/album/projects/pixel-wedding.png',
+        '../assets/album/projects/calendar.png',
+        '../assets/album/projects/gooday.png',
+        '../assets/album/projects/moonight.png'
     ]
 }, {
-    id: 1,
+    title: '设计作品',
+    photos: [
+        '../assets/album/design/round-bunny.png',
+        '../assets/album/design/round-dragon.png',
+        '../assets/album/design/round-cat.png',
+        '../assets/album/design/round-owl.png',
+        '../assets/album/design/dragon.png',
+        '../assets/album/design/wedding.png',
+    ]
+}, {
     title: '水彩画',
     photos: [
         '../assets/album/watercolor/shanghai-jingan.jpg',
@@ -18,5 +26,13 @@ export default [{
         '../assets/album/watercolor/foursquare-flower.png',
         '../assets/album/watercolor/foursquare-hotel.png',
         '../assets/album/watercolor/foursquare-sushi.png'
+    ]
+}, {
+    title: '日常照片',
+    photos: [
+        '../assets/album/daily/1.jpg',
+        '../assets/album/daily/2.jpg',
+        '../assets/album/daily/3.jpg',
+        '../assets/album/daily/4.jpg'
     ]
 }]

@@ -7,8 +7,8 @@ const imgProcessor = new ImageProcessor();
 export default Vue.component('app-album', {
 
     template:
-        `<div class="app-album mobile-body-content padding scroll">
-            <div class="album-group" v-for="group in photoInfo">
+        `<div class="app-album mobile-body-content padding" :class="{scroll: !openedImgSrc}">
+            <div class="album-group" v-for="group in photos">
                 <h3>{{ group.title }}</h3>
                 <div class="album-group-content">
                     <div class="album-photo" v-for="photo in group.photos">
@@ -25,15 +25,34 @@ export default Vue.component('app-album', {
         </div>`,
 
     data: function () {
-        photoInfo.forEach(group => {
-            group.photos = group.photos.map(url => {
+        return {
+            photos: [],
+            openedImgSrc: null
+        };
+    },
+
+    methods: {
+        openImage: function (photo) {
+            this.openedImgSrc = photo.src;
+            $('.app-album').scrollTop(0);
+        },
+
+        closeOpenedImg: function () {
+            this.openedImgSrc = null;
+        }
+    },
+
+    mounted: function () {
+        this.photos = photoInfo.map(group => {
+            const clonedGroups = Object.assign({}, group);
+            clonedGroups.photos = clonedGroups.photos.map(url => {
                 return {
                     src: url,
                     thumbnail: null
                 };
             });
 
-            group.photos.forEach(obj => {
+            clonedGroups.photos.forEach(obj => {
                 const img = new Image();
                 img.onload = () => {
                     const size = 50;
@@ -51,25 +70,7 @@ export default Vue.component('app-album', {
                 };
                 img.src = obj.src;
             });
+            return clonedGroups;
         });
-
-        return {
-            photoInfo: photoInfo,
-            openedImgSrc: null
-        };
-    },
-
-    methods: {
-        openImage: function (photo) {
-            this.openedImgSrc = photo.src;
-        },
-
-        closeOpenedImg: function () {
-            this.openedImgSrc = null;
-        }
-    },
-
-    mounted: function () {
-
     }
 });
