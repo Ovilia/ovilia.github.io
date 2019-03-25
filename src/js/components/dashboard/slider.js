@@ -37,14 +37,12 @@ export default Vue.component('slider', {
     methods: {
         mouseDown: function () {
             this.isMouseDown = true;
-            console.log('down');
             this.lastMoveX = event.clientX;
             this.lastDownX = event.clientX;
         },
 
         mouseMove: function (event) {
             if (this.isMouseDown) {
-                console.log('move');
                 this.scrollBy(this.lastMoveX - event.clientX);
 
                 this.lastMoveX = event.clientX;

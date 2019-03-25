@@ -2,27 +2,33 @@
     .album-group {
         &:first-child {
             margin-top: -$distance-sm;
+
+            h3 {
+                margin-top: 0;
+            }
         }
     }
 
-        .album-group-content {
-            background-color: darken($clr-bg-light, 4%);
-            padding: $distance-sm + 2px $distance-sm $distance-sm $distance-sm;
-            border-radius: 4px;
+        h3 {
+            margin: $distance-sm (-$distance-sm + 2px);
+            padding: $distance-sm - 2px;
+            background-color: lighten($clr-bg-light, 4%);
         }
 
-            .album-photo {
-                width: 33.33%;
-                height: 100px;
-                display: inline-block;
-                padding: 0 2px;
-            }
+        .album-photo {
+            width: 25%;
+            height: 85px;
+            display: inline-block;
+            padding: 1px 3px;
+        }
 
-                .album-photo-img {
-                    width: 100%;
-                    height: 100%;
-                    display: block;
-                    background-size: cover;
-                    image-rendering: pixelated;
-                }
+            .album-photo-img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                background-size: cover;
+                image-rendering: pixelated;
+                border-radius: 6px;
+                border: 2px solid lighten($clr-border-light, 22%);
+            }
 }

@@ -11,13 +11,20 @@ export default Vue.component('fullscreen-img', {
 
     template:
         `<div class="fullscreen-img">
-            <img :src="src" v-if="src">
             <div class="fullscreen-mask"></div>
+            <img :src="src" v-if="src">
+            <a class="fullscreen-close" href="javascript:;" @click="close()"></a>
         </div>`,
 
     data: function () {
         return {
         };
+    },
+
+    methods: {
+        close: function () {
+            this.$emit('close');
+        }
     },
 
     mounted: function () {

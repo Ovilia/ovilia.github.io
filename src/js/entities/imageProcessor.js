@@ -18,7 +18,7 @@ export default class ImageProcessor {
         const resized = this._resize(srcImage, distWidth, distHeight);
         const start = Date.now();
         const canvas = sunglass(resized, colors.palette);
-        console.log('Time used: ' + (Date.now() - start));
+        // console.log('Time used: ' + (Date.now() - start));
         return canvas.toDataURL();
     }
 

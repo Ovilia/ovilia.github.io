@@ -55,7 +55,6 @@ export default Vue.component('app-group', {
         },
 
         openApp: function () {
-            console.log('openApp in group')
         }
     },
 

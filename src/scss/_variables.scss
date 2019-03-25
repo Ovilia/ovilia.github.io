@@ -6,7 +6,7 @@ $clr-primary-darker:   #504a4b;
 $clr-secondary-light:  #a39990;
 $clr-secondary-dark:   #585153;
 
-$clr-mask: rgba(200, 200, 200, 0.3);
+$clr-mask: transparentize($clr-primary-dark, 0.2);
 
 $clr-bg-light: $clr-secondary-light;
 $clr-bg-lighter: lighten($clr-secondary-light, 10%);
@@ -45,6 +45,8 @@ $radius-sm: $distance-inline;
 $system-status-height: 25px;
 $out-app-bottom-height: 75px;
 $app-size: 48px;
+
+$pixel-width: 2px;
 
 $font-size-basic: 14px;
 $font-size-sm: 13px;

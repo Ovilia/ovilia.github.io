@@ -12,12 +12,16 @@ export default Vue.component('app-album', {
                 <h3>{{ group.title }}</h3>
                 <div class="album-group-content">
                     <div class="album-photo" v-for="photo in group.photos">
-                        <div class="album-photo-img"
-                            :style="{ 'background-image': photo.thumbnail ? 'url(' + photo.thumbnail + ')' : 'transparent' }">
-                        </div>
+                        <a class="album-photo-img"
+                            :style="{ 'background-image': photo.thumbnail ? 'url(' + photo.thumbnail + ')' : 'transparent' }"
+                            @click="openImage(photo)">
+                        </a>
                     </div>
                 </div>
             </div>
+            <fullscreen-img :src="openedImgSrc" v-if="openedImgSrc"
+                @close="closeOpenedImg()">
+            </fullscreen-img>
         </div>`,
 
     data: function () {
@@ -32,7 +36,7 @@ export default Vue.component('app-album', {
             group.photos.forEach(obj => {
                 const img = new Image();
                 img.onload = () => {
-                    const size = 40;
+                    const size = 50;
                     let width = img.width;
                     let height = img.height;
                     if (width > height) {
@@ -43,7 +47,6 @@ export default Vue.component('app-album', {
                         height = size / width * height;
                         width = size;
                     }
-                    console.log(width, height);
                     obj.thumbnail = imgProcessor.doSunglass(img, width, height);
                 };
                 img.src = obj.src;
@@ -51,11 +54,19 @@ export default Vue.component('app-album', {
         });
 
         return {
-            photoInfo: photoInfo
+            photoInfo: photoInfo,
+            openedImgSrc: null
         };
     },
 
     methods: {
+        openImage: function (photo) {
+            this.openedImgSrc = photo.src;
+        },
+
+        closeOpenedImg: function () {
+            this.openedImgSrc = null;
+        }
     },
 
     mounted: function () {
