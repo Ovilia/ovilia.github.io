@@ -45,7 +45,9 @@ export default class InkDialog {
         const state = localStorage.getItem(getStateKey(this.fileName));
         if (state && state !== 'null') {
             this.story.state.LoadJson(state);
+            return true;
         }
+        return false;
     }
 
     hasState() {

@@ -13,6 +13,10 @@ export default Vue.component('msg', {
         needResize: {
             type: Boolean,
             default: false
+        },
+        ignoreAnimation: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -61,7 +65,7 @@ export default Vue.component('msg', {
     },
 
     mounted: function () {
-        if (this.message.author === AUTHOR.XIANZHE) {
+        if (!this.ignoreAnimation && this.message.author === AUTHOR.XIANZHE) {
             this.msgContent = '.';
             setTimeout(() => {
                 this.msgContent = '..';
@@ -77,7 +81,9 @@ export default Vue.component('msg', {
             this.msgContent = this.message.content;
         }
 
-        this.resize();
+        setTimeout(() => {
+            this.resize();
+        }, 300);
         window.addEventListener('resize', this.resize);
     }
 });

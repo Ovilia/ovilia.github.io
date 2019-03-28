@@ -58,7 +58,7 @@ export default Vue.component('ink-msg-container', {
                     // First msg from xianzhe when open app
                     this.appendMessage(new Message(author, text));
                     this.runNext();
-                    this.isFirstMessage = true;
+                    this.isFirstMessage = false;
                 }
                 else {
                     iterator();
@@ -73,7 +73,9 @@ export default Vue.component('ink-msg-container', {
         },
 
         appendMessage(msg) {
-            this.$refs.msgContainer.appendMessage(msg);
+            if (this.$refs.msgContainer) {
+                this.$refs.msgContainer.appendMessage(msg);
+            }
         },
 
         respond(choice) {
@@ -85,12 +87,14 @@ export default Vue.component('ink-msg-container', {
     created: function () {
         this.inkDialog = new InkDialog();
 
-        this.inkDialog.load(this.inkFileName, () => {
-            setTimeout(() => {
-                // Load first message after 0.3 seconds, that is when app is fully loaded
-                this.runNext();
-            }, 300);
-        });
+        setTimeout(() => {
+            // Load first message after 0.3 seconds, that is when app is fully loaded
+            this.inkDialog.load(this.inkFileName, hasHistory => {
+                if (!hasHistory) {
+                    this.runNext();
+                }
+            });
+        }, 300);
     }
 
 });

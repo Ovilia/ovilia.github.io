@@ -8,7 +8,7 @@ export default [{
         apps: ['bilibili', 'dribbble', 'weibo', 'douban', 'zhihu']
     }, {
         title: '其他',
-        apps: ['album', 'email', 'music']
+        apps: ['album', 'email']
     }]
 }, {
     id: 1,

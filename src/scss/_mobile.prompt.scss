@@ -14,10 +14,9 @@
     animation: bounceIn 0.3s;
     overflow: hidden;
 
-    img {
+    .fullscreen-content {
         position: absolute;
         width: 100%;
-        image-rendering: pixelated;
         transition: 0.5s;
     }
 }

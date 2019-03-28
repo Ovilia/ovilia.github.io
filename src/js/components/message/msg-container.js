@@ -22,7 +22,8 @@ export default Vue.component('msg-container', {
         `<div class="msg-container">
             <div class="content-above-input">
                 <msg v-for="(message, id) in messages" @resized="scroll()"
-                    :message="message" :key="message.id" :needResize="id === 0 && onMounted">
+                    :message="message" :key="message.id" :ignoreAnimation="message.isFromJson"
+                    :needResize="id === 0 && onMounted">
                 </msg>
             </div>
 
@@ -44,8 +45,10 @@ export default Vue.component('msg-container', {
         },
 
         appendMessage(message) {
-            this.messages.push(message);
-            this.saveMessages();
+            if (!this.messages.length || !this.messages[this.messages.length - 1].isSame(message)) {
+                this.messages.push(message);
+                this.saveMessages();
+            }
         },
 
         scroll: throttle(function () {
@@ -57,14 +60,24 @@ export default Vue.component('msg-container', {
 
         saveMessages() {
             const json = this.messages.map(msg => msg.toJson());
-            localStorage.setItem(MESSAGES_KEY_IN_STORAGE, JSON.stringify(json));
+            try {
+                const str = JSON.stringify(json);
+                localStorage.setItem(MESSAGES_KEY_IN_STORAGE, str);
+            }
+            catch (e) {
+                console.warn(e);
+            }
         },
 
         loadMessages() {
             const inStorage = localStorage.getItem(MESSAGES_KEY_IN_STORAGE);
-            const messages = (JSON.parse(inStorage) || [])
-                .map(json => new Message().fromJson(json));
-            this.$set(this.messages, messages);
+            try {
+                const json = JSON.parse(inStorage) || [];
+                this.messages = json.map(msg => new Message().fromJson(msg));
+            }
+            catch (e) {
+                console.warn(e);
+            }
         },
 
         purgeStorage() {

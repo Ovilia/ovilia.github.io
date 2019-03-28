@@ -6,10 +6,15 @@ export default class Message {
     constructor(author, content) {
         this.id = generateId();
         this.author = author;
+        this.isFromJson = false;
 
         const html = marked(content || '');
         const re = new RegExp('\<a ');
         this.content = html.replace(re, '<a target="_blank" ');
+    }
+
+    isSame(msg) {
+        return msg.content === this.content && msg.author === this.author;
     }
 
     toJson() {
@@ -24,6 +29,8 @@ export default class Message {
         this.id = json.id;
         this.author = json.author;
         this.content = json.content;
+        this.isFromJson = true;
+        return this;
     }
 
 }

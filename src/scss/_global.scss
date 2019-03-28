@@ -115,8 +115,8 @@ li {
 
 img {
     max-width: 100%;
+}
 
-    &.pixel-img {
-        @include nearest-neighbor;
-    }
+.pixel-img {
+    @include nearest-neighbor;
 }
