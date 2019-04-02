@@ -23,9 +23,10 @@ export default Vue.component('inapp', {
                 </div>
             </div>
             <div class="mobile-body">
+                <app-album v-if="appId === 'album'"></app-album>
                 <app-gooday v-if="appId === 'gooday'"></app-gooday>
                 <app-wechat v-if="appId === 'wechat'"></app-wechat>
-                <app-album v-if="appId === 'album'"></app-album>
+                <app-zhifubao v-if="appId === 'zhifubao'"></app-zhifubao>
             </div>
         </div>`,
 

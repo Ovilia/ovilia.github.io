@@ -1,3 +1,5 @@
+$slider-control-radius: 4px;
+
 .slider {
     position: absolute;
     top: $system-status-height;
@@ -28,5 +30,21 @@
     .slider-control {
         position: absolute;
         left: 0;
-        bottom: $distance-sm;
+        bottom: 20px;
+        width: 100%;
+        height: $slider-control-radius * 2;
+        text-align: center;
     }
+
+        .slider-control-btn {
+            display: inline-block;
+            width: $slider-control-radius * 2;
+            height: $slider-control-radius * 2;
+            border-radius: $slider-control-radius;
+            background-color: $clr-bg-lighter;
+            margin: 0 $distance-smer;
+
+            &.selected {
+                background-color: $clr-primary;
+            }
+        }

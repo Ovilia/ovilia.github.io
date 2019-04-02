@@ -21,7 +21,7 @@ export default Vue.component('msg-container', {
     template:
         `<div class="msg-container">
             <div class="content-above-input">
-                <msg v-for="(message, id) in messages" @resized="scroll()"
+                <msg v-for="(message, id) in messages" @resized="scrollBottom()"
                     :message="message" :key="message.id" :ignoreAnimation="message.isFromJson"
                     :needResize="id === 0 && onMounted">
                 </msg>
@@ -51,8 +51,8 @@ export default Vue.component('msg-container', {
             }
         },
 
-        scroll: throttle(function () {
-            const $container = $('.content-above-input');
+        scrollBottom: throttle(function () {
+            const $container = $('.msg-container');
             if ($container && $container.length) {
                 $container.scrollTop($container[0].scrollHeight - $container.height());
             }
@@ -88,6 +88,8 @@ export default Vue.component('msg-container', {
     created() {
         // this.purgeStorage();
         this.loadMessages();
+
+        this.$nextTick(() => this.scrollBottom());
     },
 
     mounted() {

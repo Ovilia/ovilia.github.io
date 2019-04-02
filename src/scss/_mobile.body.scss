@@ -9,8 +9,7 @@ $scroll-bar-width: 8px;
     width: 100%;
 
     a {
-        color: $clr-primary;
-        text-decoration: none;
+        color: $clr-primary-dark;
     }
 }
 
@@ -48,9 +47,11 @@ $scroll-bar-width: 8px;
         }
 
         .msg-container {
-            position: relative;
+            position: absolute;
             width: 100%;
-            height: 100%;
+            top: 0;
+            bottom: $bottom-input-height;
+            overflow-y: auto;
             padding: $distance-sm $distance-h;
             -webkit-overflow-scrolling: touch;
         }
@@ -61,4 +62,9 @@ $scroll-bar-width: 8px;
         left: 18px;
         right: 10px;
         visibility: hidden;
+    }
+
+    .note {
+        text-align: left;
+        margin: $distance-basic;
     }

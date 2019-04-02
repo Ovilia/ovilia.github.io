@@ -14,6 +14,7 @@ export * from './message/ink-msg-container';
 export * from './misc/bottom-input';
 export * from './misc/fullscreen-img';
 
+export * from './app/album';
 export * from './app/gooday';
 export * from './app/wechat';
-export * from './app/album';
+export * from './app/zhifubao';

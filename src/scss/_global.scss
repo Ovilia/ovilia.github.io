@@ -120,3 +120,11 @@ img {
 .pixel-img {
     @include nearest-neighbor;
 }
+
+.center {
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}

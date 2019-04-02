@@ -28,7 +28,7 @@ export default Vue.component('slider', {
                     :app-groups="page.groups">
                 </slider-page>
             </div>
-            <div class="slider-control">
+            <div class="slider-control" ref="ctrl">
                 <span class="slider-control-btn" v-for="page in pages" :key="page.id">
                 </span>
             </div>
@@ -80,11 +80,24 @@ export default Vue.component('slider', {
             this.pageContainer.style.transition = '1s';
             const pageWidth = document.getElementsByClassName('slider-page')[0].clientWidth;
             this.pageContainer.scrollLeft = pageWidth * pageId;
+
+            const ctrl = this.$refs.ctrl;
+            if (pageId < ctrl.childNodes.length) {
+                for (var i = 0; i < ctrl.childNodes.length; ++i) {
+                    if (i === pageId) {
+                        ctrl.childNodes[i].className = 'slider-control-btn selected';
+                    }
+                    else {
+                        ctrl.childNodes[i].className = 'slider-control-btn';
+                    }
+                }
+            }
         }
     },
 
     mounted: function () {
         this.pageContainer = this.$el.getElementsByClassName('slider-page-container')[0];
+        this.scrollToPage(0);
     }
 
 });

@@ -1,16 +1,11 @@
 .bottom-input {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
 }
 
 .content-above-input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: $bottom-input-height;
     overflow-x: hidden;
     overflow-y: auto;
     padding: $distance-sm $distance-h;
