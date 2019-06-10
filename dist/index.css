@@ -522,7 +522,7 @@ img {
   top: 0;
   left: 0;
   z-index: 10;
-  background: url(dist/assets/app-icon-all.png);
+  background: url(assets/app-icon-all.png);
   background-size: 400%; }
 
 .app-img-bg {
@@ -530,7 +530,7 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  background: url(dist/assets/app-button.png);
+  background: url(assets/app-button.png);
   background-size: 400%; }
   .app-img-bg.light {
     background-position-x: 0; }

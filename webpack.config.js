@@ -69,9 +69,7 @@ module.exports = {
                 ]
             }, {
                 test: /\.jpe?g$|\.png$/i,
-                loader: devMode
-                    ? 'file-loader?name=assets/[name].[ext]'
-                    : 'file-loader?name=dist/assets/[name].[ext]'
+                loader: 'file-loader?name=assets/[name].[ext]'
             }, {
                 test: require.resolve('zepto'),
                 use: 'imports-loader?this=>window'
