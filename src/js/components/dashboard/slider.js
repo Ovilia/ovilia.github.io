@@ -22,6 +22,7 @@ export default Vue.component('slider', {
     template:
         `<div class="slider"
             @mousedown="mouseDown" @mousemove="mouseMove" @mouseup="mouseUp" @mouseleave="mouseUp"
+            @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd"
             :style="">
             <div class="slider-page-container">
                 <slider-page v-for="page in pages" :key="page.id"
@@ -35,10 +36,14 @@ export default Vue.component('slider', {
         </div>`,
 
     methods: {
-        mouseDown: function () {
+        mouseDown: function (event) {
             this.isMouseDown = true;
             this.lastMoveX = event.clientX;
             this.lastDownX = event.clientX;
+        },
+
+        touchStart: function (event) {
+            this.mouseDown(event.touches[0]);
         },
 
         mouseMove: function (event) {
@@ -47,6 +52,10 @@ export default Vue.component('slider', {
 
                 this.lastMoveX = event.clientX;
             }
+        },
+
+        touchMove: function (event) {
+            this.mouseMove(event.changedTouches[0]);
         },
 
         mouseUp: function (event) {
@@ -70,6 +79,10 @@ export default Vue.component('slider', {
             this.isMouseDown = false;
             this.lastDownX = null;
             this.lastMoveX = null;
+        },
+
+        touchEnd: function () {
+            this.mouseUp(event.changedTouches[0]);
         },
 
         scrollBy: function (dx) {
