@@ -94,7 +94,7 @@ export default Vue.component('app-album', {
             const clonedGroups = Object.assign({}, group);
             clonedGroups.photos = clonedGroups.photos.map(url => {
                 return {
-                    src: url,
+                    src: (__DEV__ ? '' : 'dist/') + url,
                     thumbnail: null
                 };
             });

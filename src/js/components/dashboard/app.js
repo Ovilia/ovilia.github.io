@@ -12,7 +12,7 @@ export default Vue.component('app', {
     },
 
     template:
-        `<div class="app">
+        `<div class="app" v-if="icons[appId]">
             <a class="app-icon" @click="appClick" draggable="false"
                 :href="icons[appId].link || 'javascript:;'"
                 :target="icons[appId].link ? '_blank' : '_self'">

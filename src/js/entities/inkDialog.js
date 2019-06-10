@@ -13,7 +13,8 @@ export default class InkDialog {
         this.fileName = fileName;
         // this.purgeState();
 
-        $.getJSON(`assets/dialogs/${fileName}.json`, data => {
+        const prefix = __DEV__ ? '' : 'dist/';
+        $.getJSON(`${prefix}assets/dialogs/${fileName}.json`, data => {
             this.story = new ink.Story(data);
 
             if (this.hasState()) {

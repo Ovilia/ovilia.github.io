@@ -32,5 +32,12 @@
         position: relative;
         float: right;
         text-align: right;
-        padding-right: $distance-h;
+        padding-right: 10px;
+        padding-top: 0.2em;
+        font-size: 0.9em;
+        color: $clr-text-lighter;
+
+        .status-theme-light & {
+            color: $clr-text;
+        }
     }

@@ -23,14 +23,18 @@
                 <slider :pages="pages"></slider>
                 <div id="mobile-out-app-bottom" class="mobile-out-app-bottom app-container"
                     :style="{'background-image': 'url(' + outAppBottomImg + ')'}">
-                    <app app-id="zhifubao" @open-app="openApp('zhifubao', $event)"></app>
                     <app app-id="wechat" @open-app="openApp('wechat', $event)"></app>
+                    <app app-id="album" @open-app="openApp('album', $event)"></app>
+                    <app app-id="zhifubao" @open-app="openApp('zhifubao', $event)"></app>
+                    <app app-id="source" @open-app="openApp('source', $event)"></app>
                 </div>
             </div>
             <inapp v-if="inApp" :app-id="openedAppId" @exit="exitApp()">
             </inapp>
         </div>
     </div>
+
+    <!-- <script src="dist/index.js"></script> -->
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400" rel="stylesheet">
     <script type="text/javascript">

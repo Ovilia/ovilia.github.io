@@ -55,20 +55,23 @@ module.exports = {
                 exclude: excludePaths,
                 use: [{
                     loader: 'html-loader',
-                    // options: {
-                    //     minimize: true
-                    // }
+                    options: {
+                        minimize: !devMode
+                    }
                 }],
             },
             {
                 test: /\.scss$/,
                 use: [
-                    process.env.NODE_ENV !== 'production'
-                        ? 'style-loader'
-                        : MiniCssExtractPlugin.loader,
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader'
                 ]
+            }, {
+                test: /\.jpe?g$|\.png$/i,
+                loader: devMode
+                    ? 'file-loader?name=assets/[name].[ext]'
+                    : 'file-loader?name=dist/assets/[name].[ext]'
             }, {
                 test: require.resolve('zepto'),
                 use: 'imports-loader?this=>window'
@@ -83,9 +86,12 @@ module.exports = {
             cache: false,
             filename: devMode ? 'index.html' : '../index.html'
         }),
+        new webpack.DefinePlugin({
+            __DEV__: devMode
+        }),
         new CopyWebpackPlugin([
             {
-                from: 'assets/**/*',
+                from: './assets/**/*',
                 to: root('dist/')
             }
         ]),

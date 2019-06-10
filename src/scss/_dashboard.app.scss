@@ -68,7 +68,7 @@ $msg-counter-size: 20px;
                     top: 0;
                     left: 0;
                     z-index: 10;
-                    background: url('https://zwl-1256209664.cos.ap-shanghai.myqcloud.com/home/app-icon-all.png');
+                    background: url('../assets/app-icon-all.png');
                     background-size: 400%; // image has 4 icons in a line
                 }
 
@@ -77,7 +77,7 @@ $msg-counter-size: 20px;
                     position: absolute;
                     top: 0;
                     left: 0;
-                    background: url('https://zwl-1256209664.cos.ap-shanghai.myqcloud.com/home/app-button.png');
+                    background: url('../assets/app-button.png');
                     background-size: 400%;
 
                     &.light {

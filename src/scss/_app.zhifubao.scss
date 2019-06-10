@@ -1,7 +1,22 @@
 .zhifubao-container {
     text-align: center;
+    padding: 50px $distance-basic;
+    background: $clr-primary-light;
+    position: absolute;
+    right: 15px;
+    left: 15px;
+    bottom: 90px;
+    top: 15px;
 }
 
     .zhifubao-img {
         width: 80%;
     }
+
+.zhifubao-about {
+    font-size: 0.9em;
+    padding: $distance-basic;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}

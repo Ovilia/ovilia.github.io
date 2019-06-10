@@ -52,13 +52,15 @@ export default Vue.component('msg', {
         resize() {
             const isXianzhe = this.message.author === AUTHOR.XIANZHE;
             const el = this.$refs.msg;
-            this.bgImg = getPixelImage({
-                width: el.clientWidth,
-                height: el.clientHeight,
-                radius: isXianzhe ? [0, 3, 3, 3] : [3, 0, 3, 3],
-                fillColor: isXianzhe ? colors.bg.lightest : colors.bg.mediumDarker,
-                borderColor: isXianzhe ? '#948a7c' : '#645f5b'
-            });
+            if (el) {
+                this.bgImg = getPixelImage({
+                    width: el.clientWidth,
+                    height: el.clientHeight,
+                    radius: isXianzhe ? [0, 3, 3, 3] : [3, 0, 3, 3],
+                    fillColor: isXianzhe ? colors.bg.lightest : colors.bg.mediumDarker,
+                    borderColor: isXianzhe ? '#948a7c' : '#645f5b'
+                });
+            }
 
             this.$emit('resized');
         }
