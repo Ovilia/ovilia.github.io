@@ -4,6 +4,8 @@
 
 Please visit: http://zhangwenli.com.
 
+![](./_res/screenshoot.png)
+
 ## Blog Source Code
 
 <a href="https://github.com/Ovilia/blog/tree/gh-pages">https://github.com/Ovilia/blog/tree/gh-pages</a>
