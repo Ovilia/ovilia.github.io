@@ -9,8 +9,17 @@ export default class Message {
         this.isFromJson = false;
 
         const html = marked(content || '');
-        const re = new RegExp('\<a ');
-        this.content = html.replace(re, '<a target="_blank" ');
+
+        if (html.indexOf('$$$PAY_BY_ZHIFUBAO$$$') > -1) {
+            this.content = '<div class="wechat-pay-img pay-with-zhifubao"></div>';
+        }
+        else if (html.indexOf('$$$PAY_BY_WECHAT$$$') > -1) {
+            this.content = '<div class="wechat-pay-img pay-with-wechat"></div>';
+        }
+        else {
+            const re = new RegExp('\<a ');
+            this.content = html.replace(re, '<a target="_blank" ');
+        }
     }
 
     isSame(msg) {

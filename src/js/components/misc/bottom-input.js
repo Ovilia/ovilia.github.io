@@ -83,6 +83,8 @@ export default Vue.component('bottom-input', {
         respond(choice) {
             this.isPromptOpen = false;
 
+            _gaq.push(['_trackEvent', 'Home', 'respond', choice]);
+
             this.$emit('respond', choice);
 
             this.$nextTick(() => {

@@ -88,6 +88,21 @@
             }
     }
 
+.wechat-pay-img {
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+    .pay-with-zhifubao {
+        background-image: url('../assets/pay-zhifubao.png');
+    }
+
+    .pay-with-wechat {
+        background-image: url('../assets/pay-wechat.png');
+    }
+
 @media (max-width: 480px) {
     .msg {
         font-size: $font-size-lg;

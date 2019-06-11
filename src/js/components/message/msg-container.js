@@ -2,8 +2,8 @@ import Vue from 'vue';
 import throttle from 'lodash/throttle';
 import localStorage from 'localStorage';
 import Message from '../../entities/message';
-
-const MESSAGES_KEY_IN_STORAGE = 'messages';
+import {MESSAGES_KEY_IN_STORAGE} from '../../constants/storage';
+import {isStale} from '../../utils/stale';
 
 export default Vue.component('msg-container', {
 
@@ -86,8 +86,12 @@ export default Vue.component('msg-container', {
     },
 
     created() {
-        // this.purgeStorage();
-        this.loadMessages();
+        if (isStale()) {
+            this.purgeStorage();
+        }
+        else {
+            this.loadMessages();
+        }
 
         this.$nextTick(() => this.scrollBottom());
     },

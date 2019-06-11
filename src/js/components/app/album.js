@@ -1,9 +1,11 @@
 import Vue from 'vue';
+import localStorage from 'localStorage';
 import photoInfo from '../../configs/album';
 import ImageProcessor from '../../entities/imageProcessor';
 
 const imgProcessor = new ImageProcessor();
 const thumbnailSize = 32;
+const albumScrollTopKey = 'albumScrollTop';
 
 export default Vue.component('app-album', {
 
@@ -13,7 +15,7 @@ export default Vue.component('app-album', {
                 <h3>{{ group.title }}</h3>
                 <div class="album-group-content">
                     <div class="album-photo" v-for="photo in group.photos">
-                        <a class="album-photo-img"
+                        <a class="album-photo-img pixel-img"
                             :style="{ 'background-image': photo.thumbnail ? 'url(' + photo.thumbnail + ')' : 'transparent' }"
                             @click="openImage(photo)">
                         </a>
@@ -38,6 +40,7 @@ export default Vue.component('app-album', {
         openImage: function (photo) {
             this.openedImgSrc = photo.src;
             this.hasThumbnailCanvas = true;
+            localStorage.setItem(albumScrollTopKey, $('.app-album').scrollTop());
             $('.app-album').scrollTop(0);
 
             this.$nextTick(() => {
@@ -86,6 +89,9 @@ export default Vue.component('app-album', {
 
         closeOpenedImg: function () {
             this.openedImgSrc = null;
+            let top = localStorage.getItem(albumScrollTopKey);
+            top = top ? parseInt(top) : 0;
+            $('.app-album').scrollTop(top);
         }
     },
 

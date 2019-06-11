@@ -39,16 +39,14 @@ $msg-counter-size: 20px;
             .app-msg-counter {
                 position: absolute;
                 overflow: hidden;
-                right: -$msg-counter-size / 2;
-                top: -$msg-counter-size / 2;
-                min-width: $msg-counter-size + 2px;
-                padding: 2px 4px;
-                z-index: 20;
+                right: -$msg-counter-size / 2 + 2;
+                top: -$msg-counter-size / 2 + 2;
+                width: $msg-counter-size;
+                height: $msg-counter-size;
+                padding-top: 1px;
+                z-index: 10;
                 font-size: $font-size-smer;
-                border-radius: $msg-counter-size;
-                background-color: $clr-border;
-                color: $clr-text-lightest;
-                // border: 1px solid $clr-text-dark;
+                color: $clr-text;
             }
 
             .app-img-container {

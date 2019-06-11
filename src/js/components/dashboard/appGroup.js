@@ -52,9 +52,6 @@ export default Vue.component('app-group', {
                 radius: [2, 2, 0, 0],
                 fillColor: colors.appGroupTitle
             });
-        },
-
-        openApp: function () {
         }
     },
 

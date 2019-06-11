@@ -1,6 +1,7 @@
 import * as $ from 'zepto';
 import * as ink from 'inkjs';
 import localStorage from 'localStorage';
+import {isStale, updateStale} from '../utils/stale';
 
 export default class InkDialog {
 
@@ -11,7 +12,11 @@ export default class InkDialog {
 
     load(fileName, callback) {
         this.fileName = fileName;
-        // this.purgeState();
+
+        if (isStale()) {
+            // Clear storage
+            this.purgeState();
+        }
 
         const prefix = __DEV__ ? '' : 'dist/';
         $.getJSON(`${prefix}assets/dialogs/${fileName}.json`, data => {
@@ -20,6 +25,8 @@ export default class InkDialog {
             if (this.hasState()) {
                 this.loadState();
             }
+
+            updateStale();
 
             if (typeof callback === 'function') {
                 callback();
