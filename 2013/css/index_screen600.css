@@ -1,0 +1,106 @@
+#cssreel {
+    position: absolute;
+    top: 2%;
+    right: 0px;
+    width: 120px;
+}
+
+#cssaward {
+    position: absolute;
+    right: 0px;
+    top: 200px;
+}
+
+#iconDiv {
+    position: absolute;
+    top: 0px;
+    padding: 20px;
+    width: 40px;
+}
+
+#nav {
+    position: fixed;
+}
+
+#contentDiv {
+    width: 100%;
+}
+
+#content {
+    width: 90%;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+p.title {
+    font-size: 1.8em;
+}
+
+.page {
+    width: 100%;
+}
+
+.pageCnt {
+    padding: 1.5em;
+    
+    display: inline-block;
+}
+
+.rotBottom.rotLeft {
+    margin-top: -150px;
+    left: -10px;
+}
+
+.rotBottom.rotRight {
+    margin-top: -200px;
+    margin-bottom: 100px;
+    left: 10px;
+}
+
+.pageTitle {
+    font-size: 5em;
+    padding-bottom: 0.1em;
+    margin-bottom: 0.2em;
+}
+
+.leftPage, .rightPage {
+    float: left;
+}
+
+.leftPage {
+    width: 30%;
+}
+
+.leftPage>img, .leftPage>a>img {
+    margin-top: 2em;
+}
+
+.rightPage {
+    width: 65%;
+    padding-left: 5%;
+}
+
+#footerDiv {
+    width: 100%;
+}
+
+#footerImg {
+    width: 100%;
+    height: 10px;
+    background: url(../image/footer.png);
+    background-repeat: repeat-x;
+}
+
+#footerCnt {
+    width: 100%;
+    background-color: #000;
+}
+
+#footer {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 2em 0;
+    color: #fff;
+}
