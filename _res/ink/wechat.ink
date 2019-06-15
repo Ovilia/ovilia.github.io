@@ -115,8 +115,8 @@
         -> hobbies
     * [打赏]我觉得这个项目真棒，我可以怎样打赏你呢？
         哇塞？真的吗！ # xianzhe
-        你太可爱啦！
-        你想怎样支付呢？
+        你太可爱啦！ # xianzhe
+        你想怎样支付呢？ # xianzhe
         * * 支付宝
             $$$PAY_BY_ZHIFUBAO$$$ # xianzhe
             -> after_pay
