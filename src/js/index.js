@@ -1,16 +1,14 @@
 import '../scss/app.scss';
 
 import { Main } from './main';
-import ImageProcessor from './entities/imageProcessor';
 
 init();
-const main = new Main();
-
-const img = new ImageProcessor('');
 
 function init() {
     resize();
     window.addEventListener('resize', resize);
+
+    new Main();
 }
 
 function resize() {
@@ -26,7 +24,7 @@ function resize() {
         return;
     }
 
-    const margin = 30;
+    const margin = 15;
     let width = window.innerWidth - margin * 2;
     let height = window.innerHeight - margin * 2;
 

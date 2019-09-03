@@ -1,5 +1,8 @@
 export default [{
-    title: '业余项目',
+    title: {
+        zh: '业余项目',
+        en: 'Projects'
+    },
     photos: [
         'assets/album/projects/pixel-wedding.png',
         'assets/album/projects/calendar.png',
@@ -7,7 +10,10 @@ export default [{
         'assets/album/projects/moonight.png'
     ]
 }, {
-    title: '设计作品',
+    title: {
+        zh: '设计作品',
+        en: 'Design'
+    },
     photos: [
         'assets/album/design/round-bunny.png',
         'assets/album/design/round-dragon.png',
@@ -17,7 +23,10 @@ export default [{
         'assets/album/design/wedding.png',
     ]
 }, {
-    title: '水彩画',
+    title: {
+        zh: '水彩画',
+        en: 'Watercolors'
+    },
     photos: [
         'assets/album/watercolor/shanghai-jingan.jpg',
         'assets/album/watercolor/hongkong-blue-house.png',
@@ -28,7 +37,10 @@ export default [{
         'assets/album/watercolor/foursquare-sushi.png'
     ]
 }, {
-    title: '日常照片',
+    title: {
+        zh: '日常照片',
+        en: 'Routine'
+    },
     photos: [
         'assets/album/daily/1.jpg',
         'assets/album/daily/2.jpg',

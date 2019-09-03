@@ -5,6 +5,7 @@ import { getPixelImage } from './utils/image';
 import colors from './constants/colors';
 import pagesConfig from './configs/pages';
 import icons from './constants/icons';
+import { getLang, setLang } from './utils/lang';
 
 const openAppDuration = 0.3; // seconds
 
@@ -12,6 +13,7 @@ export class Main {
 
     constructor() {
         this.data = {
+            lang: getLang(),
             inApp: false,
             statusTheme: 'default',
             lastAppOpenPosition: [0, 0], // TODO: multiple apps?
@@ -71,6 +73,11 @@ export class Main {
                         this.statusTheme = 'default';
                         this.openedAppId = null;
                     }, openAppDuration * 1000);
+                },
+
+                changeLang: function () {
+                    const lang = this.lang === 'en' ? 'zh' : 'en';
+                    setLang(lang);
                 },
 
                 resize: function () {

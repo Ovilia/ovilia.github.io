@@ -22,19 +22,6 @@
     text-shadow: 1px 1px rgba($clr-secondary-light, 0.5);
 }
 
-// @font-face {
-//     font-family: 'Lato';
-//     src: local('Lato'), url(./font/lato400.woff) format('woff');
-// }
-
-// @font-face {
-//     font-family: 'Lato';
-//     font-style: normal;
-//     font-weight: 900;
-//     src: local('Lato Black'), local('Lato-Black'), url(./font/lato400.woff) format('woff');
-// }
-
-
 @keyframes bounceIn {
     from, to {
         animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);

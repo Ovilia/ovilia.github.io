@@ -47,6 +47,35 @@
 }
 
 
+#lang-config {
+    position: absolute;
+    display: block;
+    width: 75px;
+    height: 39px;
+    left: 15px;
+    bottom: 15px;
+    opacity: 0.4;
+    transition-duration: 0.5s;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    background-image: url('../assets/app-button.png');
+    background-position-x: -224px;
+    background-size: 400%;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &.lang-zh {
+        background-position-y: -120px;
+    }
+
+    &.lang-en {
+        background-position-y: -80px;
+    }
+}
+
+
 @media (max-width: 720px) {
     .extra-link {
         display: none;

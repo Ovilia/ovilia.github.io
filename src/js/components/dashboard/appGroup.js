@@ -2,6 +2,7 @@ import Vue from 'vue';
 
 import { getPixelImage } from '../../utils/image';
 import colors from '../../constants/colors';
+import { getLang } from '../../utils/lang';
 
 export default Vue.component('app-group', {
 
@@ -11,14 +12,14 @@ export default Vue.component('app-group', {
             default: () => []
         },
         title: {
-            type: String,
+            type: Object,
             default: ''
         }
     },
 
     template:
         `<div class="app-group" :style="{'background-image': 'url(' + appGroupImg + ')'}">
-            <div class="app-group-title" :style="{'background-image': 'url(' + appGroupTitleImg + ')'}">{{ title }}</div>
+            <div class="app-group-title" :style="{'background-image': 'url(' + appGroupTitleImg + ')'}">{{ title[lang] }}</div>
             <div class="app-group-content">
                 <app v-for="appId in apps" :app-id="appId" :key="appId"></app>
             </div>
@@ -27,7 +28,8 @@ export default Vue.component('app-group', {
     data: function () {
         return {
             appGroupImg: '',
-            appGroupTitleImg: ''
+            appGroupTitleImg: '',
+            lang: getLang()
         };
     },
 

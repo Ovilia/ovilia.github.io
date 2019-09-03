@@ -3,6 +3,7 @@ import icons from '../../constants/icons';
 import { getPixelImage } from '../../utils/image';
 import colors from '../../constants/colors';
 import themes from '../../constants/themes';
+import { getLang } from '../../utils/lang';
 
 export default Vue.component('inapp', {
 
@@ -17,9 +18,12 @@ export default Vue.component('inapp', {
         `<div class="mobile-in-app" :class="'status-theme-' + icons[appId].appStatusTheme"
             :style="{'background-image': 'url(' + bodyBgImg + ')'}">
             <div class="mobile-head" :style="{'background-image': 'url(' + headBgImg + ')'}">
-                <div class="mobile-head-center">{{ icons[appId].name }}</div>
+                <div class="mobile-head-center">{{ icons[appId].name[lang] }}</div>
                 <div class="mobile-head-right">
-                    <a class="btn-close" @click="exit()">返回</a>
+                    <a class="btn-close" @click="exit()">
+                        <span v-if="lang === 'en'">Back</span>
+                        <span v-if="lang !== 'en'">返回</span>
+                    </a>
                 </div>
             </div>
             <div class="mobile-body">
@@ -32,6 +36,7 @@ export default Vue.component('inapp', {
 
     data: function () {
         return {
+            lang: getLang(),
             openPosition: [0, 0],
             icons: icons,
 

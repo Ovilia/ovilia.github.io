@@ -3,6 +3,7 @@ import icons from '../../constants/icons';
 import { iconWidth } from '../../constants/size';
 import colors from '../../constants/colors';
 import { getPixelImage } from '../../utils/image';
+import { getLang } from '../../utils/lang';
 
 export default Vue.component('app', {
 
@@ -27,7 +28,7 @@ export default Vue.component('app', {
                     <div class="img app-img-bg" :class="icons[appId].logoTheme"></div>
                 </div>
             </a>
-            <div class="app-name">{{ icons[appId].name }}</div>
+            <div class="app-name">{{ icons[appId].name[lang] }}</div>
         </div>`,
 
     data: function () {
@@ -35,7 +36,8 @@ export default Vue.component('app', {
             icons: icons,
             isWechatOpened: false,
             isZhifubaoOpened: false,
-            countBgImg: ''
+            countBgImg: '',
+            lang: getLang()
         };
     },
 

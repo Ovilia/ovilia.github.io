@@ -2,6 +2,7 @@ import Vue from 'vue';
 import localStorage from 'localStorage';
 import photoInfo from '../../configs/album';
 import ImageProcessor from '../../entities/imageProcessor';
+import { getLang } from '../../utils/lang';
 
 const imgProcessor = new ImageProcessor();
 const thumbnailSize = 32;
@@ -12,7 +13,7 @@ export default Vue.component('app-album', {
     template:
         `<div class="app-album mobile-body-content padding" :class="{scroll: !openedImgSrc}">
             <div class="album-group" v-for="group in photos">
-                <h3>{{ group.title }}</h3>
+                <h3>{{ group.title[lang] }}</h3>
                 <div class="album-group-content">
                     <div class="album-photo" v-for="photo in group.photos">
                         <a class="album-photo-img pixel-img"
@@ -32,7 +33,8 @@ export default Vue.component('app-album', {
         return {
             photos: [],
             openedImgSrc: null,
-            hasThumbnailCanvas: false
+            hasThumbnailCanvas: false,
+            lang: getLang()
         };
     },
 
