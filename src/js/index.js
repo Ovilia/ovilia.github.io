@@ -29,7 +29,7 @@ function resize() {
     let height = window.innerHeight - margin * 2;
 
     const targetWidth = 750;
-    const targetHeight = 1334;
+    const targetHeight = 1624;
     const ratio = targetWidth / targetHeight;
 
     if (width / height > ratio) {

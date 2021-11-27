@@ -142,6 +142,15 @@ export default {
     //     logoTheme: themes.medium,
     //     appStatusTheme: themes.dark
     // },
+    omynote: {
+        name: {
+            zh: '众山小笔记',
+            en: 'Omynote'
+        },
+        pos: [0, 7],
+        logoTheme: themes.dark,
+        link: 'https://omynote.com/?ref=zwl'
+    },
     calendar: {
         name: {
             zh: '2019字体日历',
@@ -212,7 +221,7 @@ export default {
         },
         pos: [2, 5],
         logoTheme: themes.light,
-        link: 'https://github.com/Ovilia/echarts-robot'
+        link: 'https://github.com/apache/echarts-bot'
     },
     '2014': {
         name: {

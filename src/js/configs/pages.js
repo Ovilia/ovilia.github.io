@@ -5,13 +5,13 @@ export default [{
             zh: 'App 作品',
             en: 'Apps'
         },
-        apps: ['calendar', 'gooday']
+        apps: ['omynote', 'gooday', 'calendar']
     }, {
         title: {
             zh: '网页作品',
             en: 'Websites'
         },
-        apps: ['wedding', 'lipstick', 'polyvia', 'moonight']
+        apps: ['lipstick', 'polyvia', 'wedding', 'moonight']
     }, {
         title: {
             zh: 'ECharts 相关',
