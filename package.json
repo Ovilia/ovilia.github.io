@@ -53,7 +53,7 @@
     "js-cookie": "^2.2.1",
     "localStorage": "^1.0.4",
     "lodash": "^4.17.11",
-    "marked": "^0.6.1",
+    "marked": "^4.0.10",
     "shortid": "^2.2.14",
     "vue": "^2.5.17",
     "zepto": "^1.2.0"
