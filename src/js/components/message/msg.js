@@ -10,19 +10,23 @@ export default Vue.component('msg', {
             type: Object,
             default: () => {}
         },
-        needResize: {
-            type: Boolean,
-            default: false
-        },
         ignoreAnimation: {
             type: Boolean,
             default: false
         }
     },
 
+    directives: {
+        updateBgImg: {
+            componentUpdated(el, binding, vnode) {
+                vnode.context.resize()
+            }
+        }
+    },
+
     template:
         `<div class="msg-row" :class="'msg-' + message.author">
-            <div class="msg" ref="msg" :style="{'background-image': 'url(' + bgImg + ')'}"
+            <div v-update-bg-img class="msg" ref="msg" :style="{'background-image': 'url(' + bgImg + ')'}"
                 v-html="msgContent">
             </div>
         </div>`,
@@ -32,20 +36,6 @@ export default Vue.component('msg', {
             bgImg: '',
             msgContent: ''
         };
-    },
-
-    watch: {
-        needResize: function (newValue) {
-            if (newValue) {
-                this.resize();
-            }
-        },
-
-        msgContent: function () {
-            this.$nextTick(() => {
-                this.resize();
-            });
-        }
     },
 
     methods: {
@@ -83,9 +73,6 @@ export default Vue.component('msg', {
             this.msgContent = this.message.content;
         }
 
-        setTimeout(() => {
-            this.resize();
-        }, 300);
         window.addEventListener('resize', this.resize);
     }
 });
