@@ -22,8 +22,7 @@ export default Vue.component('msg-container', {
         `<div class="msg-container">
             <div class="content-above-input">
                 <msg v-for="(message, id) in messages" @resized="scrollBottom()"
-                    :message="message" :key="message.id" :ignoreAnimation="message.isFromJson"
-                    :needResize="id === 0 && onMounted">
+                    :message="message" :key="message.id" :ignoreAnimation="message.isFromJson">
                 </msg>
             </div>
 
@@ -56,7 +55,7 @@ export default Vue.component('msg-container', {
             if ($container && $container.length) {
                 $container.scrollTop($container[0].scrollHeight - $container.height());
             }
-        }, 1000),
+        }, 500),
 
         saveMessages() {
             const json = this.messages.map(msg => msg.toJson());
